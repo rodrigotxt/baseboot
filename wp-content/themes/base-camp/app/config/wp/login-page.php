@@ -22,7 +22,7 @@ function base_camp_login_logo_title()
     return 'Base Camp';
 }
 
-add_filter('login_headertitle', 'base_camp_login_logo_title');
+add_filter('login_headertext', 'base_camp_login_logo_title');
 
 /**
  * Add favicon to Login Page

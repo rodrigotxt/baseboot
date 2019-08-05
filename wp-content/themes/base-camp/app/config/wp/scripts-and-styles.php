@@ -12,7 +12,7 @@ function base_camp_scripts_and_styles()
     wp_register_style('base-camp-styles', assets('styles.css') . $suffix, [], '', 'all');
 
     // Vue styles
-    wp_register_style('base-camp-styles-vue', assets('scripts.css') . $suffix, [], '', 'all');
+    // wp_register_style('base-camp-styles-vue', assets('scripts.css') . $suffix, [], '', 'all');
 
     // Register scripts
     wp_register_script('base-camp-vendor', assets('vendor.js'), [], '', true);

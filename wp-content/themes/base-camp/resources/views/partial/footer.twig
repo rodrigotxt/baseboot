@@ -1,13 +1,31 @@
-<footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <p>
-        <strong>Base Camp</strong> by <a href="https://github.com/suomato">Toni Suomalainen</a>.
-        The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
-      </p>
-    </div>
+<footer class="footer h-20">
+  <div class="align-items-center h-full d-flex px-4 bg-gray-600">
+    <a href="/" class="mr-auto fill-current text-white">{{ logolight }}</a>
+    <ul class="social-nav d-flex ml-auto">
+    {% for item in socialnetworks %}
+      <li class="social-item ml-2">
+        <a href="{{ item.social_network_link }}" target="_blank" class="social" role="button" aria-label="{{ item.social_network }}" title="{{ item.social_network }}"><span aria-hidden="true" class="text-white icon-{{ item.social_network|sanitize }}"></span></a>
+      </li>
+    {% endfor %}
+    </ul>
+
   </div>
 </footer>
+
+<footer class="footer sub-footer">
+
+  <div class="d-flex">
+
+    <div class="d-flex w-100 p-2">
+      <div class="d-flex ml-auto text-xs">
+        <p class="copyright">&copy; {{ now|date('Y') }} by {{ bloginfo('name') }}</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
 
 </div> {# end <div id="app"> #}
 

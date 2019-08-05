@@ -1,0 +1,178 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-06-11 07:28+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/"
+
+#: lightbox-photoswipe.php:113 lightbox-photoswipe.php:404
+msgid "Share on Facebook"
+msgstr ""
+
+#: lightbox-photoswipe.php:114 lightbox-photoswipe.php:405
+msgid "Tweet"
+msgstr ""
+
+#: lightbox-photoswipe.php:115 lightbox-photoswipe.php:407
+msgid "Pin it"
+msgstr ""
+
+#: lightbox-photoswipe.php:116 lightbox-photoswipe.php:408
+msgid "Download image"
+msgstr ""
+
+#: lightbox-photoswipe.php:191
+msgid "Close (Esc)"
+msgstr ""
+
+#: lightbox-photoswipe.php:192
+msgid "Share"
+msgstr ""
+
+#: lightbox-photoswipe.php:193
+msgid "Toggle fullscreen"
+msgstr ""
+
+#: lightbox-photoswipe.php:194
+msgid "Zoom in/out"
+msgstr ""
+
+#: lightbox-photoswipe.php:207
+msgid "Previous (arrow left)"
+msgstr ""
+
+#: lightbox-photoswipe.php:208
+msgid "Next (arrow right)"
+msgstr ""
+
+#. Name of the plugin
+#. Description of the plugin
+#: lightbox-photoswipe.php:347 lightbox-photoswipe.php:348
+#: lightbox-photoswipe.php:394
+msgid "Lightbox with PhotoSwipe"
+msgstr ""
+
+#: lightbox-photoswipe.php:398
+msgid "Excluded pages/posts"
+msgstr ""
+
+#: lightbox-photoswipe.php:399
+msgid ""
+"Enter a comma separated list with the numerical IDs of the pages/posts where "
+"the lightbox should not be used."
+msgstr ""
+
+#: lightbox-photoswipe.php:402
+msgid "Visible sharing options"
+msgstr ""
+
+#: lightbox-photoswipe.php:406
+msgid "Use URL of images instead of lightbox on Facebook and Twitter"
+msgstr ""
+
+#: lightbox-photoswipe.php:412
+msgid "Other options"
+msgstr ""
+
+#: lightbox-photoswipe.php:414
+msgid ""
+"Get the image captions from the database (this may cause delays on slower "
+"servers)"
+msgstr ""
+
+#: lightbox-photoswipe.php:415
+msgid "Close when scrolling in desktop view"
+msgstr ""
+
+#: lightbox-photoswipe.php:416
+msgid "Close with vertical drag in mobile view"
+msgstr ""
+
+#: lightbox-photoswipe.php:417
+msgid "Activate browser history"
+msgstr ""
+
+#: lightbox-photoswipe.php:418
+msgid "Show picture counter"
+msgstr ""
+
+#: lightbox-photoswipe.php:419
+msgid "Show fullscreen button"
+msgstr ""
+
+#: lightbox-photoswipe.php:420
+msgid "Show zoom button if available"
+msgstr ""
+
+#: lightbox-photoswipe.php:421
+msgid "Show caption if available"
+msgstr ""
+
+#: lightbox-photoswipe.php:422
+msgid "Allow infinite loop"
+msgstr ""
+
+#: lightbox-photoswipe.php:423
+msgid "Enable pinch to close gesture on mobile devices"
+msgstr ""
+
+#: lightbox-photoswipe.php:424
+msgid "Enable tap to toggle controls on mobile devices"
+msgstr ""
+
+#: lightbox-photoswipe.php:425
+msgid "Close the lightbox by clicking outside the image"
+msgstr ""
+
+#: lightbox-photoswipe.php:427
+msgid "Spacing between pictures"
+msgstr ""
+
+#: lightbox-photoswipe.php:433
+msgid "Default"
+msgstr ""
+
+#: lightbox-photoswipe.php:436
+msgid "Space between pictures relative to screenwidth."
+msgstr ""
+
+#: lightbox-photoswipe.php:438
+msgid "Skin"
+msgstr ""
+
+#: lightbox-photoswipe.php:442
+msgid "Original"
+msgstr ""
+
+#: lightbox-photoswipe.php:445
+msgid "Original with solid background"
+msgstr ""
+
+#: lightbox-photoswipe.php:448
+msgid "New share symbol"
+msgstr ""
+
+#: lightbox-photoswipe.php:451
+msgid "New share symbol with solid background"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://wordpress.org/plugins/lightbox-photoswipe/"
+msgstr ""
+
+#. Author of the plugin
+msgid "Arno Welzel"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "http://arnowelzel.de"
+msgstr ""

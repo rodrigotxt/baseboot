@@ -5,5 +5,16 @@
 // ******************************************************
 
 body.wp-admin {
+
+  #plugins-by-dreihochzwo,
+  #toplevel_page_ajax-load-more {
+    display: none;
+  }
+
+  .collapse {
+    position: absolute;
+    top: 0 !important;
+  }
+
 }
 

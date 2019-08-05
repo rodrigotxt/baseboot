@@ -1,0 +1,59 @@
+.visually-hidden {
+
+  position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+  width: 1px;
+  word-wrap: normal;
+}
+
+.sr-only {
+  position: absolute;
+  width: 100%;
+  padding: 10px 20px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  border: 0;
+}
+
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  position: absolute;
+  padding: 10px 20px;
+  background: #fff;
+  top: 0;
+  right: 50%;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  -webkit-clip-path: none;
+  clip-path: none;
+  z-index: 9999999;
+}
+
+a.visually-hidden.focusable.skip-link {
+  transition: 0s;
+  text-align: center;
+}
+
+
+.visually-hidden.focusable:active, .visually-hidden.focusable:focus {
+  position: relative !important;
+  z-index: 9;
+  clip: auto;
+  overflow: visible;
+  display: inline-table;
+  width: calc(100% - 6px);
+  margin: 3px;
+  padding: 5px 10px;
+  background: #000;
+  color: #fff;
+  font-family: $sans-bold;
+  text-align: center;
+}

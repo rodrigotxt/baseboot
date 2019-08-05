@@ -1,1 +1,38 @@
-navbar
+<nav class="navbar d-flex w-100">
+
+
+
+    <div id="navbar-main" class="navbar-menu d-flex w-100 align-items-center px-4">
+      <a class="logo d-block" href="/">
+        {{ logolight }}
+      </a>
+      <ul class="d-none d-lg-flex ml-auto">
+        {% for item in menu.items %}
+        <li class="navbar-item">
+          <a class="nav-main-link {% if item.current %}active{% endif %}" href="{{ item.link }}"><span>{{ item.title }}</span>
+            <div class="navbar-link-bkg is-hidden-touch"></div>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      <ul class="mobile-menu bg-white">
+        {% for item in menu.items %}
+        <li class="navbar-item">
+          <a class="nav-main-link {% if item.current %}active{% endif %}" href="{{ item.link }}"><span>{{ item.title }}</span>
+            <div class="navbar-link-bkg is-hidden-touch"></div>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+
+    </div>
+
+
+    <button class="navbar-burger burger d-block d-lg-none" type="button" data-toggle="collapse" data-target="#navbar-main" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+
+</nav>

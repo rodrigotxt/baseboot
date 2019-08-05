@@ -1,0 +1,120 @@
+{
+    "key": "group_5829403436c5f",
+    "title": "Event Options",
+    "fields": [
+        {
+            "key": "field_5829403de6df3",
+            "label": "Date & Time (start)",
+            "name": "date",
+            "type": "date_time_picker",
+            "instructions": "Note: time will be hidden by default. Select the \"Show time\" checkbox below to make it visible.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y g:i a",
+            "return_format": "Y-m-d H:i:s",
+            "first_day": 1
+        },
+        {
+            "key": "field_5d3740d8fb00e",
+            "label": "Date & Time (end)",
+            "name": "date_end",
+            "type": "date_time_picker",
+            "instructions": "Note: time will be hidden by default. Select the \"Show time\" checkbox below to make it visible.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y g:i a",
+            "return_format": "Y-m-d H:i:s",
+            "first_day": 1
+        },
+        {
+            "key": "field_5d3076c01120e",
+            "label": "Specifics & Location",
+            "name": "event_location",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "40",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5829412ae6df5",
+            "label": "Co-hosts",
+            "name": "co-hosts",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_584fb9b283b20",
+            "label": "Settings",
+            "name": "event_settings",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "hide_link": "Do not provide a link to this event",
+                "show_time": "Show time"
+            },
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value",
+            "allow_custom": 0,
+            "save_custom": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "event"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1564087809
+}

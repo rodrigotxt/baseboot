@@ -42,32 +42,55 @@ Timber::$dirname = ['resources/views'];
  *
  * @return mixed
  */
-function add_to_context($data)
+function add_to_context($context)
 {
     // Add Main Menu to Timber context object
-    $data['menu'] = new TimberMenu();
+    $context['menu'] = new TimberMenu( 'Main Navigation' );
+    $context['submenu'] = new TimberMenu( 'Sub Menu' );
+    $context['pubtype'] = new TimberMenu( 'Publication Type' );
+    $context['pubtime'] = new TimberMenu( 'Publication Time' );
 
     // Add main-sidebar to Timber context object
-    $data['main_sidebar'] = Timber::get_widgets('main-sidebar');
+    $context['main_sidebar'] = Timber::get_widgets('main-sidebar');
 
     // Add Locale strings to Timber context object
-    $data['messages'] = get_template_messages();
+    $context['messages'] = get_template_messages();
 
     // Logo
-    $data['logo'] = images_path('base-camp-logo.png');
+    $context['logo'] = images_path('transitcenter-logo.png');
 
     // Favicon
-    $data['favicon'] = images_path('favicon.png');
+    $context['favicon'] = images_path('favicon.png');
 
     // Current Template File Name
-    $data['current_template_file'] = basename($GLOBALS['template']);
+    $context['current_template_file'] = basename($GLOBALS['template']);
 
     // Extend TimberSite object
-    $data['site'] = new BaseCampSite();
+    $context['site'] = new BaseCampSite();
 
-    $data['in_production'] = bc_env('MODE', 'production') === 'production';
+    $context['in_production'] = bc_env('MODE', 'production') === 'production';
 
-    return $data;
+    return $context;
 }
+
+if ( function_exists( 'acf_add_options_page' ) ) {
+    acf_add_options_page();
+    acf_add_options_sub_page( 'Global' );
+}
+
+if ( function_exists( 'acf_add_options_page' ) ) {
+    acf_add_options_page();
+    acf_add_options_sub_page( '404' );
+}
+
+if ( function_exists( 'acf_add_options_page' ) ) {
+    acf_add_options_page();
+    acf_add_options_sub_page( 'Footer' );
+}
+
+if ( function_exists( 'acf_set_options_page_menu' ) ) {
+    acf_set_options_page_menu( __( 'Options' ) );
+}
+
 
 add_filter('timber_context', 'add_to_context');

@@ -2,9 +2,11 @@
 const tailwindcss = require('tailwindcss');
 const cssnano = require('cssnano');
 const autoprefixer = require('autoprefixer');
+const atImport = require('postcss-import');
 
 module.exports = {
     plugins: [
+        atImport(),
         tailwindcss('./tailwind.config.js'),
         cssnano({
             preset: 'default',

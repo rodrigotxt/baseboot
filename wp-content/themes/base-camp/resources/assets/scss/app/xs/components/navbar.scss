@@ -1,0 +1,78 @@
+.navbar-menu {
+  height: 80px
+}
+
+ul.mobile-menu {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  transition: all .3s;
+  transform: scale(0.5);
+  transform-origin: -1;
+  opacity: 0;
+  &.menu-active {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// hamberger styling
+.navbar-burger {
+  cursor: pointer;
+  display: block;
+  position: absolute;
+  transition: transform .5s;
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  background: #000;
+  right: 0;
+  margin-right: 15px;
+  margin-top: 15px;
+  //z-index: 2
+  padding: 0 18px 0;
+  span {
+    background: #FFF;
+    width: 30px;
+    display: block;
+    height: 2px;
+    left: calc(50% - 15px);
+    position: absolute;
+    transform-origin: center;
+    transition-duration: .2s;
+    transition-property: background-color, opacity, transform;
+    transition-timing-function: ease-in;
+    &:nth-child(1) {
+      top: calc(50% -  8px);
+    }
+    &:nth-child(2) {
+      top: calc(50% - 1px);
+    }
+    &:nth-child(3) {
+      top: calc(50% + 6px)
+    }
+  }
+  &:hover{
+    background-color: #000;
+  }
+  // Modifers
+  &.is-active {
+    background: #000;
+    span {
+      background-color: #FFF;
+      &:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      &:nth-child(2) {
+        opacity: 0;
+      }
+      &:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    }
+  }
+}

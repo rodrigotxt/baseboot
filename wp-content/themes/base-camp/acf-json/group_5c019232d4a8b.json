@@ -1,0 +1,288 @@
+{
+    "key": "group_5c019232d4a8b",
+    "title": "Hero",
+    "fields": [
+        {
+            "key": "field_5c0573cb3ddeb",
+            "label": "Hero Type",
+            "name": "post_hero_type",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "background-video": "Background Video",
+                "background-image": "Background Image"
+            },
+            "default_value": [],
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5c05b120c9015",
+            "label": "Hero Height",
+            "name": "post_hero_height",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "30",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "full-height": "Full Height Hero",
+                "half-height": "Half Height Hero"
+            },
+            "default_value": [],
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5c0574eab4e8c",
+            "label": "Hero Video Desktop ID",
+            "name": "post_hero_video_desktop",
+            "type": "text",
+            "instructions": "example: 5777280\r\n\r\nhttps:\/\/vimeo.com\/<strong>5777280<\/strong>",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5c0573cb3ddeb",
+                        "operator": "==",
+                        "value": "background-video"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5c019236d7fef",
+            "label": "Hero Background Image",
+            "name": "post_hero_background",
+            "type": "image",
+            "instructions": "Ideally a 16x 9 ratio",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5c0573cb3ddeb",
+                        "operator": "==",
+                        "value": "background-image"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": 2,
+            "mime_types": ""
+        },
+        {
+            "key": "field_5cc1b6102fdda",
+            "label": "Hero Background Image Mobile",
+            "name": "post_hero_background_mobile",
+            "type": "image",
+            "instructions": "Ideally a square ratio",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5c0573cb3ddeb",
+                        "operator": "==",
+                        "value": "background-image"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array",
+            "preview_size": "thumbnail",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": 2,
+            "mime_types": ""
+        },
+        {
+            "key": "field_5c019a5df9e99",
+            "label": "Hero Title",
+            "name": "post_hero_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5c019a67f9e9a",
+            "label": "Hero Subtitle",
+            "name": "post_hero_subtitle",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_5c01c42b0ed57",
+            "label": "Hero Overlay Color",
+            "name": "post_hero_overlay_color",
+            "type": "color_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.333",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "#000000"
+        },
+        {
+            "key": "field_5c01c4570ed58",
+            "label": "Hero Overlay Opacity",
+            "name": "post_hero_overlay_opacity",
+            "type": "range",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.333",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 55,
+            "min": 0,
+            "max": 99,
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_5ca8b8492aac2",
+            "label": "Hero CTA",
+            "name": "hero_cta",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "array"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "videos"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "event"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "grant"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "campaigns"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1563994573
+}

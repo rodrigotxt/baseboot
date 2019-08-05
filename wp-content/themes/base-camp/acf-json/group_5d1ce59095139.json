@@ -1,0 +1,305 @@
+{
+    "key": "group_5d1ce59095139",
+    "title": "Hero Publications",
+    "fields": [
+        {
+            "key": "field_5d35a37bbc2ac",
+            "label": "Campaign?",
+            "name": "campaign",
+            "type": "true_false",
+            "instructions": "Is this Publication a campaign?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5d35a3a2bc2ad",
+            "label": "Campaign Relationship",
+            "name": "campaign_relationship",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5d35a37bbc2ac",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "campaigns"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search",
+                "post_type",
+                "taxonomy"
+            ],
+            "elements": "",
+            "min": "",
+            "max": 1,
+            "return_format": "object"
+        },
+        {
+            "key": "field_5d24beacd1427",
+            "label": "PDF File",
+            "name": "pdf_file",
+            "type": "file",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_size": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
+            "key": "field_5d1ce59099883",
+            "label": "Hero Title",
+            "name": "post_hero_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5d1ce59099887",
+            "label": "Hero Subtitle",
+            "name": "post_hero_subtitle",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": 2,
+            "new_lines": ""
+        },
+        {
+            "key": "field_5d1ce6467ecd0",
+            "label": "Hero Excerpt",
+            "name": "hero_excerpt",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": ""
+        },
+        {
+            "key": "field_5d280cef8ae29",
+            "label": "Publication Color New",
+            "name": "publication_color_new",
+            "type": "radio",
+            "instructions": "Primary color for this publication. Affects page header background, link color, and heading colors.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "purple": "<span style=\"display:inline-block;background-color:#5E29B2;color:white;padding:0.25em 0.5em\">Purple<\/span>",
+                "black": "<span style=\"display:inline-block;background-color:#000000;color:white;padding:0.25em 0.5em\">Black<\/span>",
+                "fuchsia": "<span style=\"display:inline-block;background-color:#FF1F71;color:white;padding:0.25em 0.5em\">Fuchsia<\/span>",
+                "persimmon": "<span style=\"display:inline-block;background-color:#FF4000;color:white;padding:0.25em 0.5em\">Persimmon<\/span>",
+                "orange": "<span style=\"display:inline-block;background-color:#FF841C;color:white;padding:0.25em 0.5em\">Orange<\/span>",
+                "yellow": "<span style=\"display:inline-block;background-color:#FFBD17;color:white;padding:0.25em 0.5em\">Yellow<\/span>",
+                "green": "<span style=\"display:inline-block;background-color:#5BCF59;color:white;padding:0.25em 0.5em\">Green<\/span>",
+                "turquoise": "<span style=\"display:inline-block;background-color:#00CCBB;color:white;padding:0.25em 0.5em\">Turquoise<\/span>",
+                "light-blue": "<span style=\"display:inline-block;background-color:#17BEE8;color:white;padding:0.25em 0.5em\">Light Blue<\/span>",
+                "blue": "<span style=\"display:inline-block;background-color:#2D74ED;color:white;padding:0.25em 0.5em\">Blue<\/span>"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": "",
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_5d27a6e28acf3",
+            "label": "Chapters? (Children Publications)",
+            "name": "is_chapters",
+            "type": "true_false",
+            "instructions": "Does this publication have chapters (Children Publications)? If so please check this",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "15",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5d27a6bf8acf2",
+            "label": "Chapter Relationship",
+            "name": "chapter_relationship",
+            "type": "relationship",
+            "instructions": "Select chapters of publication",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5d27a6e28acf3",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "85",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "publication"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": [
+                "featured_image"
+            ],
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        },
+        {
+            "key": "field_5d2ceb8b4856c",
+            "label": "Has Videos?",
+            "name": "has_video_archive",
+            "type": "true_false",
+            "instructions": "Check this box if this publication has Videos.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.3333",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5d2cf4ac8140d",
+            "label": "Has Infographics?",
+            "name": "has_infographics",
+            "type": "true_false",
+            "instructions": "Check this box if this publication has Infographics.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "33.3333",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5d2dcbc05fe35",
+            "label": "Related Publications",
+            "name": "related_publications",
+            "type": "relationship",
+            "instructions": "Places related publications at bottom",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "publication"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": [
+                "featured_image"
+            ],
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "publication"
+            }
+        ]
+    ],
+    "menu_order": 15,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1564687037
+}

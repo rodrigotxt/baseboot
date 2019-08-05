@@ -1,0 +1,143 @@
+{
+    "key": "group_5cae0365c6ddf",
+    "title": "Videos",
+    "fields": [
+        {
+            "key": "field_5d1b8ca84df96",
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5d1b8cb14df97",
+            "label": "Intro",
+            "name": "intro",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
+        },
+        {
+            "key": "field_5cae0369af6e6",
+            "label": "Video Type",
+            "name": "video_type",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "youtube": "YouTube",
+                "vimeo": "Vimeo"
+            },
+            "default_value": [],
+            "allow_null": 1,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5cae06804daee",
+            "label": "YouTube",
+            "name": "video_type_youtube",
+            "type": "text",
+            "instructions": "<p><\/p>\r\n<p><strong>Grab hash at end of YouTube embed link.<\/strong><\/br> <\/p>\r\n<i>Example: https:\/\/youtu.be\/XUhSHDlRFds<\/br><\/i>\r\n<p>\r\n<strong>copy\/paste<\/strong> hash at end of YouTube embed link into field below: (XUhSHDlRFds)<\/p>",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5cae0369af6e6",
+                        "operator": "==",
+                        "value": "youtube"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "XUhSHDlRFds",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_5cae07c7fc5ea",
+            "label": "Vimeo",
+            "name": "video_type_vimeo",
+            "type": "text",
+            "instructions": "<p><\/p>\r\n<p><strong>Grab number at end of Vimeo share link.<\/strong><\/br> <\/p>\r\n<i>Example: https:\/\/vimeo.com\/177562433<\/br><\/i>\r\n<p>\r\n<strong>copy\/paste<\/strong> number at end of Vimeo share link into field below: (177562433)<\/p>",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5cae0369af6e6",
+                        "operator": "==",
+                        "value": "vimeo"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": 177562433,
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "videos"
+            }
+        ]
+    ],
+    "menu_order": 32,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "featured_image"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1562692470
+}

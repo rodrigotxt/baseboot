@@ -1,11 +1,17 @@
 @tailwind base;
 @tailwind components;
+@import './mixins.scss'; // for tailwind @apply
 @tailwind utilities;
 
-
 @import "../../../node_modules/bootstrap-4-grid/css/grid.min.css";
+
 @import "../../../node_modules/bootstrap-utilities/bootstrap-utilities";
 
+@import './fonts.scss';
+
+@import './vendor/icomoon.scss';
+
+@import './accessibility.scss';
 
 @import './helpers.scss';
 

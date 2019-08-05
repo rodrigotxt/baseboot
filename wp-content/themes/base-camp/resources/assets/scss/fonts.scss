@@ -1,0 +1,177 @@
+$serif:             'Calluna Regular', serif;
+$serif-bold:        'Canela Bold', serif;
+$serif-italic:      'Calluna Italic', sans-serif;
+
+$sans:              'GT Walsheim', sans-serif;
+$sans-medium:       'GT Walsheim Medium', sans-serif;
+$sans-bold:         'Aura Cg', sans-serif;
+
+.sans-bold {
+  font-family: $sans-bold
+}
+
+.serif {
+  font-family: $serif
+}
+.serif-bold {
+  font-family: $serif-bold
+}
+
+.serif-italic {
+  font-family: $serif-italic
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+
+/* https://github.com/wearethescenery/ether */
+
+
+.font-family-inherit { font-family: inherit }
+.font-size-inherit { font-size: inherit }
+.text-decoration-none { text-decoration: none }
+
+.bold    { font-weight: var(--bold-font-weight, bold) }
+.regular { font-weight: normal }
+.italic  { font-style: italic }
+.caps    { text-transform: uppercase; letter-spacing: var(--caps-letter-spacing); }
+
+.left-align   { text-align: left }
+.center       { text-align: center }
+.right-align  { text-align: right }
+.justify      { text-align: justify }
+
+.nowrap { white-space: nowrap }
+.break-word { word-wrap: break-word }
+
+.line-height-1 { line-height: var(--line-height-1) }
+.line-height-2 { line-height: var(--line-height-2) }
+.line-height-3 { line-height: var(--line-height-3) }
+.line-height-4 { line-height: var(--line-height-4) }
+
+.list-style-none { list-style: none }
+
+
+
+.truncate {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list-reset {
+  list-style: none;
+  padding-left: 0;
+}
+
+:root {
+  --line-height-1: 1;
+  --line-height-2: 1.125;
+  --line-height-3: 1.25;
+  --line-height-4: 1.5;
+  --caps-letter-spacing: .2em;
+  --bold-font-weight: bold;
+}
+
+/* Basscss Type Scale */
+
+.h00 { font-size: var(--h00) }
+.h0 { font-size: var(--h0) }
+.h1, h1 { font-size: var(--h1); line-height: 1 !important; }
+.h2, h2 { font-size: var(--h2); line-height: 1.5 !important; }
+.h3, h3 { font-size: var(--h3); line-height: 1.35 !important; }
+.h4, h4 { font-size: var(--h4); line-height: 1.25 !important; }
+.h5, h5 { font-size: var(--h5); line-height: 1.2 !important; }
+.h6, h6 { font-size: var(--h6) }
+
+:root {
+  --h00:4rem;
+  --h0: 3rem;
+  --h1: 2.5rem;
+  --h2: 2.25rem;
+  --h3: 1.9rem;
+  --h4: 1.75rem;
+  --h5: 1.5rem;
+  --h6: 1.25rem;
+}
+
+
+
+
+/*--------------------------------------------------------------
+# Aura Cg
+--------------------------------------------------------------*/
+
+@font-face {
+    font-family: 'Aura Cg';
+    src: url('../fonts/CgAura.woff2') format('woff2'),
+        url('../fonts/CgAura.woff') format('woff');
+    font-weight: normal !important;
+    font-style: normal;
+}
+
+
+
+
+/*--------------------------------------------------------------
+# Calluna
+--------------------------------------------------------------*/
+
+    @font-face {
+        font-family: 'Calluna Regular';
+        src: url('../fonts/Calluna-Regular-webfont.woff2') format('woff2'),
+             url('../fonts/Calluna-Regular-webfont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Calluna Italic';
+        src: url('../fonts/Calluna-It-webfont.woff2') format('woff2'),
+             url('../fonts/Calluna-It-webfont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+/*--------------------------------------------------------------
+# Canela
+--------------------------------------------------------------*/
+
+    @font-face {
+        font-family: 'Canela Bold';
+        src: url('../fonts/Canela-Bold-Web.eot');
+        src: url('../fonts/Canela-Bold-Web.eot?#iefix') format('embedded-opentype'),
+             url('../fonts/Canela-Bold-Web.woff2') format('woff2'),
+             url('../fonts/Canela-Bold-Web.woff') format('woff');
+        font-weight: 700;
+        font-style: normal;
+        font-stretch: normal;
+    }
+
+/*--------------------------------------------------------------
+# GT Walsheim
+--------------------------------------------------------------*/
+
+    @font-face {
+        font-family: 'GT Walsheim';
+        src: url('../fonts/GT-Walsheim-Regular.eot');
+        src: url('../fonts/GT-Walsheim-Regular.eot?#iefix') format('embedded-opentype'),
+             url('../fonts/GT-Walsheim-Regular.woff') format('woff'),
+             url('../fonts/GT-Walsheim-Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'GT Walsheim Medium';
+        src: url('../fonts/GT-Walsheim-Medium.eot');
+        src: url('../fonts/GT-Walsheim-Medium.eot?#iefix') format('embedded-opentype'),
+             url('../fonts/GT-Walsheim-Medium.woff') format('woff'),
+             url('../fonts/GT-Walsheim-Medium.ttf') format('truetype');
+        font-weight: 500;
+        font-style: normal;
+    }
+

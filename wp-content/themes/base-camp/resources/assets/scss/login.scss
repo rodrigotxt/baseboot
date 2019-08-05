@@ -5,11 +5,18 @@
 // ******************************************************
 
 body.login {
+  background: $primary;
+  #nav a, #backtoblog a {
+    color: #eee;
+    &:hover {
+      color: #fff;
+    }
+  }
   div#login {
     h1 {
       a {
         // Login Page logo
-        background: url('#{$images}/base-camp-logo.png') no-repeat center bottom;
+        background: url('#{$images}/logo.svg') no-repeat center bottom;
         -webkit-background-size: 84px;
         background-size: 100%;
         color: #444;
