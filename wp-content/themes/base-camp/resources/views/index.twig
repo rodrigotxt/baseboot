@@ -1,0 +1,16 @@
+{% extends "base.twig" %}
+
+{% block content %}
+<div class="container mx-auto">
+
+  <div class="bg-gray-200 p-4">
+    <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2">1</span>
+    <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2 mt-2">2</span>
+    <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2 mt-2">3</span>
+  </div>
+
+  {% if posts.pagination.pages %}
+    {% include 'components/pagination.twig' %}
+  {% endif %}
+</div>
+{% endblock %}
