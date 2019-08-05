@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 
+@import "../../../node_modules/bootstrap-4-grid/css/grid.min.css";
+@import "../../../node_modules/bootstrap-utilities/bootstrap-utilities";
+
+
+@import './helpers.scss';
 
 @import './app/xs/**/*.scss';
 
