@@ -1,0 +1,84 @@
+<div id="hero">
+
+<section class="hero is-small">
+
+  {% if post.thumbnail.src or postherobackground.url or notfoundbackgroundimage %}
+  <div class="d-block">
+      {% if post.thumbnail.src or postherobackground.url %}
+      <img src='{% if postherotype == "background-image" %}{{ postherobackground.url }}{% elseif postherotype is null or postherotype is empty %}{{ post.thumbnail.src }}{% endif %}' class="hero-background-img lazyload {% if postheroheight == "half-height" %}half{% endif %}">
+      {% else %}
+      <img src='{{ defaultheroimage }}' class="hero-background-img lazyload {% if postheroheight == "half-height" %}half{% endif %}">
+      {% endif %}
+  </div>
+  {% endif %}
+
+
+  {% if postherotype == "background-video" %}
+
+    <div class="embed-responsive embed-responsive-16by9 posthero-video {% if not postheroheight == "full-height" or postheroheight == "half-height" %}fh-video{% endif %}"><iframe class="embed-responsive-item" src='https://player.vimeo.com/video/{{ postherovideodesktop }}?api=1&background=1&mute=1&autoplay=1' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+
+  {% endif %}
+
+  {#% if postheroheight != "half-height" or postheroheight == "" %}
+
+  <div class="hero-overlay" style="background-color:{% if postherooverlaycolor %}{{ postherooverlaycolor }}{% else %}#000{% endif %};opacity:{% if postherooverlayopacity is empty %}0.5;{% else %}0.{{ postherooverlayopacity }};{% endif %};position: absolute;top: 0;right: 0;bottom: 0;left: 0;"></div>
+
+  {% endif %#}
+
+</section>
+
+</div><!-- #hero -->
+
+<section class="container main-wrapper">
+
+  <div class="columns" >
+
+    <div class="column{% if cat_type == 'Tax' %} is-12-desktop is-0-widescreen px-0 {% elseif cat_type == 'Category' or cat_type == 'Tag'  %} is-12-desktop is-1-widescreen {% else %} is-12-desktop is-3-widescreen {% endif %}">
+      {% if not cat_type and post.thumbnail.caption %}
+      <div class="py-0 py-xl-5 pr-4">
+        <p class="is-size-7-mobile is-size-6 {% if post.publication_color_new or post.post_color %}text-color-{{ post.publication_color_new }}{{ post.post_color }}{% endif %}">{{ post.thumbnail.caption }}</p>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="column is-12-desktop is-9-widescreen">
+        {% if cat_type %}
+          {#<div class="h4 sans-medium">{{ cat_type }} Archive: }{{ title|capitalize }}</div>#}
+        {% else %}
+
+        <div class="pt-3 pt-xl-5">
+
+          {% if post.terms %}
+          {% for term in post.terms('category') %}
+            {% if term|sanitize != 'blog' %}
+              <a href="/category/{{term|sanitize}}" class="button primary-fill-button letter-spacing mt-0 mb-5">{{term}}</a>
+            {% endif %}
+          {% endfor %}
+          {% endif %}
+
+          <div class="sans-medium pb-4">{{ post.date }}</div>
+          {% if postherotitle %}
+          <div class="h2 sans-medium">
+            {{ postherotitle }}
+          </div>
+          {% else %}
+          <div class="h2 sans-medium">
+            {{ post.title }}
+          </div>
+          {% endif %}
+
+          {% if postherosubtitle %}
+          <div class="h4 is-size-4 sans-medium pt-4">
+            {{ postherosubtitle }}
+          </div>
+          {% endif %}
+
+        </div>
+
+        {% endif %}
+
+    </div><!-- /.column -->
+
+  </div><!-- /.columns -->
+
+</section><!-- /.main-wrapper -->

@@ -1,21 +1,11 @@
 @tailwind base;
-h1 {
-  @apply mb-3;
-}
-h2 {
-  @apply mb-3;
-}
-h3 {
-  @apply mb-3;
-}
-p {
-  @apply mb-3
-}
+
+@import './tailwind.scss';
+
 @tailwind components;
 @tailwind utilities;
 
 @import './mixins.scss'; // for tailwind @apply
-
 
 @import "../../../node_modules/bootstrap-4-grid/css/grid.min.css";
 
@@ -26,6 +16,8 @@ p {
 @import './vendor/icomoon.scss';
 
 @import './accessibility.scss';
+
+@import './utilities.scss';
 
 @import './helpers.scss';
 

@@ -1,12 +1,46 @@
 {% extends "base.twig" %}
 
 {% block content %}
-<div class="container">
-  <article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
-    <h1 class="title is-2">{{ post.title }}</h1>
-    <p>
-      {{ post.content }}
-    </p>
-  </article>
-</div>
+
+  <div class="container wysiwyg">
+
+    <div class="row">
+
+      <div class="col-lg-8">
+        {{ post.content }}
+
+        {% set flex_blocks = flexblock %}
+
+        {% if flex_blocks %}
+
+          {% include 'blocks/flex-content.twig' with flex_blocks %}
+
+        {% endif %}
+
+      </div>
+
+      <div class="col-lg-4 bg-gray-400 p-4">
+        <aside class="sidebar-wrapper">
+          <div class="sidebar-menu">
+            <div class="h3 mb-0">Sidebar</div>
+            <hr class="my-4">
+            <div class="bg-gray-200 p-4">
+              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2">1</span>
+              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2 mt-2">2</span>
+              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2 mt-2">3</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+    </div>
+
+  </div>
+
+  {% if post.related_pages %}
+
+    {% include ['components/related-pages.twig'] %}
+
+  {% endif %}
+
 {% endblock %}

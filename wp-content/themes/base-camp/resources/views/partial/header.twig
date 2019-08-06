@@ -1,9 +1,17 @@
-<header class="bg-orange-600">
+<header class="sticky-header">
   {% include "components/navbar.twig" %}
 </header>
 
 <main id="main-content" {% if globalbkgcolor %}style="background:{{ globalbkgcolor }}"{% endif %}>
 
-  {% include 'components/hero.twig' %}
+  {% if posttype == 'post' %}
+
+    {% include 'components/hero-blog.twig' %}
+
+  {% else %}
+
+    {% include 'components/hero.twig' %}
+
+  {% endif %}
 
   <section class="main-wrapper">

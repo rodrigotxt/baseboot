@@ -1,0 +1,14 @@
+.sidebar-menu {
+  &.fixed {
+    top: 15px;
+  }
+  &.bottom {
+    bottom: 15px;
+    top: 30px;
+  }
+}
+
+.sidebar-wrapper {
+  position: sticky;
+  top: 40px;
+}

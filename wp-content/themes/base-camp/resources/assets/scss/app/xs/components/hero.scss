@@ -16,3 +16,76 @@
     align-items: center;
   }
 }
+
+// controlled by scrollOutjs > main.js
+.sticky-header {
+  position: absolute;
+  transition: all .55s;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  transform: translateY(0px);
+  background: transparent;
+  z-index: 9999;
+  a {
+    transition: all .25s;
+    color: #FFF;
+    fill: #FFF;
+  }
+}
+
+//on load before scrolling
+html[data-scroll-dir-y="0"] {
+  .sticky-header {
+    position: fixed;
+    &[data-scroll="out"] {
+      background: transparent;
+    }
+  }
+
+}
+
+//scrolling up
+html[data-scroll-dir-y="-1"] {
+  .sticky-header {
+    position: fixed;
+    &[data-scroll="out"] {
+    }
+    &[data-scroll="in"] {
+      background: #FFF;
+      a {
+        color: #000;
+        fill: #000;
+      }
+    }
+  }
+  .sidebar-menu {
+    transition: all .5s;
+    &.fixed {
+      position: sticky;
+      top: 80px;
+    }
+  }
+}
+// scrolling down
+html[data-scroll-dir-y="1"] {
+  .sticky-header {
+    position: fixed;
+    &[data-scroll="in"] {
+      transform: translateY(-80px);
+      background: #FFF;
+      a {
+        color: #000;
+        fill: #000;
+      }
+    }
+  }
+  .sidebar-menu {
+    transition: all .5s;
+    &.fixed {
+      position: sticky;
+      top: 0;
+    }
+  }
+}

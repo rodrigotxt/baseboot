@@ -1,0 +1,34 @@
+<div id="video" class="mb-4">
+
+  {% if block.title or block.intro or block.sub_title %}
+    <div class="columns is-widescreen">
+      <div class="column is-full is-3-widescreen">
+      </div>
+      <div class="column is-full is-9-widescreen">
+        {% include 'partial/block-title.twig' %}
+        {% include 'partial/block-intro.twig' %}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="columns is-widescreen">
+
+    <div class="column is-full is-3-widescreen">
+
+      {% if block.pull_quote %}
+        <p class="wp-caption-text px-2 px-lg-0">{{ block.pull_quote }}</p>
+      {% endif %}
+
+    </div>
+
+    <div class="column is-full is-9-widescreen wysiwyg">
+
+      <div class="embed-responsive embed-responsive-16by9 lazyload"><iframe class="embed-responsive-item lazyload" src='https://player.vimeo.com/video/{{ block.video_desktop_id }}?api=1&title=0&byline=0&portrait=0&sidedock=0&controls=1' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+      <div class="h5 sans-medium has-text-grey my-3">{{ block.video_caption }}</div>
+    </div>
+
+  </div>
+
+
+
+</div><!-- #gallery -->

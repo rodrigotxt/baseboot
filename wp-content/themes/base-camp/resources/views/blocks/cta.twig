@@ -1,0 +1,17 @@
+<div id="cta" data-sal="fade" data-sal-delay="100" data-sal-duration="800" data-sal-easing="ease-out-bounce">
+
+  {% if block.title or block.intro or block.sub_title %}
+
+  <div class="px-3 px-lg-0 mb-4">
+
+    {% include 'partial/block-title.twig' %}
+
+    {% include 'partial/block-intro.twig' %}
+
+  </div>
+
+  {% endif %}
+
+  <a class="button is-large is-link is-inverted is-outlined sans-bold px-4" href="{{ block.cta.url }}">{{ block.cta.title }}</a>
+
+</div><!-- #cta -->

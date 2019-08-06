@@ -1,0 +1,24 @@
+.main-block {
+  position: relative;
+}
+
+.sidebar-menu{
+  &.fixed {
+    position: sticky;
+    top: 0;
+  }
+  &.bottom {
+    bottom: 0;
+    position: sticky;
+    max-width: 100%;
+    top: 0;
+  }
+}
+
+.sidebar-wrapper {
+  position: relative;
+  top: 0px;
+  bottom: auto;
+  float: none;
+  height: calc(100% - 30px);
+}

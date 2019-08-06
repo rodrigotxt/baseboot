@@ -1,0 +1,18 @@
+<div id="carouselvue">
+  <div id="carousel-{{ block.unique_carousel_name|sanitize }}" class="carthing">
+    <carousel :margin="10" :items="1" :nav="false" :loop="false" :autoHeight="false" :autoplay="false">
+
+    {% for item in block.carousel %}
+
+      {% if item|length %}{% endif %}
+
+          <div class="w-100">
+            <img src="{{ item.image }}" alt="" class="lazyload">
+          </div>
+
+      {% endfor %}
+
+    </carousel>
+
+  </div>
+</div>

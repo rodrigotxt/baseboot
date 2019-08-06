@@ -1,0 +1,43 @@
+<div id="ordered-list" class="px-3 px-lg-0">
+
+  {% if block.title or block.intro or block.sub_title %}
+    <div class="columns">
+      <div class="column is-3">
+      </div>
+      <div class="column is-7">
+        {% include 'partial/block-title.twig' %}
+        {% include 'partial/block-intro.twig' %}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="columns">
+
+    <div class="column is-3">
+    {% if block.pull_quote %}
+      <p class="wp-caption-text px-2 px-lg-0">{{ block.pull_quote }}</p>
+    {% endif %}
+    </div>
+
+    <div class="column is-9">
+
+      {% if block.download_repeater %}
+          <div class="columns flex-wrap">
+          {% for item in block.download_repeater %}
+            <div class="column is-6">
+              <img src="{{ item.download_pdf }}" alt="{{ Image(item).alt }}">
+              {#<div class="letter-spacing h6 sans-medium mb-4 has-text-centered">{{ item.download_title }}</div>#}
+              <div class="d-flex align-items-center flex-column mt-auto">
+                <a href="{{ item.download_pdf_file }}" class="button is-rounded black-button is-uppercase letter-spacing is-size-7" target="_blank">Read PDF Online <span aria-hidden="true" class="ml-auto my-2 pl-1 is-size-7 icon-external-link"></span></a>
+                <a href="{{ item.download_pdf_file }}" class="button is-rounded black-button is-uppercase letter-spacing is-size-7" download="download">Download PDF <span aria-hidden="true" class="ml-auto my-2 pl-1 is-size-7 icon-document-download"></span></a>
+              </div>
+            </div>
+          {% endfor %}
+          </div>
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</div>

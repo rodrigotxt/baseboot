@@ -1,0 +1,122 @@
+<div class="carousel">
+
+    {% if block.title or block.intro or block.sub_title %}
+      <div class="columns">
+        {% if not fn('is_page', 'home') %}
+          <div class="column is-3"></div>
+        {% endif %}
+        <div class="column{% if not fn('is_page', 'home') %} is-9{% endif %}">
+          <div class="d-flex">
+
+          <div class="d-flex mr-auto flex-column">
+            {% include 'partial/block-title.twig' %}
+            {% include 'partial/block-intro.twig' %}
+            </div>
+            {% if fn('is_page', 'home') %}
+            <div class="d-flex mt-auto">
+              <a href="/blog" class="is-size-5 cta-arrow-right">See All</a>
+            </div>
+            {% endif %}
+          </div>
+
+          {% if fn('is_page', 'home') %}
+            <hr class="mb-0 d-none d-lg-block">
+          {% endif %}
+
+        </div>
+      </div>
+    {% endif %}
+
+    <div class="d-none d-lg-block">
+
+      <div class="columns mb-5">
+
+        {% if not fn('is_page', 'home') %}
+          <div class="column is-3"></div>
+        {% endif %}
+
+        {% if TimberPost(block.blog_relationship) and block.show_latest != "true" %}
+
+          <div class="d-flex flex-wrap">
+
+          {% for post in TimberPost(block.blog_relationship) %}
+
+          <div class="column is-12 is-6-desktop">
+
+            {% include ['components/tease-post-vertical.twig'] %}
+
+          </div>
+
+          {% endfor %}
+
+          </div>
+
+        {% else %}
+
+        <div class="d-block d-md-flex flex-wrap">
+
+          {% for post in blogposts %}
+
+          <div class="column is-12 is-6-desktop">
+
+            {% include ['components/tease-post-vertical.twig'] %}
+
+          </div>
+
+          {% endfor %}
+
+        </div>
+
+        {% endif %}
+
+      </div>
+
+    </div>
+
+    <div class="d-block d-lg-none">
+
+    {% if TimberPost(block.blog_relationship) and block.show_latest != "true" %}
+
+      <div id="carousel-gallery-{{ loop.index }}" class="d-block">
+
+      <carousel :responsive="{0:{items:1,autoplay:false,stagePadding:45,margin:15,center:false},768:{items:2,margin:20,stagePadding:40}}" :nav="false" :loop="true" :autoHeight="true" :autoplay="false">
+
+      {% for post in TimberPost(block.blog_relationship) %}
+
+      <div class="d-flex flex-column has-background-white">
+
+        {% include ['components/tease-post-vertical.twig'] %}
+
+      </div>
+
+      {% endfor %}
+
+      </carousel>
+
+      </div>
+
+    {% else %}
+
+    <div id="carousel-gallery-8"  class="d-block">
+
+      <carousel :responsive="{0:{items:1,autoplay:false,stagePadding:45,margin:15,center:false},768:{items:2,margin:20,stagePadding:40}}" :nav="false" :loop="true" :autoHeight="true" :autoplay="false">
+
+      {% for post in blogposts %}
+
+      <div class="d-flex flex-column has-background-white">
+
+        {% include ['components/tease-post-vertical.twig'] %}
+
+      </div>
+
+      {% endfor %}
+
+      </carousel>
+
+    </div>
+
+    {% endif %}
+
+    </div>
+
+</div><!-- #featured-publication -->

@@ -1,14 +1,55 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  <h1 class="title is-2">{{ title }}</h1>
-  {% for post in posts %}
-    {% include 'components/article.twig' %}
-    <hr />
-  {% endfor %}
 
-  {% if posts.pagination.pages %}
-    {% include 'components/pagination.twig' %}
-  {% endif %}
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-8 pr-3 pr-md-5">
+
+        {% if posts|length %}
+
+          {% for post in posts %}
+
+            <section class="mb-5" data-scroll>
+              {% include ['components/tease-'~post.post_type~'.twig', 'components/tease.twig'] %}
+            </section>
+
+          {% endfor %}
+
+        {% else %}
+
+          <div class="has-background-white p-5 w-100 has-text-centered mb-5">
+            <div class="h5 sans-medium">No Posts</div>
+          </div>
+
+        {% endif %}
+
+        {% if posts.pagination.pages %}
+          {% include 'components/pagination.twig' %}
+        {% endif %}
+
+      </div><!-- /.col -->
+
+      <div class="col-lg-4 bg-gray-400 p-4">
+        <aside class="sidebar-wrapper">
+          <div class="sidebar-menu">
+            <div class="h3 mb-0">Sidebar</div>
+            <hr class="my-4">
+            <div class="bg-gray-200 p-4">
+              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2">1</span>
+              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2 mt-2">2</span>
+              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2 mt-2">3</span>
+            </div>
+          </div>
+        </aside>
+
+      </div><!-- /.col -->
+
+    </div><!-- /.row -->
+
+  </div>
 
 {% endblock %}
+

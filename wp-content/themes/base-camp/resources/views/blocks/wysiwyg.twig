@@ -1,0 +1,57 @@
+<div id="wysiwyg">
+
+  {% if block.title or block.intro or block.sub_title %}
+    <div class="mb-4">
+      {% include 'partial/block-title.twig' %}
+      {% include 'partial/block-intro.twig' %}
+    </div>
+  {% endif %}
+
+  {% if block.wysiwyg %}
+
+  <div class="columns is-widescreen">
+
+    {% if block.pull_quote or block.offset_image or block.offset_cta %}
+    <div class="sidebar-wrapper">
+
+      <div class="sidebar-menu">
+
+        <div class="column">
+
+          {% if block.pull_quote %}
+            <p class="px-2 px-lg-0 {% if post.publication_color_new or post.post_color %}text-color-{{ post.publication_color_new }}{{ post.post_color }}{% endif %}" data-scroll>{{ block.pull_quote }}</p>
+          {% endif %}
+
+          {% if block.offset_image %}
+            <img src="{{ block.offset_image|resize('400') }}" alt="{{ block.offset_image.alt }}" data-scroll>
+          {% endif %}
+
+          {% if block.offset_cta %}
+            {% for item in block.offset_cta %}
+              <a href="{{ item.offset_link.guid }}" class="button primary-button p-4 w-100 mt-0 mb-3" data-scroll>{{ item.button_title }}</a></li>
+            {% endfor %}
+          {% endif %}
+
+        </div>
+
+      </div>
+
+    </div>
+
+    {% else %}
+
+        <div class="column is-3"></div>
+
+    {% endif %}
+
+    <div class="column is-full {% if block.pull_quote or block.offset_image or block.offset_cta %} is-9-widescreen{% else %} is-9-widescreen{% endif %} wysiwyg">
+
+      {{ block.wysiwyg|striptags('<a><b><strong><i><p><blockquote><img><ul><ol><li><iframe><h2><h3><h4><h5><h6>') }}
+
+    </div>
+
+  </div>
+
+  {% endif %}
+
+</div>

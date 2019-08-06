@@ -1,0 +1,65 @@
+<div id="quote" class="px-3 px-lg-0 quote">
+
+  {% if block.title or block.intro or block.sub_title %}
+    <div class="columns is-gapless">
+      <div class="column is-3">
+      </div>
+      <div class="column is-8">
+        {% include 'partial/block-title.twig' %}
+        {% include 'partial/block-intro.twig' %}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="columns is-gapless">
+
+    <div class="column is-3"></div>
+
+    <div class="column is-8">
+
+
+    {% if block.block_quote_relationship %}
+
+
+      {% for item in block.block_quote_relationship %}
+
+
+        <span class="blockquote content-block">
+          <div class="serif is-size-4 is-size-6-mobile pb-4">
+            <span class="ldquo is-size-3 serif">&ldquo;</span>{{ item.quote }}<span class="rdquo is-size-3 serif">&rdquo;</span>
+          </div>
+        </span>
+
+        {% if item.quote_url %}<a href="{{ item.quote_url }}" class="underline">{% endif %}<div class="h6">{% if item.quote_attribution_name %}{{ item.quote_attribution_name }}{% else %}{{ item.post_title }}{% endif %}</div>{% if item.quote_url %}</a>{% endif %}
+
+        <div class="h6">
+          {{ item.quote_attribution_title }}
+        </div>
+
+
+      {% endfor %}
+
+      {% else %}
+
+        <span class="blockquote content-block">
+          <div class="serif is-size-3 pb-4">
+            <span class="ldquo is-size-3 serif" style="{% if block.block_text_align_center %}position: relative;left: -5px;{% else %}position: absolute;left: -15px;{% endif %}">&ldquo;</span>{{ block.quote_group.quote }}<span class="rdquo is-size-3 serif">&rdquo;</span>
+          </div>
+        </span>
+
+        {% if block.quote_group.quote_url %}<a href="{{ block.quote_group.quote_url }}" class="underline">{% endif %}<div class="h6">{% if block.quote_group.quote_attribution_name %}{{ block.quote_group.quote_attribution_name }}{% else %}{{ block.quote_group.post_title }}{% endif %}</div>{% if block.quote_group.quote_url %}</a>{% endif %}
+
+        {% if block.quote_group.quote_attribution_title %}
+        <div class="h6">
+          {{ block.quote_group.quote_attribution_title }}
+        </div>
+        {% endif %}
+
+
+    {% endif %}
+
+    </div>
+
+  </div>
+
+</div><!-- #quote -->

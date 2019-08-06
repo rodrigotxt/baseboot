@@ -42,11 +42,14 @@
   <body class="bg-yellow-600 {{ body_class }}">
     <div class="pageloader is-active"></div>
 
-    {% if not in_production %}
-      <div class="current-template-file-name">
-        {{ current_template_file }}
-      </div>
+    {% if post.can_edit %}
+      {% if not in_production %}
+        <div class="current-template-file-name">
+          <span class="edit-link"><a class="post-edit-link h7 pl-3 has-text-danger" href="{{ post.edit_link }}">Edit Content</a></span>
+        </div>
+      {% endif %}
     {% endif %}
+
 
     <div id="app">
 
