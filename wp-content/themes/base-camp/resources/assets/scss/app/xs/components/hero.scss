@@ -1,0 +1,18 @@
+.hero {
+  overflow-y: hidden;
+  &.is-small {
+    height: calc(50vh - 80px);
+  }
+  &.is-fullheight {
+    height: calc(100vh - 80px);
+  }
+  .hero-body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+  }
+}

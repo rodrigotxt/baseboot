@@ -31,71 +31,30 @@
     $context['option'] = get_fields('option');
 
     // post hero
-    // $context['tagrepeater'] = get_field('tag_repeater');
-    // $context['tagtaxonomy'] = get_field('tag_taxonomy');
+    $context['taxtag'] = get_field('taxtag');
+    $context['relatedpages'] = get_field('related_pages');
+    $context['publicationcolornew'] = get_field('publication_color_new');
+    $context['campaignpublications'] = get_field('campaign_publications');
+    $context['postherobackground'] = get_field('post_hero_background');
+    $context['postherobackgroundmobile'] = get_field('post_hero_background_mobile');
+    $context['postherotitle'] = get_field('post_hero_title');
+    $context['postherofixed'] = get_field('is_post_hero_fixed');
+    $context['postherotype'] = get_field('post_hero_type');
+    $context['postherovideodesktop'] = get_field('post_hero_video_desktop');
+    $context['postvideo_url'] = get_field('post_hero_video_desktop');
+    $context['postheroheight'] = get_field('post_hero_height');
+    $context['postherovideomobile'] = get_field('post_hero_video_mobile');
+    $context['postherosubtitle'] = get_field('post_hero_subtitle');
+    $context['postherooverlaycolor'] = get_field('post_hero_overlay_color');
+    $context['postherooverlayopacity'] = get_field('post_hero_overlay_opacity');
+    $context['postherotitleseparator'] = get_field('post_hero_title_separator');
+    $context['postherowidth'] = get_field('post_hero_title_width');
+    $context['herocta'] = get_field('hero_cta');
+    $context['pdffile'] = get_field('pdf_file');
+    $context['taximage'] = get_field('tax_image');
 
-    // $context['taxtag'] = get_field('taxtag');
-    // $context['relatedpages'] = get_field('related_pages');
-    // $context['publicationcolornew'] = get_field('publication_color_new');
-    // $context['campaignpublications'] = get_field('campaign_publications');
-    // $context['postherobackground'] = get_field('post_hero_background');
-    // $context['postherobackgroundmobile'] = get_field('post_hero_background_mobile');
-    // $context['postherotitle'] = get_field('post_hero_title');
-    // $context['postherofixed'] = get_field('is_post_hero_fixed');
-    // $context['postherotype'] = get_field('post_hero_type');
-    // $context['postherovideodesktop'] = get_field('post_hero_video_desktop');
-    // $context['postvideo_url'] = get_field('post_hero_video_desktop');
-    // $context['postheroheight'] = get_field('post_hero_height');
-    // $context['postherovideomobile'] = get_field('post_hero_video_mobile');
-    // $context['postherosubtitle'] = get_field('post_hero_subtitle');
-    // $context['postherooverlaycolor'] = get_field('post_hero_overlay_color');
-    // $context['postherooverlayopacity'] = get_field('post_hero_overlay_opacity');
-    // $context['postherotitleseparator'] = get_field('post_hero_title_separator');
-    // $context['postherowidth'] = get_field('post_hero_title_width');
-    // $context['herocta'] = get_field('hero_cta');
-    // $context['pdffile'] = get_field('pdf_file');
-    // $context['taximage'] = get_field('tax_image');
-
-    // $context['teamtypeboard'] = get_field('team_type_board');
-    // $context['teamtypestaff'] = get_field('team_type_staff');
-
-    // $context['strategiescolor'] = get_field('strategies_color');
-    // $context['storiescolor'] = get_field('stories_color');
-    // $context['backgroundcolor'] = get_field('background_color');
-    // $context['initiativescolor'] = get_field('initiatives_color');
-    // $context['initiativesrelationship'] = get_field('initiatives_relationship');
-    // $context['strategiesrelationship'] = get_field('strategies_relationship');
-    // $context['backgroundtype'] = get_field('background_type');
-    // $context['backgroundvideoid'] = get_field('background_video_id');
-    // $context['blockbackgroundcolor'] = get_field('block_background_color');
-
-    // $context['mainnavexcerpt'] = get_field('main_nav_excerpt');
-
-    // $context['prefooterhero'] = get_field('pre_footer_hero', 'option');
-    // $context['prefooterherotext'] = get_field('pre_footer_hero_text', 'option');
-    // $context['prefooterdownloadreportpdf'] = get_field('pre_footer_download_report_pdf', 'option');
-    // $context['prefooterdownloadreportcsv'] = get_field('pre_footer_download_report_csv', 'option');
-
-    // $context['prefooterdownloadfilesrepeater'] = get_field('pre_footer_download_files_repeater', 'option');
-    // $context['footerreportrepeater'] = get_field('footer_report_repeater', 'option');
-
-    // $context['splashimage'] = get_field('splash_image');
-    // $context['awardtext'] = get_field('award_text');
-    // $context['casestudydetails'] = get_field('case_study_details');
-    // $context['casestudytagline'] = get_field('case_study_tagline');
-    // $context['casestudyquote'] = get_field('case_study_quote');
-    // $context['relatedcontent'] = get_field('related_content');
-    // $context['associatedcasestudy'] = get_field('associated_case_study');
-
-    // $context['storyrelationship'] = get_field('story_relationship');
-    // $context['downloadreportgroup'] = get_field('download_report_group');
-
-    // $context['approachrepeater'] = get_field('approach_repeater');
-    // $context['capabilitiesrepeater'] = get_field('capabilities_repeater');
-
-    // //flexblocks
-    // $context['flexblock'] = get_field('content_blocks');
-    // $context['flexblockstories'] = get_field('transitcenter_flexible_content');
+    // flexblocks
+    $context['flexblock'] = get_field('content_blocks');
 
     return $context;
 

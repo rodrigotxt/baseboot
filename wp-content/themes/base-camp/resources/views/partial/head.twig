@@ -1,31 +1,54 @@
-<head>
-  <meta charset="utf-8">
+<!doctype html>
 
-  {# force Internet Explorer to use the latest rendering engine available #}
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!--[if lt IE 7]><html class="no-js ie ie6 lt-ie9 lt-ie8 lt-ie7" {{site.language_attributes}}> <![endif]-->
+<!--[if IE 7]><html class="no-js ie ie7 lt-ie9 lt-ie8" {{site.language_attributes}}> <![endif]-->
+<!--[if IE 8]><html class="no-js ie ie8 lt-ie9" {{site.language_attributes}}> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js bg-orange-600" {{site.language_attributes}}>
+  <!--<![endif]-->
 
-  <title>
-    {% if wp_title %}
-      {{ wp_title }} - {{ site.name }}
-    {% else %}
-      {{ site.name }}
+  <head>
+    <meta charset="utf-8">
+
+    {# force Internet Explorer to use the latest rendering engine available #}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>
+      {% if wp_title %}
+        {{ wp_title }} - {{ site.name }}
+      {% else %}
+        {{ site.name }}
+      {% endif %}
+    </title>
+
+    {# ldFriendly" content="True"> #}
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="apple-touch-icon" href="">
+    <link rel="icon" href="{{ favicon }}">
+    <!--[if IE]>
+    <link rel="shortcut icon" href="">
+    <![endif]-->
+    <meta name="msapplication-TileColor" content="#00695C">
+    <meta name="theme-color" content="#00695C">
+    <meta name="description" content="{{ site.description }}">
+
+    <link rel="pingback" href="{{ site.pingback_url }}"/>
+
+    {{ function('wp_head') }}
+  </head>
+
+  <body class="bg-yellow-600 {{ body_class }}">
+    <div class="pageloader is-active"></div>
+
+    {% if not in_production %}
+      <div class="current-template-file-name">
+        {{ current_template_file }}
+      </div>
     {% endif %}
-  </title>
 
-  {# ldFriendly" content="True"> #}
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <div id="app">
 
-  <link rel="apple-touch-icon" href="">
-  <link rel="icon" href="{{ favicon }}">
-  <!--[if IE]>
-  <link rel="shortcut icon" href="">
-  <![endif]-->
-  <meta name="msapplication-TileColor" content="#00695C">
-  <meta name="theme-color" content="#00695C">
-  <meta name="description" content="{{ site.description }}">
 
-  <link rel="pingback" href="{{ site.pingback_url }}"/>
 
-  {{ function('wp_head') }}
-</head>

@@ -28,7 +28,7 @@ const cssLoader = {
   options: {
     importLoaders: 1,
     sourceMap: true,
-    importer: globImporter(),
+    importer: globImporter()
   },
 };
 
@@ -92,6 +92,10 @@ module.exports = {
             loader: 'postcss-loader',
             options: {
               sourceMap: true,
+              // importer: globImporter()
+              plugins: [
+                require('tailwindcss'),
+              ]
             },
           },
           {
@@ -101,8 +105,8 @@ module.exports = {
                 path.resolve(__dirname, '../resources/assets/scss'),
               ],
               data: '@import "shared-with-vue";',
-              importer: globImporter(),
               sourceMap: true,
+              importer: globImporter()
             },
           },
         ],
@@ -153,7 +157,7 @@ module.exports = {
       watch: false,
     }),
 
-    new FixStyleOnlyEntriesPlugin({ extensions: ['less', 'scss', 'css', 'scss'] }),
+    new FixStyleOnlyEntriesPlugin({ extensions: ['less', 'scss', 'css'] }),
 
     new MiniCssExtractPlugin({
       filename: `css/[name]${styleHash}.css`,
@@ -166,7 +170,7 @@ module.exports = {
       host: 'localhost',
       port: 3000,
       proxy: config.devUrl, // YOUR DEV-SERVER URL
-      files: ['./*.php', './resources/views/**/*.twig', './static/css/*.*', './static/js/*.*', './tailwind.config.js'],
+      files: ['./*.php', './resources/views/**/*.twig', './static/css/*.*', './static/js/*.*'],
     },
     {
       reload: false,

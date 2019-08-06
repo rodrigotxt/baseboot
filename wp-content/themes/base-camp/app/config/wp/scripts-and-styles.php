@@ -12,7 +12,7 @@ function base_camp_scripts_and_styles()
     wp_register_style('base-camp-styles', assets('styles.css') . $suffix, [], '', 'all');
 
     // Vue styles
-    // wp_register_style('base-camp-styles-vue', assets('scripts.css') . $suffix, [], '', 'all');
+    wp_register_style('base-camp-styles-vue', assets('scripts.css') . $suffix, [], '', 'all');
 
     // Register scripts
     wp_register_script('base-camp-vendor', assets('vendor.js'), [], '', true);
@@ -61,3 +61,18 @@ function base_camp_admin_scripts_and_styles()
 }
 
 add_action('admin_enqueue_scripts', 'base_camp_admin_scripts_and_styles', 999);
+
+
+/**
+ * Register Tailwind styles and enqueue them
+ */
+function base_camp_tailwind_scripts_and_styles()
+{
+    // Register styles
+    wp_register_style('base-camp-tailwind-styles', assets('tailwind.css'), [], '', 'all');
+
+    // Enqueue scripts and styles
+    wp_enqueue_style('base-camp-tailwind-styles');
+}
+
+add_action('tailwind_enqueue_scripts', 'base_camp_tailwind_scripts_and_styles', 999);

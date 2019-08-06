@@ -1,27 +1,9 @@
-<!doctype html>
+<header class="bg-orange-600">
+  {% include "components/navbar.twig" %}
+</header>
 
-<!--[if lt IE 7]><html class="no-js ie ie6 lt-ie9 lt-ie8 lt-ie7" {{site.language_attributes}}> <![endif]-->
-<!--[if IE 7]><html class="no-js ie ie7 lt-ie9 lt-ie8" {{site.language_attributes}}> <![endif]-->
-<!--[if IE 8]><html class="no-js ie ie8 lt-ie9" {{site.language_attributes}}> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js bg-orange-600" {{site.language_attributes}}>
-  <!--<![endif]-->
+<main id="main-content" {% if globalbkgcolor %}style="background:{{ globalbkgcolor }}"{% endif %}>
 
-  {# <head> #}
-  {% include 'partial/head.twig' %}
-  {# </head> #}
+  {% include 'components/hero.twig' %}
 
-  <body class="bg-yellow-600 {{ body_class }}">
-    <div class="pageloader is-active"></div>
-
-    {% if not in_production %}
-      <div class="current-template-file-name">
-        {{ current_template_file }}
-      </div>
-    {% endif %}
-
-    <div id="app">
-
-      <header class="bg-orange-600">
-        {% include "components/navbar.twig" %}
-      </header>
+  <section class="main-wrapper">
