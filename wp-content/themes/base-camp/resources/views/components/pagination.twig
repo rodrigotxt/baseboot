@@ -1,36 +1,48 @@
-<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+{% if posts.pagination.pages %}
+<div class="py-5">
 
-  {# PREVIOUS BUTTON #}
-  {% if pagination.prev %}
-    <a href="{{ pagination.prev.link }}"
-       class="pagination-previous prev {{ pagination.prev.link|length ? '' : 'invisible' }}">&laquo;</a>
-  {% else %}
-    <button class="pagination-previous prev" disabled>&laquo;</button>
-  {% endif %}
+  <nav class="pagination is-centered" role="navigation" aria-label="pagination">
 
-  {# NEXT BUTTON #}
-  {% if pagination.next %}
-    <a href="{{ pagination.next.link }}"
-       class="pagination-next next {{ pagination.next.link|length ? '' : 'invisible' }}">&raquo;</a>
-  {% else %}
-    <button class="pagination-next next" disabled>&raquo;</button>
-  {% endif %}
+    {# PREVIOUS BUTTON #}
+    {% if posts.pagination.prev %}
+      <a href="{{ posts.pagination.prev.link }}"
+         class="mr-auto pagination-previous prev {{ posts.pagination.prev.link|length ? '' : 'invisible' }}">&laquo;</a>
+    {% else %}
+      <button class="pagination-previous prev" disabled>&laquo;</button>
+    {% endif %}
 
-  {# PAGINATION LIST #}
-  <ul class="pagination-list">
-    {% for page in pagination.pages %}
-      {% if page.link %}
-        <li>
-          <a href="{{ page.link }}" class="{{ page.class }} pagination-link"
-             aria-label="Goto page {{ page.title }}">{{ page.title }}</a>
-        </li>
-      {% else %}
-        {% if page.class == 'dots' %}
-          <li><span class="pagination-ellipsis">&hellip;</span></li>
+
+    {# PAGINATION LIST #}
+    <ul class="pagination-list">
+      {% for page in posts.pagination.pages %}
+        {% if page.link %}
+        {% if loop.index < 5 %}
+
+          <li>
+            <a href="{{ page.link }}" class="{{ page.class }} pagination-link"
+               aria-label="Goto page {{ page.title }}">{{ page.title }}</a>
+          </li>
+          {% endif %}
+
         {% else %}
-          <span class="pagination-link is-current {{ page.class }}">{{ page.title }}</span>
+          {% if page.class == 'dots' %}
+            <li><span class="pagination-ellipsis">&hellip;</span></li>
+          {% else %}
+            <span class="pagination-link is-current {{ page.class }}">{{ page.title }}</span>
+          {% endif %}
         {% endif %}
-      {% endif %}
-    {% endfor %}
-  </ul>
-</nav>
+      {% endfor %}
+    </ul>
+
+    {# NEXT BUTTON #}
+    {% if posts.pagination.next %}
+      <a href="{{ posts.pagination.next.link }}"
+         class="ml-auto pagination-next next {{ posts.pagination.next.link|length ? '' : 'invisible' }}">&raquo;</a>
+    {% else %}
+      <button class="pagination-next next" disabled>&raquo;</button>
+    {% endif %}
+
+  </nav>
+
+</div>
+{% endif %}
