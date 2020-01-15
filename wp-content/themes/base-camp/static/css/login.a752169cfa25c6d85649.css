@@ -1,0 +1,51 @@
+body.login{
+  background:#004270
+}
+
+body.login #nav a,body.login #backtoblog a{
+  color:#eee
+}
+
+body.login #nav a:hover,body.login #backtoblog a:hover{
+  color:#fff
+}
+
+body.login div#login h1 a{
+  background:url(/wp-content/themes/base-camp/static/images/logo.svg) no-repeat center bottom;
+  -webkit-background-size:84px;
+  background-size:100%;
+  color:#444;
+  height:120px;
+  font-size:20px;
+  font-weight:400;
+  line-height:1.3em;
+  margin:0 auto 25px;
+  padding:0;
+  text-decoration:none;
+  width:33%;
+  text-indent:-9999px;
+  outline:none;
+  overflow:hidden;
+  display:block
+}
+
+form#loginform p.submit input#wp-submit{
+  background:#004270;
+  border-color:#003357 #00243d #00243d;
+  -webkit-box-shadow:0 1px 0 #00243d;
+  box-shadow:0 1px 0 #00243d;
+  color:#fff;
+  text-decoration:none;
+  text-shadow:0 -1px 1px #00243d,1px 0 1px #00243d,0 1px 1px #00243d,-1px 0 1px #00243d
+}
+
+input[type="checkbox"]:focus,input[type="text"]:focus,input[type="password"]:focus{
+  border-color:#004270;
+  -webkit-box-shadow:0 0 2px #00243d;
+  box-shadow:0 0 2px #00243d
+}
+
+input[type="checkbox"]:checked:before,input[type="text"]:checked:before,input[type="password"]:checked:before{
+  color:#004270
+}
+

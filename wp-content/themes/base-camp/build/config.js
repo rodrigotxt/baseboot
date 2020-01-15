@@ -14,7 +14,7 @@ module.exports = {
    *
    * This is for Browsersync.
    */
-  devUrl: 'http://baltimore.local',
+  devUrl: 'http://baseboot.local',
 
   /**
    * You can whitelist selectors to stop purgecss from removing them from your CSS

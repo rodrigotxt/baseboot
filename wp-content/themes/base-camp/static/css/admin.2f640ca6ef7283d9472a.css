@@ -1,0 +1,9 @@
+body.wp-admin #plugins-by-dreihochzwo{
+  display:none
+}
+
+body.wp-admin .collapse{
+  position:absolute;
+  top:0 !important
+}
+

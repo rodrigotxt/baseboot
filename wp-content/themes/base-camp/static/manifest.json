@@ -1,10 +1,10 @@
 {
-  "admin.css": "css/admin.css",
-  "login.css": "css/login.css",
-  "scripts.css": "css/scripts.css",
-  "scripts.js": "js/scripts.js",
-  "styles.css": "css/styles.css",
-  "vendor.js": "js/vendor.js",
+  "admin.css": "css/admin.2f640ca6ef7283d9472a.css",
+  "login.css": "css/login.a752169cfa25c6d85649.css",
+  "scripts.css": "css/scripts.52d5361f6dab88bf87d1.css",
+  "scripts.js": "js/scripts.2d96687ddfe9aa6ad754.js",
+  "styles.css": "css/styles.9d3ddbfdd8c90530b055.css",
+  "vendor.js": "js/vendor.f660c55ca910e5485996.js",
   "fonts/main.scss": "fonts/lora-v14-latin-regular.e4cdb14.woff2",
   "images/main.scss": "images/lora-v14-latin-regular.svg",
   "images/login.scss": "images/logo.svg"
