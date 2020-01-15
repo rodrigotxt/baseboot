@@ -16,5 +16,6 @@ Wordpress site for Bellweather Agency
 1. `clone repo`
 2. `composer install`
 3. `npm install`
-4. `npm run watch, npm run dev, npm run prod`
-5. change /build/config.js `line 17` to your local env URL
+4. * important, activate timber and Advanced Custom Pro plugin
+5. `npm run watch, npm run dev, npm run prod`
+6. change /build/config.js `line 17` to your local env URL
