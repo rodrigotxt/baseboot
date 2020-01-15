@@ -1,30 +1,46 @@
-  </section><!-- /.main-wrapper -->
+
 </main>
 
-<footer class="footer h-20">
-  <div class="align-items-center h-full d-flex px-4 bg-gray-800">
-    <a href="/" class="mr-auto fill-current text-white">{{ logolight }}</a>
-    <ul class="social-nav d-flex ml-auto">
-    {% for item in socialnetworks %}
-      <li class="social-item ml-2">
-        <a href="{{ item.social_network_link }}" target="_blank" class="social" role="button" aria-label="{{ item.social_network }}" title="{{ item.social_network }}"><span aria-hidden="true" class="text-white icon-{{ item.social_network|sanitize }}"></span></a>
-      </li>
-    {% endfor %}
-    </ul>
+  <button class="go-top">
+    <i class="chevron-bottom" aria-hidden="true"></i>
+  </button>
 
-  </div>
-</footer>
-
-<footer class="footer sub-footer">
-
-  <div class="d-flex bg-black text-white">
-
-    <div class="d-flex w-100 p-2">
-      <div class="d-flex ml-auto text-xs">
-        <p class="copyright">&copy; {{ now|date('Y') }} by {{ bloginfo('name') }}</p>
+<footer class="footer py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-3 col-lg-1">
+        <a class="logo d-flex" href="/">
+          <img src="{{ theme.link }}/resources/assets/images/logo.svg" alt="">
+        </a>
+      </div>
+      <div class="col-9 col-lg-4">
+      </div>
+      <div class="col-12 col-lg-3"></div>
+      <div class="col-6 col-lg-2">
+      </div>
+      <div class="col-6 col-lg-2">
       </div>
     </div>
+  </div>
 
+</footer>
+
+<footer class="footer sub-footer bg-black pt-3">
+
+  <div class="container">
+    <div class="row text-gray-500">
+        <div class="col-1"></div>
+        <div class="col-4">
+          <div class="d-flex mr-auto text-xs">
+            {{ subfootercopy }}
+          </div>
+        </div>
+        <div class="col-7">
+          <div class="d-flex w-100">
+            <p class="d-flex ml-auto text-xs copyright">&copy; {{ now|date('Y') }} by {{ bloginfo('name') }}</p>
+          </div>
+        </div>
+    </div>
   </div>
 
 </footer>
@@ -33,6 +49,19 @@
 </div> {# end <div id="app"> #}
 
 {{ function('wp_footer') }}
+
+{#% if gaactive == "false" %}
+<script >
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-115896268-1', 'csg-erc.org');
+  ga('send', 'pageview');
+</script>
+{% endif %#}
+
 </body>
 </html>
 

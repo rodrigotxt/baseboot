@@ -2,41 +2,23 @@
 
 {% block content %}
 
-  <div class="container wysiwyg">
+  <div class="container narrow wysiwyg pb-5">
 
-    <div class="row">
+    <h1 class="lg:text-6xl color-primary text-center mb-lg-5">{{ post.title }}</h1>
 
-      <div class="col-lg-8 pr-3 pr-md-5">
+    {{ post.content }}
 
-        {{ post.content }}
+  </div><!-- /.container -->
 
-        {% set flex_blocks = flexblock %}
 
-        {% if flex_blocks %}
+  {% set flex_blocks = flexblock %}
 
-          {% include 'blocks/flex-content.twig' with flex_blocks %}
+  {% if flex_blocks %}
 
-        {% endif %}
+    {% include 'blocks/flex-content.twig' with flex_blocks %}
 
-      </div>
+  {% endif %}
 
-      <div class="col-lg-4 bg-gray-400 p-4">
-        <aside class="sidebar-wrapper">
-          <div class="sidebar-menu">
-            <div class="h3 mb-0">Sidebar</div>
-            <hr class="my-4">
-            <div class="bg-gray-200 p-4">
-              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2">1</span>
-              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2 mt-2">2</span>
-              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2 mt-2">3</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-
-    </div>
-
-  </div>
 
   {% if post.related_pages %}
 

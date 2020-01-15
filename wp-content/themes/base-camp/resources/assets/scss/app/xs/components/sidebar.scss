@@ -2,10 +2,25 @@
   position: relative;
 }
 
+html {
+  &.fixnav {
+    .sidebar-menu{
+      &.fixed {
+        top: 195px;
+      }
+    }
+  }
+  &.unfixnav {
+    .sidebar-menu{
+      &.fixed {
+        top: 100px;
+      }
+    }
+  }
+}
 .sidebar-menu{
   &.fixed {
     position: sticky;
-    top: 0;
   }
   &.bottom {
     bottom: 0;
@@ -20,5 +35,5 @@
   top: 0px;
   bottom: auto;
   float: none;
-  height: calc(100% - 30px);
+  height: calc(100% - 195px);
 }

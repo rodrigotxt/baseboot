@@ -1,8 +1,16 @@
 {% if block.title %}
 
-<h2 id="{{ anchor }}" class="block-heading sans-medium is-size-4-mobile is-size-2">
+<h2 id="{{ anchor }}" class="text-4xl lg:text-5xl text-primary sans-medium">
 
   {{ block.title }}
+
+  {#% if post.can_edit %}
+    {% if not in_production %}
+      <button class="clicktocopy p-3 text-3xl rounded "><span class="icon-link"></span> <span class="copythis d-none">/{{ post.title|sanitize }}/#{% if block.title %}{{ anchor }}{% elseif block.block_title %}{{ blockanchor }}{% endif %}{% if block.block_gallery and block.title is empty and block.block_title is empty  %}image-gallery-{{ loop.index }}{% endif %}</span></button>
+    {% endif %}
+  {% endif %}
+
+  <a href="" class="no-underline"></a>#}
 
 </h2>
 
@@ -10,7 +18,7 @@
 
 {% if block.sub_title %}
 
-<div class="h4 is-size-4 sans-medium pb-0">
+<div class="h3 sans-medium text-primary pb-0">
 
   {{ block.sub_title }}
 

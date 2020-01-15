@@ -11,10 +11,10 @@ export function sidebar() {
     var $sidebar = $('.sidebar-menu', $sidebarWrapper);
     var top = $sidebarWrapper.offset().top;
     if ($this.width() > 991) {
-      if (scrollTop > $('footer').offset().top - $('.sidebar-menu').outerHeight(true) - 75) {
+      if (scrollTop > $('footer').offset().top - $('.sidebar-menu').outerHeight(true) - 200) {
         $sidebar.removeClass('fixed');
         $sidebar.addClass('bottom');
-      } else if (scrollTop > (top - 75)) {
+      } else if (scrollTop > (top - 200)) {
         $sidebar.addClass('fixed');
         $sidebar.removeClass('bottom');
       } else {

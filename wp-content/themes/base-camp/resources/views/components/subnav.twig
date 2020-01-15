@@ -1,0 +1,51 @@
+{% set count = 0 %}
+{% for nc in flexblock %}
+  {% set count = count + 1 %}
+{% endfor %}
+
+<div class="d-flex subnav align-items-center inside-hero px-3 py-0">
+  <div class="mr-md-auto text-white d-none d-md-flex"><div class="h4">{% if post.title %}{{ post.title|truncate(8) }}{% else %}{{ TimberPost(post.title)|truncate(8) }}{% endif %}</div></div>
+  <div class="ml-md-auto w-full md:w-1/5">
+    <div class="control">
+      <button href="#0" class="jump-to button white-button button-dropdown my-0 uppercase sans letter-spacing" type="button">
+        Jump to section ...
+      </button>
+
+
+      <div class="box dropdown-menu">
+        <ul class="px-3">
+          {% for block in flexblock %}
+
+            {% set anchor = block.title|sanitize %}
+            {% set blockanchor = block.block_title|sanitize %}
+
+              <li class="sub-nav-item d-flex">
+                <!-- // this controls subnav links -->
+                <a href="{% if block.title or block.sub_title %}
+                    {{ post.link }}#{% if anchor %}{{ anchor }}{% else %}{{ subanchor }}{% endif %}
+                  {% elseif block.block_title %}
+                    {{ post.link }}#{{ blockanchor }}
+                  {% endif %}
+                  {% if block.block_gallery and block.title is empty and block.block_title is empty  %}{{ post.link }}#image-gallery-{{ loop.index }}{% endif %}" class="anchor w-100 uppercase sans letter-spacing">
+                  <span>
+                    <!-- // this controls subnav names -->
+                    {% if block.title or block.sub_title and block.is_title == "true" %}
+                      {% if block.title %}{{ block.title }}{% else %}{{ block.sub_title }}{% endif %}
+                    {% else %}
+                      {{ block.block_title and block.is_title == "true" }}
+                    {% endif %}
+                    {% if block.block_gallery and block.title is empty and block.block_title is empty  %} Image Gallery{% endif %}
+                  </span>
+
+                </a>
+              </li>
+
+              {% if not loop.last %}<hr class="my-2">{% endif %}
+
+          {% endfor %}
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

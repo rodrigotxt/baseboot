@@ -1,0 +1,32 @@
+{% include 'partial/block-image.twig' %}
+
+
+  {% if block.is_title == "true" %}
+  <div class="container narrow text-center">
+    {% include 'partial/block-title.twig' %}
+    {% include 'partial/block-intro.twig' %}
+  </div>
+  {% endif %}
+
+  {% if item.title %}
+  <div class="d-flex justify-content-center mb-5">
+  {% for item in block.team_repeater %}
+    <a href="#{{ item.title|sanitize }}" class="anchor button black-button is-rounded mx-2">{{ item.title }}</a>
+  {% endfor %}
+  </div>
+  {% endif %}
+
+  <div id="bulma-accordion-{{ key }}">
+    <bulma-accordion icon="caret">
+    {% for item in block.accordion_repeater %}
+      <bulma-accordion-item>
+        <h4 class="title text-xl lg:text-3xl sans-medium has-color-primary d-flex" slot="title">{{ item.title }}</h4>
+        <div slot="content" class="wysiwyg">
+          {{ item.content }}
+        </div>
+      </bulma-accordion-item>
+    {% endfor %}
+    </bulma-accordion>
+  </div>
+
+

@@ -45,10 +45,10 @@ Timber::$dirname = ['resources/views'];
 function add_to_context($context)
 {
     // Add Main Menu to Timber context object
-    $context['menu'] = new TimberMenu( 'Main Navigation' );
+    $context['mainmenu'] = new TimberMenu( 'Primary Menu' );
     $context['submenu'] = new TimberMenu( 'Sub Menu' );
-    $context['pubtype'] = new TimberMenu( 'Publication Type' );
-    $context['pubtime'] = new TimberMenu( 'Publication Time' );
+    $context['helpfullinks'] = new TimberMenu( '426' );
+    $context['csgnational'] = new TimberMenu( '427' );
 
     // Add main-sidebar to Timber context object
     $context['main_sidebar'] = Timber::get_widgets('main-sidebar');
@@ -89,7 +89,7 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 }
 
 if ( function_exists( 'acf_set_options_page_menu' ) ) {
-    acf_set_options_page_menu( __( 'Options' ) );
+    acf_set_options_page_menu( __( 'CSG Options' ) );
 }
 
 

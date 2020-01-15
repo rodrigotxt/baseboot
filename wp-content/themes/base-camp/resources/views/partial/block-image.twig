@@ -1,0 +1,9 @@
+<figure class="{% if block.is_full_width != "true" %}container narrow{% endif %} wp-caption">
+
+  <img class="full-width-img w-100 mb-5" src="{{ Image(block.image_block).src }}" alt="{% if Image(block.image_block).alt %}{{ Image(block.image_block).alt }}{% else %}{{ block.title }}{% endif %}">
+
+  {% if Image(block.image_block).caption %}
+    <p class="wp-caption-text">{{ Image(block.image_block).caption }}</p>
+  {% endif %}
+
+</figure>

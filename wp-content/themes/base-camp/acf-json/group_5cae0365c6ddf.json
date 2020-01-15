@@ -125,7 +125,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "videos"
+                "value": "post"
             }
         ]
     ],
@@ -137,7 +137,7 @@
     "hide_on_screen": [
         "featured_image"
     ],
-    "active": 1,
+    "active": 0,
     "description": "",
-    "modified": 1562692470
+    "modified": 1573041473
 }

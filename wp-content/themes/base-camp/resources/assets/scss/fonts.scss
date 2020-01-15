@@ -1,18 +1,32 @@
-$serif:             'Calluna Regular', serif;
-$serif-bold:        'Canela Bold', serif;
-$serif-italic:      'Calluna Italic', sans-serif;
+$serif:             'Lora', serif;
+$serif-bold:        'Lora Bold', serif;
+$serif-italic:      'Lora Italic', 'Lora', serif;
 
-$sans:              'GT Walsheim', sans-serif;
-$sans-medium:       'GT Walsheim Medium', sans-serif;
-$sans-bold:         'Aura Cg', sans-serif;
 
+$sans:              'GT-America Regular', sans-serif;
+$sans-italic:       'GT-America Regular Italic', sans-serif;
+$sans-light:        'GT-America Light', sans-serif;
+$sans-medium:       'GT-America Medium', sans-serif;
+$sans-bold:         'GT-America Bold', sans-serif;
+
+.sans {
+  font-family: $sans
+}
+.sans-medium {
+  font-family: $sans-medium
+}
 .sans-bold {
   font-family: $sans-bold
+}
+
+.sans-italic {
+  font-family: $sans-italic
 }
 
 .serif {
   font-family: $serif
 }
+
 .serif-bold {
   font-family: $serif-bold
 }
@@ -23,6 +37,10 @@ $sans-bold:         'Aura Cg', sans-serif;
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.letter-spacing {
+  letter-spacing: 1.5px;
 }
 
 
@@ -46,10 +64,10 @@ $sans-bold:         'Aura Cg', sans-serif;
 .nowrap { white-space: nowrap }
 .break-word { word-wrap: break-word }
 
-.line-height-1 { line-height: var(--line-height-1) }
-.line-height-2 { line-height: var(--line-height-2) }
-.line-height-3 { line-height: var(--line-height-3) }
-.line-height-4 { line-height: var(--line-height-4) }
+// .line-height-1 { line-height: var(--line-height-1) }
+// .line-height-2 { line-height: var(--line-height-2) }
+// .line-height-3 { line-height: var(--line-height-3) }
+// .line-height-4 { line-height: var(--line-height-4) }
 
 .list-style-none { list-style: none }
 
@@ -67,111 +85,95 @@ $sans-bold:         'Aura Cg', sans-serif;
   padding-left: 0;
 }
 
-:root {
-  --line-height-1: 1;
-  --line-height-2: 1.125;
-  --line-height-3: 1.25;
-  --line-height-4: 1.5;
-  --caps-letter-spacing: .2em;
-  --bold-font-weight: bold;
-}
+
 
 /* Basscss Type Scale */
+// .h00 { font-size: 5rem; }
+// .h0 { font-size: 4rem; }
+// .h1, h1 { font-size: 2.5rem; line-height: 1.25 !important; }
+// .h2, h2 { font-size: 2.25rem; line-height: 1.35 !important; }
+// .h3, h3 { font-size: 1.9rem; line-height: 1.35 !important; }
+// .h4, h4 { font-size: 1.75rem; line-height: 1.35 !important; }
+// .h5, h5 { font-size: 1.5rem; line-height: 1.35 !important; }
+// .h6, h6 { font-size: 1.25rem; line-height: 1.35 !important; }
 
-.h00 { font-size: var(--h00) }
-.h0 { font-size: var(--h0) }
-.h1, h1 { font-size: var(--h1); line-height: 1 !important; }
-.h2, h2 { font-size: var(--h2); line-height: 1.5 !important; }
-.h3, h3 { font-size: var(--h3); line-height: 1.35 !important; }
-.h4, h4 { font-size: var(--h4); line-height: 1.25 !important; }
-.h5, h5 { font-size: var(--h5); line-height: 1.2 !important; }
-.h6, h6 { font-size: var(--h6) }
 
-:root {
-  --h00:4rem;
-  --h0: 3rem;
-  --h1: 2.5rem;
-  --h2: 2.25rem;
-  --h3: 1.9rem;
-  --h4: 1.75rem;
-  --h5: 1.5rem;
-  --h6: 1.25rem;
+
+
+// sans-serif
+@font-face{
+    font-family:"GT-America Light";
+    src:url("../fonts/gt-america/GT-America-Standard-Light.eot?#iefix");
+    src:url("../fonts/gt-america/GT-America-Standard-Light.eot?#iefix") format("eot"),
+        url("../fonts/gt-america/GT-America-Standard-Light.woff2") format("woff2"),
+        url("../fonts/gt-america/GT-America-Standard-Light.woff") format("woff"),
+}
+@font-face{
+    font-family:"GT-America Regular";
+    src:url("../fonts/gt-america/GT-America-Standard-Regular.eot?#iefix");
+    src:url("../fonts/gt-america/GT-America-Standard-Regular.eot?#iefix") format("eot"),
+        url("../fonts/gt-america/GT-America-Standard-Regular.woff2") format("woff2"),
+        url("../fonts/gt-america/GT-America-Standard-Regular.woff") format("woff"),
+}
+@font-face{
+    font-family:"GT-America Regular Italic";
+    src:url("../fonts/gt-america/GT-America-Standard-Regular-Italic.eot?#iefix");
+    src:url("../fonts/gt-america/GT-America-Standard-Regular-Italic.eot?#iefix") format("eot"),
+        url("../fonts/gt-america/GT-America-Standard-Regular-Italic.woff2") format("woff2"),
+        url("../fonts/gt-america/GT-America-Standard-Regular-Italic.woff") format("woff"),
+}
+@font-face{
+    font-family:"GT-America Medium";
+    src:url("../fonts/gt-america/GT-America-Standard-Medium.eot?#iefix");
+    src:url("../fonts/gt-america/GT-America-Standard-Medium.eot?#iefix") format("eot"),
+        url("../fonts/gt-america/GT-America-Standard-Medium.woff2") format("woff2"),
+        url("../fonts/gt-america/GT-America-Standard-Medium.woff") format("woff"),
+}
+@font-face{
+    font-family:"GT-America Bold";
+    src:url("../fonts/gt-america/GT-America-Standard-Bold.eot?#iefix");
+    src:url("../fonts/gt-america/GT-America-Standard-Bold.eot?#iefix") format("eot"),
+        url("../fonts/gt-america/GT-America-Standard-Bold.woff2") format("woff2"),
+        url("../fonts/gt-america/GT-America-Standard-Bold.woff") format("woff"),
 }
 
-
-
-
-/*--------------------------------------------------------------
-# Aura Cg
---------------------------------------------------------------*/
-
+// serif
+/* lora-regular - latin */
 @font-face {
-    font-family: 'Aura Cg';
-    src: url('../fonts/CgAura.woff2') format('woff2'),
-        url('../fonts/CgAura.woff') format('woff');
-    font-weight: normal !important;
-    font-style: normal;
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/lora/lora-v14-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Lora Regular'), local('Lora-Regular'),
+       url('../fonts/lora/lora-v14-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/lora/lora-v14-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/lora/lora-v14-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/lora/lora-v14-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/lora/lora-v14-latin-regular.svg#Lora') format('svg'); /* Legacy iOS */
 }
-
-
-
-
-/*--------------------------------------------------------------
-# Calluna
---------------------------------------------------------------*/
-
-    @font-face {
-        font-family: 'Calluna Regular';
-        src: url('../fonts/Calluna-Regular-webfont.woff2') format('woff2'),
-             url('../fonts/Calluna-Regular-webfont.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'Calluna Italic';
-        src: url('../fonts/Calluna-It-webfont.woff2') format('woff2'),
-             url('../fonts/Calluna-It-webfont.woff') format('woff');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-/*--------------------------------------------------------------
-# Canela
---------------------------------------------------------------*/
-
-    @font-face {
-        font-family: 'Canela Bold';
-        src: url('../fonts/Canela-Bold-Web.eot');
-        src: url('../fonts/Canela-Bold-Web.eot?#iefix') format('embedded-opentype'),
-             url('../fonts/Canela-Bold-Web.woff2') format('woff2'),
-             url('../fonts/Canela-Bold-Web.woff') format('woff');
-        font-weight: 700;
-        font-style: normal;
-        font-stretch: normal;
-    }
-
-/*--------------------------------------------------------------
-# GT Walsheim
---------------------------------------------------------------*/
-
-    @font-face {
-        font-family: 'GT Walsheim';
-        src: url('../fonts/GT-Walsheim-Regular.eot');
-        src: url('../fonts/GT-Walsheim-Regular.eot?#iefix') format('embedded-opentype'),
-             url('../fonts/GT-Walsheim-Regular.woff') format('woff'),
-             url('../fonts/GT-Walsheim-Regular.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-    }
-
-    @font-face {
-        font-family: 'GT Walsheim Medium';
-        src: url('../fonts/GT-Walsheim-Medium.eot');
-        src: url('../fonts/GT-Walsheim-Medium.eot?#iefix') format('embedded-opentype'),
-             url('../fonts/GT-Walsheim-Medium.woff') format('woff'),
-             url('../fonts/GT-Walsheim-Medium.ttf') format('truetype');
-        font-weight: 500;
-        font-style: normal;
-    }
-
+/* lora-italic - latin */
+@font-face {
+  font-family: 'Lora Italic';
+  font-style: italic;
+  font-weight: 400;
+  src: url('../fonts/lora/lora-v14-latin-italic.eot'); /* IE9 Compat Modes */
+  src: local('Lora Italic'), local('Lora-Italic'),
+       url('../fonts/lora/lora-v14-latin-italic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/lora/lora-v14-latin-italic.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/lora/lora-v14-latin-italic.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/lora/lora-v14-latin-italic.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/lora/lora-v14-latin-italic.svg#Lora') format('svg'); /* Legacy iOS */
+}
+/* lora-700 - latin */
+@font-face {
+  font-family: 'Lora Bold';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/lora/lora-v14-latin-700.eot'); /* IE9 Compat Modes */
+  src: local('Lora Bold'), local('Lora-Bold'),
+       url('../fonts/lora/lora-v14-latin-700.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/lora/lora-v14-latin-700.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/lora/lora-v14-latin-700.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/lora/lora-v14-latin-700.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/lora/lora-v14-latin-700.svg#Lora') format('svg'); /* Legacy iOS */
+}

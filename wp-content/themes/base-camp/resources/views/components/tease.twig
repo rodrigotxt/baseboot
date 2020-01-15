@@ -1,31 +1,30 @@
-<div class="bg-white p-4">
+<div class="d-flex h-100 flex-column">
 
   <a href="{{ post.link }}" alt="{{ post.title }}">
-    {% if post.thumbnail.aspect < 1 %}
-      {# handle vertical image #}
-      <img src="{{ post.thumbnail.src }}" class="lazyload w-100 d-block" alt="{{ post.thumbnail.alt }}" />
-    {% else %}
-      <img src="{{ post.thumbnail.src }}" class="lazyload w-100 d-block" alt="{{ post.thumbnail.alt }}" />
-    {% endif %}
+    <img src="{{ post.thumbnail.src|resize(500, 500, center) }}" class="lazyload w-100 d-block" alt="{{ post.thumbnail.alt }}" />
   </a>
 
-  <div class="flex-column d-flex pt-4">
-
-    <div class="has-text-white has-color-primary sans-medium is-size-6 pb-2">{{ post.date }}</div>
-
-    <a href="{{ post.link }}" alt="{{ post.title }}" class="d-block has-text-white has-text-black sans-medium is-size-4 py-4">
-      {{ post.title }}
-    </a>
-
-    <p class="serif is-size-6 has-text-white has-text-black">{{ post.content|striptags|truncate(16) }}</p>
+  <div class="pt-4 d-flex h-100 flex-column">
 
     <div class="d-flex">
     {% for term in post.terms('category') %}
-      <a href="/category/{{term|sanitize}}" class="button black-fill-button letter-spacing align-self-start mr-2 mb-5">{{term}}</a>
+    {% if loop.index <= 1 %}
+      <a href="/category/{{term.slug}}" class="letter-spacing uppercase text-xs text-black">{{term}}</a>
+    {% endif %}
     {% endfor %}
     </div>
 
-    <a href="{{ post.link }}" class="button is-rounded white-button primary-button letter-spacing align-self-start mt-auto">Read More</a>
+    <a href="{{ post.link }}" class="serif-italic text-2xl leading-snug my-2">
+      {{ post.title }}
+    </a>
+
+    {% if function('get_the_excerpt') %}
+      <p class="serif is-size-6 has-text-black">{{ function('get_the_excerpt') }}</p>
+    {% else %}
+      <p class="serif is-size-6 has-text-black">{{ post.content|striptags|truncate(16) }}</p>
+    {% endif %}
+
+    <a href="{{ post.link }}" class="button is-rounded primary-button primary-button uppercase sans letter-spacing align-self-start mt-4 mb-5">Read More</a>
 
   </div>
 

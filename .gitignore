@@ -6,6 +6,8 @@
 *.swp
 Thumbs.db
 node_modules
+package-lock.json
+composer.lock
 _TRASH
 
 # Version Control files

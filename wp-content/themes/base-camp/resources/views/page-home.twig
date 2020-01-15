@@ -1,0 +1,26 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+  <div class="container narrow wysiwyg pb-5">
+
+    {{ post.content }}
+
+  </div><!-- /.container -->
+
+  {% set flex_blocks = flexblock %}
+
+  {% if flex_blocks %}
+
+    {% include 'blocks/flex-content.twig' with flex_blocks %}
+
+  {% endif %}
+
+
+  {% if post.related_pages %}
+
+    {% include ['components/related-pages.twig'] %}
+
+  {% endif %}
+
+{% endblock %}

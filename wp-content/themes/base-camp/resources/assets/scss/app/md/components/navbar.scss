@@ -1,0 +1,128 @@
+a.nav-main-link.withsub {
+  &.is-active {
+    &:after {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 19px solid transparent;
+      border-right: 19px solid transparent;
+      border-bottom: 19px solid #fff;
+      position: absolute;
+      bottom: -16px;
+      left: calc(50% - 19px);
+    }
+    &:before {
+      content: '';
+      width: 0;
+      height: 0;
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 20px solid $primary;
+      position: absolute;
+      bottom: -15px;
+      left: calc(50% - 20px);
+    }
+  }
+}
+
+// a.nav-main-link, .nav-drop-item a {
+//   &:hover {
+//     color: #fff;
+//   }
+// }
+
+.nav-main-link span, .nav-drop-item span {
+    position: relative;
+}
+.nav-main-link.white-style.is-active span::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    opacity: 1;
+    background-color: #FFF;
+}
+
+.nav-main-link.white-style span::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 75%;
+    height: 2px;
+    opacity: 0;
+    background-color: #FFF;
+    transform: translate(-50%, 0);
+    transition: all 0.2s ease-in-out;
+}
+.nav-main-link.is-active span::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    opacity: 1;
+    background-color: $primary;
+}
+
+.nav-main-link span::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 75%;
+    height: 2px;
+    opacity: 0;
+    background-color: $primary;
+    transform: translate(-50%, 0);
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-main-link span:hover::after {
+    width: 100%;
+    opacity: 1;
+}
+
+.nav-drop-item span::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 60%;
+    height: 2px;
+    opacity: 0;
+    background-color: $primary;
+    transform: translate(-50%, 0);
+    transition: all 0.2s ease-in-out;
+}
+
+.nav-drop-item:hover {
+  span::after {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+
+.navbar-menu.menu-region,
+.navbar-menu.menu-topic {
+  a.nav-main-link {
+    &.is-active {
+      span:after {
+        display: none;
+      }
+      span:before {
+        display: none;
+      }
+      &:after {
+        display: none;
+      }
+      &:before {
+        display: none;
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ Contributors: awelzel
 Tags: attachments, images, gallery, lightbox, fancybox, photoswipe
 Requires at least: 4.0
 Tested up to: 5.2
-Stable tag: 2.1
+Stable tag: 2.6
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,9 @@ Integration of PhotoSwipe (http://photoswipe.com) for WordPress.
 
 This plugin is a simple integration of PhotoSwipe to WordPress. All linked images in a post or page will be displayed using PhotoSwipe, regardless if they are part of a gallery or single images. Just make sure that you link the image or gallery directly to the media and not the attachment page (in galleries the option `link=file` should be set).
 
-More about PhotoSwipe see here: http://photoswipe.com
+More about PhotoSwipe see here: [http://photoswipe.com](http://photoswipe.com)
+
+The version of PhotoSwipe provided with this plugin comes with a number of modifications and extensions. See the FAQ for details.
 
 == Installation ==
 
@@ -87,9 +89,17 @@ A "quick & dirty" example to add additional stuff in the header with the control
 
 add_filter('lbwps_markup', 'my_lbwps_markup', 10, 1);`
 
+= How to style the caption below the images =
+
+If you want to style the caption below the images, you need to create custom styles for the following CSS classes:
+
+pswp__caption__center - this class is used for the whole caption area.
+
+pswp__caption__title and pswp__caption__desc - these classes are used, if the caption is divided into a title an description (based on the data-caption-title and data-caption-desc attributes in the image link).
+
 = Why is there no "zoom animation" when opening the lightbox? =
 
-PhotoSwipe has the option to create a zoom animation from the thumbnail to the final image when opening the lightbox. However, this does not work well with square thumbnails since the thumbnail is just enlarged to the final image size without keeping its aspect ratio. This would result in a quite weird image display where a square thumbnail gets stretched to a portrait or landscape image before the final image is loaded. Just having a black background where the final image gets loaded seems to be the better solution. Also see http://photoswipe.com/documentation/faq.html about this topic.
+PhotoSwipe has the option to create a zoom animation from the thumbnail to the final image when opening the lightbox. However, this does not work well with square thumbnails since the thumbnail is just enlarged to the final image size without keeping its aspect ratio. This would result in a quite weird image display where a square thumbnail gets stretched to a portrait or landscape image before the final image is loaded. Just having a black background where the final image gets loaded seems to be the better solution. Also see [http://photoswipe.com/documentation/faq.html](http://photoswipe.com/documentation/faq.html) about this topic.
 
 = Conflict with Advanced Gutenberg =
 
@@ -97,7 +107,7 @@ Lightbox with PhotoSwipe works fine with Gutenberg gallery blocks as well. Howev
 
 = Local changes in PhotoSwipe =
 
-The following changes are the differences to PhotoSwipe 4.0 as of 2018-11-08:
+The following changes are the differences to PhotoSwipe 4.0 as of 2019-08-17:
 
 1) The default UI is based on a CSS file and a number of graphics in different formats. This CSS file got modified to provide a fix for WordPress themes which use elements with a quite high Z index which hide the controls of PhotoSwipe. By setting the Z index of the affected controls to the highest possible value, all controls stay visible in front.
 
@@ -109,6 +119,12 @@ The following changes are the differences to PhotoSwipe 4.0 as of 2018-11-08:
 
 5) The grey placeholder for images when opening the lightbox is not visible (this was accomplished by adding `display: none;` for the placeholder).
 
+6) Arrows for next and previous picture will be hidden for the first or last picture if no endless loop is activated.
+
+7) When using full picture size in desktop view the UI elements will hide automatically and not only after a mouse movement and the image caption will also be hidden together with the navigation.
+
+8) Full screen mode can also be activated by pressing the key "F" on the keyboard.
+
 = Licensing =
 
 To avoid any confusion: this plugin was published with the agreement of Dmitry Semenov.
@@ -119,6 +135,29 @@ To avoid any confusion: this plugin was published with the agreement of Dmitry S
 2. Example for the use in the frontend
 
 == Changelog ==
+
+= 2.6 =
+
+* Full screen mode can now also be activated by pressing the key "F" on the keyboard.
+* Set maximum possible priority for the output filter so it will be called at the latest possible moment.
+
+= 2.5 =
+
+* If images links contain attributes `data-caption-title` and `data-caption-desc` these attributes will be used as separate elements in the caption.
+
+= 2.4 =
+
+* Fixed a bug when using full picture size in desktop view.
+* Endless loop is now also supported with only two images.
+* Added an option to use the alternative text in the image as caption if needed.
+
+= 2.3 =
+
+* Clicking images will no longer close them.
+
+= 2.2 =
+
+* Added option to show pictures in full size in desktop view.
 
 = 2.1 =
 

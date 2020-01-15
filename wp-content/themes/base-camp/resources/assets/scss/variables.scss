@@ -1,11 +1,16 @@
+
+
 // COLORS
-$bc-primary:        #26a69a;
-$bc-dark-primary:   #00695C;
-$bc-secondary:      #EF5350;
+$bc-primary:        #004270;
+$bc-secondary:      #FFD53F;
+$bc-dark-primary:   #0A202E;
+$bc-light-primary:  #d7dde3;
 
 // BULMA OVERDRIVE
 $primary:           $bc-primary;
-$dark-primary:      $bc-dark-primary;
+$secondary:         $bc-secondary;
+$primary-dark:      $bc-dark-primary;
+$primary-light:     $bc-light-primary;
 $link:              $bc-secondary;
 $link-focus-border: $bc-secondary;
 $red:               $bc-secondary;
@@ -26,17 +31,36 @@ $images: '../images';
 // FONT-AWESOME FONT PATH
 // $fa-font-path: "../../../node_modules/font-awesome/fonts";
 
-$sm:  640px;
-$md:  768px;
-$lg:  1024px;
-$xl:  1280px;
+
+$sm:   640px;
+$md:   768px;
+$lg:   992px; // keep this for strange bug with bs grid
+$xl:   1280px;
+$xxl:  1610px;
 
 // $content-heading-color: $bc-primary;
 
 // _config.scss
 $breakpoints: (
+  xs: 0,
   sm: $sm,
   md: $md,
   lg: $lg,
   xl: $xl,
 );
+
+// bootstrap overrides
+$grid-breakpoints: (
+  xs: 0,
+  sm: $sm,
+  md: $md,
+  lg: $lg,
+  xl: $xl,
+) !default;
+
+$container-max-widths: (
+  sm: $sm,
+  md: $md,
+  lg: $lg,
+  xl: $xl,
+) !default;

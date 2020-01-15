@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+
+    <hr class="hr my-4">
+
+    {#<div class="has-color-primary sans-medium is-size-6 pb-2">{{ post.date }}</div>#}
+    {% if post.thumbnail.src %}
+
+    <div class="col-4">
+
+      <a href="{{ post.link }}">
+        <img src="{{ post.thumbnail.src|resize(500, 500, center) }}" class="lazyload" alt="{% if post.thumbnail.alt %}{{ post.thumbnail.alt }}{% else %}Image for: {{ post.title }}{% endif %}" />
+      </a>
+
+    </div>
+    {% endif %}
+
+    <div class="{% if post.thumbnail.src %}col-8{% else %}col-12{% endif %}">
+
+      <div class="h-100 d-flex flex-column">
+
+      <a href="{{ post.link }}" class="serif-italic text-2xl mb-3">
+        {{ post.title }}
+      </a>
+
+      {% if function('get_the_excerpt') %}
+        <p class="serif is-size-6 has-text-black mb-3">{{ function('get_the_excerpt') }}</p>
+      {% else %}
+        <p class="serif is-size-6 has-text-black mb-3">{{ post.content|striptags|truncate(16) }}</p>
+      {% endif %}
+
+      <a href="{{ post.link }}" class="button is-rounded primary-button uppercase letter-spacing align-self-start mt-auto">Read More</a>
+
+      </div>
+
+    </div>
+
+    {% if loop.last %}
+      <hr class="hr my-4">
+    {% endif %}
+
+  </div>
+
+
+</div>

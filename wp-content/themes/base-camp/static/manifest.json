@@ -1,0 +1,11 @@
+{
+  "admin.css": "css/admin.css",
+  "login.css": "css/login.css",
+  "scripts.css": "css/scripts.css",
+  "scripts.js": "js/scripts.js",
+  "styles.css": "css/styles.css",
+  "vendor.js": "js/vendor.js",
+  "fonts/main.scss": "fonts/lora-v14-latin-regular.e4cdb14.woff2",
+  "images/main.scss": "images/lora-v14-latin-regular.svg",
+  "images/login.scss": "images/logo.svg"
+}

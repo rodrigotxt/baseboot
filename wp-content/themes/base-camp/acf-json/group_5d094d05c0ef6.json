@@ -20,63 +20,6 @@
             "maxlength": "",
             "rows": 2,
             "new_lines": ""
-        },
-        {
-            "key": "field_5d38610f1c0b6",
-            "label": "Search?",
-            "name": "is_search",
-            "type": "true_false",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": 0,
-            "message": "",
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_5d39f87cf6e4e",
-            "label": "Featured Event?",
-            "name": "menu_featured_event",
-            "type": "true_false",
-            "instructions": "This should be checked only for Events Menu Item",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
-        },
-        {
-            "key": "field_5d40a56acb7fd",
-            "label": "Topics?",
-            "name": "menu_topic",
-            "type": "true_false",
-            "instructions": "This should be checked only for Blog Menu Item",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "message": "",
-            "default_value": 0,
-            "ui": 0,
-            "ui_on_text": "",
-            "ui_off_text": ""
         }
     ],
     "location": [
@@ -96,5 +39,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1564517761
+    "modified": 1572888725
 }

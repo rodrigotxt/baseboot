@@ -4,6 +4,32 @@
 
   function global_timber_context( $context ) {
 
+    // is GA plugin active
+    // function ga_active() {
+    //     if (is_plugin_active( 'google-analytics-dashboard-for-wp/gadwp.php' )) {
+    //         echo "true";
+    //     } else {
+    //         echo "false";
+    //     }
+    // }
+    // $context['gaactive'] = TimberHelper::ob_function('ga_active');
+
+    // $polargs = array(
+    //   'post_type'      => 'policies',
+    //   'posts_per_page' => -1,
+    //   'orderby'        => 'title',
+    //   'order'          => 'ASC',
+    // );
+    // $context['policypost'] = new Timber\PostQuery($polargs);
+
+    // $regionargs = array(
+    //   'post_type'      => 'regions',
+    //   'posts_per_page' => -1,
+    //   'orderby'        => 'title',
+    //   'order'          => 'ASC',
+    // );
+    // $context['regionpost'] = new Timber\PostQuery($regionargs);
+
     //global
     $context['globalbkgcolor'] = get_field('global_background_color', 'option');
     $context['feedbackrepeater'] = get_field('feedback_repeater', 'option');
@@ -12,7 +38,7 @@
     // acf options
     $context['contactphone'] = get_field('contact-phone', 'option');
     $context['logolight'] = get_field('logo-light', 'option');
-    $context['logodark'] = get_field('logo-dark', 'option');
+    $context['logotype'] = get_field('logo-type', 'option');
     $context['socialnetworks'] = get_field('social_networks', 'option');
     $context['socialnetworklink'] = get_field('social_network_link', 'option');
     $context['notfoundbackgroundimage'] = get_field('404_background_image', 'option');
@@ -50,6 +76,8 @@
     $context['postherotitleseparator'] = get_field('post_hero_title_separator');
     $context['postherowidth'] = get_field('post_hero_title_width');
     $context['herocta'] = get_field('hero_cta');
+    $context['eventlocation'] = get_field('event_location');
+    $context['ctarepeater'] = get_field('cta_repeater');
     $context['pdffile'] = get_field('pdf_file');
     $context['taximage'] = get_field('tax_image');
 

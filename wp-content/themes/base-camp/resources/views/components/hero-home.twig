@@ -1,0 +1,79 @@
+<div id="hero" class="relative">
+
+
+  <section class="hero is-fullheight">
+
+    <div class="hero-body w-100">
+
+      <div class="container z-1 pt-20 xl:pt-6 xl:pt-40" data-sal="slide-up" data-sal-duration="600" data-sal-delay="300">
+
+        <div class="row">
+
+          <div class="col-12 col-lg-{% if posttype == 'annual-meeting' %}9{% else %}9{% endif %}">
+            <div class="d-flex flex-column">
+
+              {% if fn('is_404') %}
+
+                {{ notfoundmessage }}
+
+              {% else %}
+
+                <h1 class="sans text-4xl xl:text-5xl xl:text-7xl leading-tight mb-0 text-{% if posttype == 'annual-meeting' and postparent == '0' %}secondary{% else %}white{% endif %}">
+                  {% if postherotitle %}{{ postherotitle }}{% else %}{{ post.title }}{% endif %}
+                </h1>
+
+                {% if postherosubtitle %}
+                <div class="text-xl xl:text-3xl text-white my-4 my-lg-5">
+                  {{ postherosubtitle }}
+                </div>
+                {% endif %}
+
+
+                {% if post.meta('cta_repeater') %}
+                  <div class="d-flex flex-col xl:flex-row w-100">
+                    {% for pop in post.meta('cta_repeater') %}
+                      {% if pop.cta_link_type == 'external' and pop.external_link %}
+                        <a href="{{ pop.external_link }}" target="_blank" class="button is-rounded white-button sans tracking-wider align-self-start uppercase mr-lg-3 mb-3 mb-lg-0">{{ pop.cta_title }}</a>
+                      {% endif %}
+                      {% if pop.cta_link_type == 'internal' and pop.internal_link %}
+                        <a href="{{ pop.internal_link|sanitize }}" class="button is-rounded white-button sans tracking-wider align-self-start uppercase mr-lg-3 mb-3 mb-lg-0">{{ pop.cta_title }}</a>
+                      {% endif %}
+                      {% if pop.cta_link_type == 'nolink' %}
+                        <a class="button is-rounded white-button sans tracking-wider align-self-start uppercase mr-lg-3 mb-3 mb-lg-0 cursor-default">{{ pop.cta_title }}</a>
+                      {% endif %}
+                    {% endfor %}
+                  </div>
+                {% endif %}
+
+
+              {% endif %}
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    {% if posttype == 'annual-meeting' %}
+
+    <div class="hero-overlay lazyload z-0 absolute top-0" style="height: 100%;width: 100%;background-blend-mode: multiply;
+      background: url('{{ TimberImage(post.post_hero_background).src }}') no-repeat center center;
+      background-color: #0072a8;
+      background-size: cover;"></div>
+
+    {% else %}
+
+      <div class="hero-overlay lazyload z-0" style="height: 100%; width: 100%; background: url('{{ TimberImage(post.post_hero_background).src }}') no-repeat center center; background-size: cover;position: absolute;top: 0;left: 0;right: 0;bottom: 0;"></div>
+
+      <div class="hero-overlay" style="background-color:#000;opacity:0.5;;position: absolute;top: 0;right: 0;bottom: 0;left: 0;"></div>
+
+    {% endif %}
+
+  </section>
+
+  {% include ['components/subnav.twig'] %}
+
+</div><!-- #hero -->

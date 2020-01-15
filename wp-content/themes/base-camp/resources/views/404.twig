@@ -1,8 +1,24 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  <h1 class="title is-2">
+<section class="text-center">
+  <h1 class="title is-2 sans-medium text-primary">
    {{ messages.404.title }}
   </h1>
-  <p>{{ messages.404.body }} <a href="{{ site.link }}">{{ messages.404.link_text }}</a>.</p>
+  <p class="mb-4">{{ messages.404.body }} <a href="{{ site.link }}">{{ messages.404.link_text }}</a>.</p>
+  <div id="search" class="mx-auto d-flex justify-content-center">
+    <form role="search" method="get" id="searchform" class="searchform" action="{{site.link}}" >
+      <div class="field d-flex mx-auto">
+        <div class="control has-icons-right">
+          <span class="icon search-close is-right d-flex align-items-center h-100">
+            <a href="#0" aria-hidden="true" tabindex="-1" class="hide-if-focus text-3xl icon-search"></a>
+            <div class="show-if-focus d-none sans-medium text-xs text-gray-600 absolute tracking-wider uppercase w-24 right-0">Hit Enter</div>
+          </span>
+          <input class="input search is-medium bg-transparent" placeholder="Search" type="text" value="{{ function('get_search_query') }}" name="s" id="s" />
+
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
 {% endblock %}

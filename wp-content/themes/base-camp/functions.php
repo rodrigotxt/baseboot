@@ -7,6 +7,85 @@ require_once( __DIR__ . '/functions/cpt.php' );
 
 require_once( __DIR__ . '/functions/acf.php' );
 
+require_once( __DIR__ . '/functions/bw.php' );
+
+
+// close coauthors by default https://github.com/Bellweather-Agency/CSG-ERC/issues/170
+function close_coauthors() {
+  echo "<script type='text/javascript' >
+          var element = document.getElementById('coauthorsdiv');
+          element.classList.add('closed');
+        </script>";
+}
+add_action('admin_footer', 'close_coauthors');
+
+function close_post_expire() {
+  echo "<script type='text/javascript' >
+          var element = document.getElementById('expirationdatediv');
+          element.classList.add('closed');
+        </script>";
+}
+add_action('admin_footer', 'close_post_expire');
+
+
+function close_hero_acf() {
+  echo "<script type='text/javascript' >
+          var element = document.getElementById('acf-group_5c019232d4a8b');
+          element.classList.add('closed');
+        </script>";
+}
+add_action('admin_footer', 'close_hero_acf');
+
+function close_yoast() {
+  echo "<script type='text/javascript' >
+          var element = document.getElementById('wpseo_meta');
+          element.classList.add('closed');
+        </script>";
+}
+add_action('admin_footer', 'close_yoast');
+
+
+
+// change placeholder for people cpt
+add_filter('enter_title_here', 'my_title_place_holder' , 20 , 2 );
+  function my_title_place_holder($title , $post){
+
+  if( $post->post_type == 'people' ){
+    $my_title = "Add Name";
+    return $my_title;
+  }
+
+  return $title;
+
+}
+
+
+// https://wordpress.stackexchange.com/questions/6818/change-enter-title-here-help-text-on-a-custom-post-type
+function change_default_title( $title ){
+    $screen = get_current_screen();
+
+    if  ( 'team' == $screen->post_type ) {
+        $title = 'Add Name';
+
+    // } elseif ( 'custom_post_type_2' == $screen->post_type ) {
+    //  $title = 'CPT2 New Title';
+
+    }
+
+    return $title;
+}
+
+add_filter( 'enter_title_here', 'change_default_title' );
+
+// hide post formats
+add_action( 'init', 'my_remove_post_type_support', 10 );
+function my_remove_post_type_support() {
+    remove_post_type_support( 'post', 'post-formats' );
+}
+
+//remove styling for tablepress
+add_filter( 'tablepress_use_default_css', '__return_false' );
+
 // https://www.advancedcustomfields.com/resources/acf-fields-flexible_content-layout_title/
 function my_acf_flexible_content_layout_title( $title, $field, $layout, $i ) {
 

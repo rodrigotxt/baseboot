@@ -1,0 +1,46 @@
+// // style accordion
+
+
+.accordion {
+  h4 {
+    float: left;
+  }
+  span.icon {
+    width: 30px;
+    margin-left: auto;
+    display: flex;
+    fill: #fff;
+  }
+  .card {
+    box-shadow: 0 0 0;
+    margin: 0 0 10px;
+    padding: 0;
+    border-top: 0px solid #000;
+  }
+  .card-header,
+  .card-content {
+    padding: 20px;
+  }
+  .card-header {
+    background: $primary;
+    color: #fff;
+  }
+  .card-header-title {
+    padding: 0;
+    margin: 0;
+  }
+  .card-content {
+    background-color: #fff;
+    font-family: $serif;
+  }
+  .card-header-icon {
+    padding: 0;
+    margin: 0;
+  }
+  .card-footer {
+    border-top: 0px solid #000;
+    label {
+      color: #000;
+    }
+  }
+}

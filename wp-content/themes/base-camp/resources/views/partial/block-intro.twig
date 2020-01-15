@@ -1,5 +1,5 @@
 {% if block.is_intro == 'yes' %}
 
-  <div class="is-size-5">{{ block.intro|striptags('<a><b><strong><i>') }}</div>
+  <div class="wysiwyg text-xl my-2">{{ block.intro|wpautop|striptags('<a><b><strong><i><p><br><blockquote><img><ul><ol><li><iframe><h1><hr><h2><h3><h4><h5><h6>') }}</div>
 
 {% endif %}

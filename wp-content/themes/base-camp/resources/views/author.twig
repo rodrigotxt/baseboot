@@ -1,14 +1,48 @@
 {% extends "base.twig" %}
 
 {% block content %}
-  <h1 class="title is-2">{{ author }}</h1>
-  {% for post in posts %}
-    {% include 'components/article.twig' %}
-    <hr />
-  {% endfor %}
 
-  {% if posts.pagination.pages %}
-    {% include 'components/pagination.twig' %}
-  {% endif %}
+<div class="container narrow text-center color-primary mb-5 pb-5">
+
+  <h1 class="title is-2">{{ author }}</h1>
+
+
+</div>
+
+<div class="container">
+
+  <div class="ajaxload mt-10 mb-40">
+
+    <div id="articles" class="d-flex flex-column h-100">
+
+      <div class="row ">
+        {% for post in posts %}
+          <div class="col-12 col-lg-3">
+            <div class="is-12 pb-3">
+              <section class="{% if loop.first %} post-color-purple has-text-white{% endif %}" data-scroll>
+                {% include ['components/tease-'~post.post_type~'.twig', 'components/tease.twig'] %}
+              </section>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <div class="d-flex w-100 h-100">
+
+        {% if posts.pagination.next %}
+          <a id="load-older-posts" href="{{ posts.pagination.next.link }}" class="button is-rounded secondary-button uppercase sans letter-spacing justify-content-center mx-auto">Load More Posts</a>
+        {% endif %}
+
+        {#% if posts.pagination.pages %}
+          {% include 'components/pagination.twig' %}
+        {% endif %#}
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 
 {% endblock %}

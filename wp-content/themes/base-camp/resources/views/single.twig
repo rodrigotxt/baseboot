@@ -2,46 +2,58 @@
 
 {% block content %}
 
-  <div class="container wysiwyg">
 
-    <div class="row">
+<div class="container narrow text-center color-primary">
 
-      <div class="col-lg-8 pr-3 pr-md-5">
-
-        {{ post.content }}
-
-        {% set flex_blocks = flexblock %}
-
-        {% if flex_blocks %}
-
-          {% include 'blocks/flex-content.twig' with flex_blocks %}
-
-        {% endif %}
-
-      </div>
-
-      <div class="col-lg-4 bg-gray-400 p-4">
-        <aside class="sidebar-wrapper">
-          <div class="sidebar-menu">
-            <div class="h3 mb-0">Sidebar</div>
-            <hr class="my-4">
-            <div class="bg-gray-200 p-4">
-              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2">1</span>
-              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2 mt-2">2</span>
-              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2 mt-2">3</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-
+  {% if post.terms('category') %}
+    <div class="overflow-x-scroll scrolling-touch lg:overflow-x-auto uppercase sans uppercase d-flex justify-content-center text-md">
+    {% for term in post.terms('category') %}
+        <a href="/category/{{term.slug}}">{{term}}</a>
+        {% if not loop.last %}<div class="px-2">|</div>{% endif %}
+    {% endfor %}
     </div>
+  {% endif %}
 
+  <h1 class="sans-medium xl:text-5xl my-lg-5">
+    {{ post.title }}
+  </h1>
+
+
+  <div class="sans uppercase pb-4 d-flex justify-content-center mb-5 text-md">
+    {{ post.date }} <div class="px-2">|</div>
+    <p class="article-byline__author">By {% for author in post.authors %}<a href="{{author.link}}">{{author.name}}{% if not loop.last %}, {% endif %}</a>{% endfor %}</p>
   </div>
 
-  {% if post.related_pages %}
 
-    {% include ['components/related-pages.twig'] %}
-
+  {% if post.terms('post_tag') %}
+  <hr class="primary my-3">
+    <div class="w-100 lg:justify-center whitespace-no-wrap d-flex overflow-x-scroll scrolling-touch sans-medium uppercase">
+    {% for term in post.terms('post_tag') %}
+    {% if loop.index < 6 %}
+      <a href="/tag/{{term.slug}}" class="px-3">{{term}}</a>
+    {% endif %}
+    {% endfor %}
+    </div>
+  <hr class="primary mt-3 mb-5">
   {% endif %}
+
+
+</div>
+
+
+<div class="container narrow wysiwyg mt-5">
+
+  {{ post.content }}
+
+</div>
+
+{% set flex_blocks = flexblock %}
+
+{% if flex_blocks %}
+
+  {% include 'blocks/flex-content.twig' with flex_blocks %}
+
+{% endif %}
+
 
 {% endblock %}

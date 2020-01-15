@@ -1,0 +1,99 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<div class="container mb-5">
+  <h1 class="text-6xl sans-medium color-primary mb-4 text-center">{% if fn('is_page', 'events-upcoming') %}Upcoming {% endif %}{% if fn('is_page', 'events-past') %}Past {% endif %}{% if fn('is_page', 'events') %}All {% endif %}Events</h1>
+</div>
+  <div class="w-100 lg:justify-center whitespace-no-wrap d-flex my-5 overflow-x-scroll scrolling-touch">
+    <a href="/events/events-upcoming" class="button {% if fn('is_page', 'events-upcoming') %}primary-fill-button{% else %}primary-button{% endif %} is-rounded uppercase ml-3 mr-2">Upcoming Events</a>
+    <a href="/events/events-past" class="button {% if fn('is_page', 'events-past') %}primary-fill-button{% else %}primary-button{% endif %} is-rounded uppercase mx-2">Past Events</a>
+    <a href="/events/events" class="button {% if fn('is_page', 'events') %}primary-fill-button{% else %}primary-button{% endif %} is-rounded uppercase mx-2">All Events</a>
+  </div>
+  <div class="container">
+
+  {% if TimberPost(globalfeaturedevent) and not fn('is_page', 'events-past') %}
+
+  <div class="d-flex mt-0 mt-lg-5">
+    <div id="{{ anchor }}" class="sans-medium text-xl uppercase color-primary d-flex mr-auto">Upcoming Annual Meeting</div>
+    <div class="ml-auto d-flex"><a href="/annual-meetings">See All</a></div>
+  </div>
+  <hr class="mb-3 primary">
+
+  {% endif %}
+
+  {% if post.content %}
+
+  <div class="p-5">
+    {{ post.content }}
+  </div>
+
+  {% endif %}
+
+  <div class="d-flex mt-5">
+    <div id="{{ anchor }}" class="sans-medium text-xl uppercase color-primary d-flex mr-auto">{% if fn('is_page', 'events-upcoming') %}Upcoming {% endif %}{% if fn('is_page', 'events-past') %}Past {% endif %}{% if fn('is_page', 'events') %}All {% endif %}Events</div>
+    {% if not fn('is_page', 'events') %}<div class="ml-auto d-flex"><a href="/events">See All</a></div>{% endif %}
+  </div>
+  <hr class="mb-3 primary">
+
+  <div class="ajaxload mt-10 mb-40">
+
+    <div id="articles" class="d-flex flex-column h-100">
+
+
+        {% if posts|length %}
+
+          {% for row in posts|batch(4) %}
+          <div class="row">
+            {% for post in row %}
+            <div class="col-12 col-lg-3">
+              {% include ['components/tease-'~post.post_type~'.twig', 'components/tease.twig'] %}
+            </div>
+            {% endfor %}
+          </div>
+          {% endfor %}
+
+        {% else %}
+
+          <div class="has-background-white p-5 w-100 has-text-centered">
+            <div class="h5 sans-medium">Please Check Back Again Soon!!!</div>
+          </div>
+
+        {% endif %}
+
+
+      <div class="d-flex w-100 h-100">
+
+        {% if posts.pagination.next %}
+          <a id="load-older-posts" href="{{ posts.pagination.next.link }}" class="button is-rounded primary-fill-button uppercase sans letter-spacing justify-content-center mx-auto">Load More Posts</a>
+        {% endif %}
+
+        {#% if posts.pagination.pages %}
+          {% include 'components/pagination.twig' %}
+        {% endif %#}
+
+      </div>
+
+    </div>
+
+  </div>
+
+  </div>
+
+
+  {% set flex_blocks = flexblock %}
+
+  {% if flex_blocks %}
+
+    {% include 'blocks/flex-content.twig' with flex_blocks %}
+
+  {% endif %}
+
+  {# //////////////////////////////////////// #}
+  {# ///////////// Related Posts //////////// #}
+  {# //////////////////////////////////////// #}
+
+  {% include ['components/related-pages.twig'] %}
+
+
+{% endblock %}

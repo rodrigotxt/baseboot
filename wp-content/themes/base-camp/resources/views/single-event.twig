@@ -1,0 +1,185 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+
+<div class="container narrow text-center color-primary">
+
+  {% if post.get_field( 'date' )|date("mdY") < post.published_at|date("mdY") %}
+    <div class="uppercase sans-medium uppercase pb-5 d-flex justify-content-center">Past Event</div>
+  {% else %}
+    <div class="uppercase sans-medium uppercase pb-5 d-flex justify-content-center">Upcoming Event</div>
+  {% endif %}
+
+  <h1 class="sans-medium lg:text-5xl">
+    {{ post.title }}
+  </h1>
+  <h2 class="serif-italic text-4xl mb-5">
+    {{ post.sub_title }}
+  </h2>
+
+  {% if not posttype == 'events' %}
+
+  <div class="sans uppercase pb-4 d-flex justify-content-center my-5">
+    {{ post.date }} <div class="px-2">|</div>
+    <p class="article-byline__author">By {% for author in post.authors %}<a href="{{author.link}}">{{author.name}}</a>{% endfor %}</p>
+  </div>
+
+  {% endif %}
+
+  {% if post.terms('post_tag') %}
+  <div class="mb-5">
+    <hr class="primary my-3">
+      <div class="overflow-x-scroll scrolling-touch lg:overflow-x-auto uppercase sans-medium uppercase d-flex justify-content-center">
+      {% for term in post.terms('post_tag') %}
+      {% if loop.index < 6 %}
+        <a href="/tag/{{term.slug}}" class="px-3">{{term}}</a>
+      {% endif %}
+      {% endfor %}
+      </div>
+    <hr class="primary my-3">
+  </div>
+  {% endif %}
+
+  <div class="row align-items-center mb-5">
+
+    <div class="col-12 col-lg-2 {% if not post.terms('category') %}offset-lg-2{% endif %} ">
+      <div class="border border-primary h-32 w-32 bg-white mx-auto">
+        <div class="text-primary sans-medium text-center uppercase p-2">{{ post.get_field( 'date' )|date("F") }}</div>
+        <hr class="my-0 primary">
+        <div class="text-primary sans-medium text-6xl text-center uppercase p-2 leading-none">{{ post.get_field( 'date' )|date("j") }}</div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-5 pl-lg-5">
+      <div class="lg:text-left mt-4">
+      {% if post.get_field( 'date' )|date("F j, Y, g:i a") == post.get_field( 'date_end' )|date("F j, Y, g:i a") %}
+        <div class="h6 d-inline sans-medium has-color-primary pb-2">{{ post.get_field( 'date' )|date("F j, Y, g:i a") }}</div>
+      {% elseif not post.get_field( 'date_end' ) %}
+        <div class="h6 d-inline sans-medium has-color-primary">{{ post.get_field( 'date' )|date("F j, g:i a, Y") }}</div>
+      {% else %}
+        <div class="h6 d-inline sans-medium has-color-primary">{{ post.get_field( 'date' )|date("F j") }}{% if post.hide_event_time != '1' %}{{ post.get_field( 'date' )|date(", g:i a") }}{% endif %}{% if post.get_field( 'date' )|date("F j") != post.get_field( 'date_end' )|date("F j") %} – {% elseif post.hide_event_time == '1' %}, {% else %} –{% endif %}</div>
+      {% endif %}
+      {% if post.get_field( 'date_end' ) %}
+        {% if post.get_field( 'date' )|date("F j, Y") == post.get_field( 'date_end' )|date("F j, Y") %}
+          {% if post.hide_event_time != '1' %}
+            <div class="h6 d-inline sans-medium has-color-primary">{{ post.get_field( 'date_end' )|date( "g:i a, Y") }}</div>
+          {% else %}
+            <div class="h6 d-inline sans-medium has-color-primary">{{ post.get_field( 'date_end' )|date( "Y") }}</div>
+          {% endif %}
+        {% else %}
+          <div class="h6 d-inline sans-medium has-color-primary">{{ post.get_field( 'date_end' )|date("F j, Y") }}{% if post.hide_event_time != '1' %}{{ post.get_field( 'date_end' )|date(", g:i a") }}{% endif %}</div>
+        {% endif %}
+      {% endif %}
+      {% if post.get_field( 'event_location' ) %}
+      <div class="h6 sans-medium mt-3">{{ post.get_field( 'event_location' ) }}</div>
+      {% endif %}
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-5 my-4">
+
+      {% if post.registration_link %}
+      <div class="d-flex align-items-center flex-column flex-wrap h-100 w-100 mt-0 mb-3 mt-lg-3 mb-lg-5">
+        <a href="{{ post.registration_link }}" class="button is-rounded primary-fill-button uppercase my-5 d-inline-block">{{ post.registration_link_button_title }}</a>
+      </div>
+      {% else %}
+        {% for term in post.terms('category') %}
+          <a href="/category/{{term.slug}}"class="button is-rounded primary-button uppercase ">See Similiar Events</a>
+        {% endfor %}
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</div>
+
+{% if post.thumbnail.src %}
+<figure class="wp-caption">
+  <img class="w-100 full-width-img mb-4" src="{{ post.thumbnail.src }}" alt="{% if post.thumbnail.src.alt %}{{ post.thumbnail.src.alt }}{% else %}{{ block.title }}{% endif %}">
+  {% if post.thumbnail.caption %}
+    <p class="wp-caption-text z-1">{{ post.thumbnail.caption }}</p>
+  {% endif %}
+</figure>
+{% endif %}
+
+  <div class="container narrow wysiwyg my-5">
+
+    {{ post.content }}
+
+    {% if post.registration_link %}
+    <div class="d-flex align-items-center flex-column flex-wrap h-100 w-100 mt-0 mb-3 mt-lg-3 mb-lg-5">
+      <a href="{{ post.registration_link }}" class="button is-rounded primary-fill-button uppercase my-5 d-inline-block">{{ post.registration_link_button_title }}</a>
+    </div>
+    {% endif %}
+
+    <hr class="blocks">
+
+  </div>
+
+  {% set flex_blocks = flexblock %}
+
+  {% if flex_blocks %}
+
+    {% include 'blocks/flex-content.twig' with flex_blocks %}
+
+  {% endif %}
+
+  <div class="d-inline-block my-5 pb-5 w-100">
+
+    {% include 'components/social-share.twig' %}
+
+  </div>
+
+  {% if relposts %}
+  <section class="container narrow p-0 p-lg-3 is-widescreen">
+
+    <div class="h5 sans-medium text-center mb-3 mt-5 color-primary">{% if relatedtitleoverride %}{{ relatedtitleoverride }}{% else %}You might also be interested in{% endif %}</div>
+
+    <div class="d-none d-lg-block">
+
+      {% for post in relposts %}
+
+        {% include 'components/tease-related.twig' %}
+
+      {% endfor %}
+    </div>
+
+    <div class="d-block d-lg-none">
+
+      <div id="carousel-gallery-8"  class="d-block d-lg-flex flex-wrap">
+
+        <carousel :responsive="{0:{items:1,autoplay:false,stagePadding:45,margin:15,center:false},768:{items:2,margin:20,stagePadding:40}}" :nav="false" :loop="true" :autoHeight="true" :autoplay="false">
+
+        {% for relitem in relposts %}
+          <div class="d-flex flex-column h-100">
+
+            <a href="{{ relitem.link }}">
+              {% if relitem.thumbnail.src %}
+                <img src="{{ Image(relitem.thumbnail.src)|resize(400, 400) }}" class="lazyload w-100 d-block" alt="{% if Image(relitem.thumbnail).alt %}{{ Image(relitem.thumbnail).alt }}{% else %}Image for: {{ relitem.post_title }}{% endif %}" />
+              {% else %}
+                <img src="{{ Image(relitem.post_hero_background)|resize(400, 400) }}" class="lazyload w-100 d-block" alt="{% if Image(relitem.post_hero_background).alt %}{{ Image(relitem.post_hero_background).alt }}{% else %}Image for: {{ relitem.post_title }}{% endif %}" />
+              {% endif %}
+            </a>
+
+            <a href="{{ relitem.link }}" class="d-block has-text-black sans-medium is-size-4 py-4">
+              {{ relitem.post_title }}
+            </a>
+
+            <a href="{{ relitem.link }}" class="button is-rounded primary-button letter-spacing align-self-start mt-auto mx-auto mb-2">Read More</a>
+
+          </div>
+        {% endfor %}
+
+        </carousel>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  {% endif %}
+
+{% endblock %}

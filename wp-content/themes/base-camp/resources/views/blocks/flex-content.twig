@@ -2,194 +2,89 @@
 
 {% for block in blocks %}
 
-{% set anchor = block.title|sanitize ~ '-' ~ loop.index %}
-
-<section id="{{ anchor|sanitize }}" class="flex-blocks bg-white p-4 {% if not loop.last %}mb-3 mb-lg-4 pb-2{% endif %} link-color-{{ post.publication_color_new }}{{ post.post_color }}{% if block.title is empty  %} not-header{% endif %}{% if block.is_callout %}  block-callout-{{ post.publication_color_new }}{{ post.post_color }} py-4{% endif %}{% if loop.index|sanitize == 1 %} top-adjust{% endif %}" data-scroll>
-
-  {% set key = loop.index %}
-
-  {% if 'block_cta' == block.acf_fc_layout %}
-
-    {% if block.cta %}
-
-      {% include 'blocks/cta.twig' %}
-
-    {% endif %}
-
-  {% elseif 'block_wysiwyg' == block.acf_fc_layout %}
-
-    {% include 'blocks/wysiwyg.twig' %}
-
-  {% elseif 'block_image_gallery' == block.acf_fc_layout %}
-
-    {% if block.block_gallery %}
-
-      {% include 'blocks/gallery.twig' %}
-
-    {% endif %}
-
-  {% elseif 'block_featured_blog' == block.acf_fc_layout %}
-
-    {% include 'blocks/blog.twig' %}
-
-  {% elseif 'block_quote' == block.acf_fc_layout %}
-
-    {% if block.quote_type %}
-
-      {% include 'blocks/quote.twig' %}
-
-    {% endif %}
-
-  {% elseif 'block_video' == block.acf_fc_layout %}
-
-    {% if block.video_desktop_id %}
-
-      {% include 'blocks/video.twig' %}
-
-    {% endif %}
-
-  {% elseif 'downloads_block' == block.acf_fc_layout %}
-
-    {% if block.download_repeater %}
-
-      {% include 'blocks/downloads-block.twig' %}
-
-    {% endif %}
-
-  {% elseif 'ordered_list' == block.acf_fc_layout %}
-
-    {% if block.list_repeater %}
-
-      {% include 'blocks/ordered-list.twig' %}
-
-    {% endif %}
-
-  {% endif %}
+{% set anchor = block.title|sanitize %}
+{% set subanchor = block.sub_title|sanitize %}
+{% set blockanchor = block.block_title|sanitize %}
 
 
-</section>
 
-{% if not block.title  %}</div>{% endif %}
+<section id="{% if block.title or block.sub_title %}{% if anchor %}{{ anchor }}{% else %}{{ subanchor }}{% endif %}{% elseif block.block_title %}{{ blockanchor }}{% endif %}{% if block.block_gallery and block.title is empty and block.block_title is empty  %}image-gallery-{{ loop.index }}{% endif %}" class="flex-blocks relative" scrollname="{% if block.title %}{{ block.title }}{% elseif block.block_title and block.is_title == "true" %}{{ block.block_title }}{% elseif block.sub_title and block.is_title == "true" %}{{ block.sub_title }}{% endif %}{% if block.block_gallery and block.title is empty and block.block_title is empty  %}Image Gallery{% endif %}">
 
-{% endfor %}
+  <div class="{% if loop.first and block.show_featured != 'true' %}{% else %}pt-24{% endif %}">
 
-<!-- ################################## -->
-<!-- ### Videos in this Publication ### -->
-<!-- ################################## -->
+    {% set key = loop.index %}
 
-{% if post.has_video_archive %}
+    {% if 'block_cta' == block.acf_fc_layout %}
 
-<section id="videos-section" class="container is-widescreen p-3 my-5">
+      {% if block.cta %}
 
-  <div class="h4 sans-medium">Videos in this Publication</div>
-  <hr class="mt-3 mb-4">
+      <div class="container">
 
-  <div id="publication-video-gallery">
+        {% include 'blocks/cta.twig' %}
 
-    <carousel :responsive="{0:{items:1,nav:false,autoplay:false,margin:20,stagePadding:0},768:{items:2,nav:false,margin:20,dots:true}}" :autoWidth="false" :center="false" :loop="false" :autoHeight="false" :autoplay="false">
-
-    {% for block in blocks %}
-
-      {% if block.video_desktop_id %}
-
-      <div class="d-flex justify-content-start lazyload flex-column w-100">
-        <div class="embed-responsive embed-responsive-16by9 lazyload"><iframe class="embed-responsive-item lazyload" src='https://player.vimeo.com/video/{{ block.video_desktop_id }}?api=1&title=0&byline=0&portrait=0&sidedock=0&controls=1' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
-        <div class="overlay has-text-left mt-auto">
-          <div class="h5 sans-medium has-text-grey my-3">{{ block.video_caption }}</div>
-        </div>
       </div>
 
       {% endif %}
 
-    {% endfor %}
+    {% elseif 'block_wysiwyg' == block.acf_fc_layout %}
 
-    </carousel>
+      {% include 'blocks/wysiwyg.twig' %}
 
-  </div>
+    {% elseif 'block_image_gallery' == block.acf_fc_layout %}
 
-</section>
+      {% include 'blocks/gallery.twig' %}
 
-{% endif %}
+    {% elseif 'block_featured_blog' == block.acf_fc_layout %}
 
-<!-- ######################################## -->
-<!-- ### Infographics in this Publication ### -->
-<!-- ######################################## -->
+      <div class="container">
 
-{% if post.has_infographics %}
+        {% include 'blocks/blog.twig' %}
 
-<section id="infographics-section" class="container is-widescreen p-3 my-5">
+      </div>
 
-  <div class="h4 sans-medium">Infographics in this Publication</div>
-  <hr class="mt-3 mb-4">
+    {% elseif 'block_featured_events' == block.acf_fc_layout %}
 
-  <div id="publication-infographic-gallery">
+      <div class="container">
 
-    <carousel :responsive="{0:{items:1,nav:false,autoplay:false,margin:20,stagePadding:0},768:{items:2,nav:false,margin:20,dots:true}}" :autoWidth="false" :center="false" :loop="false" :autoHeight="true" :autoplay="false">
+        {% include 'blocks/events.twig' %}
 
-    {% for block in blocks %}
+      </div>
 
-      {% for item in block.infographics %}
+    {% elseif 'block_accordion' == block.acf_fc_layout %}
 
-      <div class="overlay align-items-center has-text-center mt-auto">
-        <img src="{{ Image(item).src|resize('640', '830') }}" alt="{{ Image(item).alt }}">
+      <div class="container narrow">
 
-        <div class="d-flex flex-column">
-
-          <a href="https://twitter.com/TransitCenter" target="_blank" class="button primary-button is-rounded social letter-spacing mx-auto" role="button" aria-label="Twitter" title="Twitter"><span aria-hidden="true" class="icon-twitter-button"></span>TWEET</a>
-
-
-        </div>
+        {% include 'blocks/accordion.twig' %}
 
       </div>
 
 
+    {% elseif 'block_quote' == block.acf_fc_layout %}
 
-      {% endfor %}
+      {% if block.quote_type %}
 
-    {% endfor %}
+      <div class="container narrow">
 
-    </carousel>
+        {% include 'blocks/quote.twig' %}
+
+      </div>
+
+      {% endif %}
+
+
+    {% elseif 'block_video' == block.acf_fc_layout %}
+
+      <div class="container narrow">
+
+        {% include 'blocks/video.twig' %}
+
+      </div>
+
+    {% endif %}
 
   </div>
 
 </section>
 
-{% endif %}
+{% endfor %}
 
-{% if post.related_publications %}
-<!-- ########################################### -->
-<!-- ### Related Reports in this Publication ### -->
-<!-- ########################################### -->
-<section id="related-publications" class="container is-widescreen p-3 my-5">
-
-  <div class="h4 sans-medium">Related Reports & Resources</div>
-  <hr class="mt-3 mb-4">
-
-
-    <div id="publication-related-gallery">
-      <carousel :responsive="{0:{items:1,nav:false,autoplay:false,margin:20,stagePadding:0},768:{items:3,nav:false,margin:20,dots:true}}" :autoWidth="false" :center="false" :loop="false" :autoHeight="false" :autoplay="false">
-      {% for item in TimberPost( post.related_publications ) %}
-
-        <div class="overlay align-items-center has-text-center mb-auto">
-          <a href="/publication/{{ item.post_name }}" alt="{{ item.post_name }}" class="underline-block has-text-primary">
-            <img src="{{ Image(item).src|resize('640', '830') }}" alt="{{ Image(item).alt }}">
-          </a>
-
-          <div class="mt-4 h5 w-100 sans-medium has-text-primary d-inline-block mx-auto text-center"><a href="/publication/{{ item.post_name }}" alt="{{ item.post_name }}" class="underline-block has-text-primary">{{ item.post_title }}</a></div>
-          {% set file = TimberImage(post.pdf_file) %}
-
-          <div class="d-flex align-items-center flex-column flex-wrap h-100 w-100 mt-3">
-
-            <a href="{{ file.src }}" class="button is-rounded primary-button is-uppercase letter-spacing is-size-7 align-content-start" target="_blank">Read PDF Online <span aria-hidden="true" class="ml-auto my-2 pl-1 is-size-7 icon-external-link"></span></a>
-            <a href="{{ file.src }}" class="button is-rounded primary-button is-uppercase letter-spacing is-size-7 align-content-start" download="download">Download PDF <span aria-hidden="true" class="ml-auto my-2 pl-1 is-size-7 icon-document-download"></span></a>
-
-          </div>
-
-        </div>
-
-      {% endfor %}
-      </carousel>
-    </div>
-</section>
-
-{% endif %}

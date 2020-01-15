@@ -2,54 +2,50 @@
 
 {% block content %}
 
-  <div class="container">
+<div class="container narrow text-center color-primary mb-5 pb-5">
 
-    <div class="row">
+  <h1 class="sans-medium text-6xl">
+  {% if cat_type %}
+    {{ title|title }}
+  {% endif %}
+  </h1>
 
-      <div class="col-lg-8 pr-3 pr-md-5">
+</div>
 
-        {% if posts|length %}
+<div class="container">
 
-          {% for post in posts %}
+  <div class="ajaxload mt-10 mb-40">
 
-            <section class="mb-5" data-scroll>
-              {% include ['components/tease-'~post.post_type~'.twig', 'components/tease.twig'] %}
-            </section>
+    <div id="articles" class="d-flex flex-column h-100">
 
-          {% endfor %}
-
-        {% else %}
-
-          <div class="has-background-white p-5 w-100 has-text-centered mb-5">
-            <div class="h5 sans-medium">No Posts</div>
-          </div>
-
-        {% endif %}
-
-        {% if posts.pagination.pages %}
-          {% include 'components/pagination.twig' %}
-        {% endif %}
-
-      </div><!-- /.col -->
-
-      <div class="col-lg-4 bg-gray-400 p-4">
-        <aside class="sidebar-wrapper">
-          <div class="sidebar-menu">
-            <div class="h3 mb-0">Sidebar</div>
-            <hr class="my-4">
-            <div class="bg-gray-200 p-4">
-              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2">1</span>
-              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2 mt-2">2</span>
-              <span class="block text-gray-700 text-center bg-gray-400 px-4 py-2 mt-2">3</span>
+      <div class="row ">
+        {% for post in posts %}
+          <div class="col-12 col-lg-3">
+            <div class="is-12 pb-3">
+              <section class="{% if loop.first %} post-color-purple has-text-white{% endif %}" data-scroll>
+                {% include ['components/tease-'~post.post_type~'.twig', 'components/tease.twig'] %}
+              </section>
             </div>
           </div>
-        </aside>
+        {% endfor %}
+      </div>
 
-      </div><!-- /.col -->
+      <div class="d-flex w-100 h-100">
 
-    </div><!-- /.row -->
+        {% if posts.pagination.next %}
+          <a id="load-older-posts" href="{{ posts.pagination.next.link }}" class="button is-rounded primary-fill-button uppercase sans letter-spacing justify-content-center mx-auto">Load More Posts</a>
+        {% endif %}
+
+        {#% if posts.pagination.pages %}
+          {% include 'components/pagination.twig' %}
+        {% endif %#}
+
+      </div>
+
+    </div>
 
   </div>
 
-{% endblock %}
+</div>
 
+{% endblock %}

@@ -15,7 +15,7 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
+            "placement": "left",
             "endpoint": 0
         },
         {
@@ -32,6 +32,7 @@
                 "id": ""
             },
             "post_type": [
+                "annual-meeting",
                 "event"
             ],
             "taxonomy": "",
@@ -42,7 +43,7 @@
             ],
             "elements": "",
             "min": "",
-            "max": "",
+            "max": 1,
             "return_format": "object"
         },
         {
@@ -58,7 +59,7 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
+            "placement": "left",
             "endpoint": 0
         },
         {
@@ -70,26 +71,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "40",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
-        },
-        {
-            "key": "field_5c11e1f85e736",
-            "label": "Logo Dark",
-            "name": "logo-dark",
-            "type": "textarea",
-            "instructions": "generate, then paste svg markup : https:\/\/jakearchibald.github.io\/svgomg\/",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "40",
+                "width": "80",
                 "class": "",
                 "id": ""
             },
@@ -151,7 +133,7 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
+            "placement": "left",
             "endpoint": 0
         },
         {
@@ -243,7 +225,7 @@
                 "class": "",
                 "id": ""
             },
-            "placement": "top",
+            "placement": "left",
             "endpoint": 0
         },
         {
@@ -301,60 +283,6 @@
                     "placeholder": ""
                 }
             ]
-        },
-        {
-            "key": "field_5d46d7aa28661",
-            "label": "Menu Descriptions",
-            "name": "",
-            "type": "tab",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "placement": "top",
-            "endpoint": 0
-        },
-        {
-            "key": "field_5d44ca63046e7",
-            "label": "Menu Description Time",
-            "name": "menu_description_time",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 0,
-            "delay": 0
-        },
-        {
-            "key": "field_5d44c9dace63f",
-            "label": "Menu Description Type",
-            "name": "menu_description_type",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
         }
     ],
     "location": [
@@ -374,5 +302,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1565036091
+    "modified": 1568747436
 }

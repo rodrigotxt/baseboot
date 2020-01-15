@@ -1,0 +1,30 @@
+<div class="d-flex flex-column h-100">
+
+  {% if post.thumbnail %}
+  <div class="relative">
+    <a href="{{ post.link }}">
+      <img src="{{ post.thumbnail.src|resize(500, 500, center) }}" class="lazyload w-100 d-block" alt="{{ post.thumbnail.alt }}" />
+    </a>
+    <div class="border border-primary absolute left-0 ml-3 bottom-0 mb-3 h-32 w-32 bg-white">
+      <div class="text-primary sans-medium tracking-wider text-center uppercase p-2">{{ post.get_field( 'date' )|date("F") }}</div>
+      <hr class="my-0 primary">
+      <div class="text-primary sans-medium text-6xl text-center uppercase p-2 leading-none">{{ post.get_field( 'date' )|date("j") }}</div>
+    </div>
+  </div>
+  {% endif %}
+
+
+  <a href="{{ post.link }}" class="serif-italic text-2xl leading-tight mt-3 mb-2">
+    {{ post.title }}
+  </a>
+
+  {% if function('get_the_excerpt') %}
+    <p class="serif is-size-6 has-text-black">{{ function('get_the_excerpt') }}</p>
+  {% else %}
+    <p class="serif is-size-6 has-text-black">{{ post.content|striptags|truncate(16) }}</p>
+  {% endif %}
+
+  <a href="{{ post.link }}" class="button is-rounded primary-button primary-button uppercase sans letter-spacing align-self-start mt-4 mb-5">Read More</a>
+
+</div>
+

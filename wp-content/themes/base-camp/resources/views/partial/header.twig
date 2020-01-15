@@ -1,17 +1,35 @@
 <header class="sticky-header">
-  {% include "components/navbar.twig" %}
+  <div class="header-wrap h-100 container-fluid">
+    <div class="row h-100">
+      <div class="col-8 col-lg-3 col-xl-2">
+        <div class="logomark lg:absolute h-100 w-100">
+          <a class="logo d-flex h-100 pl-lg-3" href="/">
+            {{ logolight }}
+          </a>
+        </div>
+      </div>
+      <div class="col-4 col-lg-9 col-xl-10 d-none d-lg-flex">
+        <div class="d-none d-xl-flex flex-column ml-auto">
+          {% include "components/navbar-search.twig" %}
+          {% include "components/navbar.twig" %}
+        </div>
+      </div>
+      <div class="d-flex d-xl-none ml-auto">
+        {% include "components/navbar.twig" %}
+      </div>
+    </div>
+  </div>
 </header>
 
-<main id="main-content" {% if globalbkgcolor %}style="background:{{ globalbkgcolor }}"{% endif %}>
+<main id="main-content">
 
-  {% if posttype == 'post' %}
+{% if fn('is_page', 'home') %}
 
-    {% include 'components/hero-blog.twig' %}
+  {% include 'components/hero-home.twig' %}
 
-  {% else %}
+{% else %}
 
-    {% include 'components/hero.twig' %}
+  {% include 'components/hero.twig' %}
 
-  {% endif %}
+{% endif %}
 
-  <section class="main-wrapper">

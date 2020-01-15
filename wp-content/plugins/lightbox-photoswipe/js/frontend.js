@@ -18,10 +18,22 @@ jQuery(function($) {
         
         elements.each(function(i) {
             var element = $(this);
+            var caption = null;
 
             caption = element.attr('data-caption');
 
-            if( caption == null ) {
+            if(caption == null) {
+                if(element.attr('data-caption-title') != null) {
+                    caption = '<div class="pswp__caption__title">'+element.attr('data-caption-title')+'</div>';
+                }
+
+                if(element.attr('data-caption-desc') != null) {
+                    if(caption == null) caption = '';
+                    caption = caption + '<div class="pswp__caption__desc">'+element.attr('data-caption-desc')+'</div>';
+                }
+            }
+
+            if(caption == null) {
                 describedby = element.children().first().attr('aria-describedby');
                 if(describedby != null ) {
                     description = $('#'+describedby);
@@ -34,7 +46,7 @@ jQuery(function($) {
                 }
             }
 
-            if( caption == null ) {
+            if(caption == null) {
                 if( element.next().is('.wp-caption-text') ) {
                     caption = element.next().text();
                 } else if( element.parent().next().is('.wp-caption-text') ) {
@@ -48,6 +60,10 @@ jQuery(function($) {
                 } else {
                     caption = element.attr('title');
                 }
+            }
+
+            if(caption == null && lbwps_options.use_alt == '1') {
+                caption = element.children().first().attr('alt');
             }
 
             galleryItems.push({
@@ -75,7 +91,7 @@ jQuery(function($) {
         }
 
         var vars = hash.split('&');
-        for (var i = 0; i < vars.length; i++) {
+        for(var i = 0; i < vars.length; i++) {
             if(!vars[i]) {
                 continue;
             }
@@ -113,6 +129,7 @@ jQuery(function($) {
             showHideOpacity: true,
             loop: true,
             tapToToggleControls: true,
+            clickToCloseNonZoomable: false,
         };
 		
 		if(lbwps_options.close_on_click == '0') {
@@ -161,6 +178,10 @@ jQuery(function($) {
 
         if(fromURL == true) {
             options.index = parseInt(index, 10) - 1;
+        }
+
+        if(lbwps_options.fulldesktop == '1') {
+            options.barsSize = {top: 0, bottom: 0};
         }
 
         gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);

@@ -1,4 +1,9 @@
+html {
+  background: $primary-dark;
+}
+
 body {
+  font-family: $sans;
   &.admin-bar {
     top: 46px;
     ul.mobile-menu {
@@ -7,10 +12,51 @@ body {
   }
 }
 
+#main-content {
+  background: #f2f2f2;
+}
+
+#main {
+  background: #f2f2f2;
+  padding: 40px 0;
+  margin-top: -1px;
+}
+
 .Masthead {
   z-index: 0 !important;
 }
 
-// h1 {
-//   color: #FFF;
-// }
+a {
+  color: $primary;
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.pagination-ellipsis {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination-previous,
+.pagination-next,
+.pagination-link,
+.pagination-ellipsis {
+  border-radius: 50%;
+  color: $primary;
+  border-color: $primary;
+  transition: .2s;
+  min-width: 36px;
+  max-width: 36px;
+  &:hover {
+    border-color: $secondary;
+    background: $secondary;
+    color: #fff;
+  }
+  &:focus {
+    border-radius: 50%;
+  }
+}

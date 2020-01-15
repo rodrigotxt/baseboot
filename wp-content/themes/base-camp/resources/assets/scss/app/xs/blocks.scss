@@ -1,0 +1,206 @@
+#main-content {
+}
+
+figure.wp-caption {
+  position: relative;
+}
+
+.captioninfo {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 35px;
+  height: 35px;
+  padding: 10px;
+  line-height: 1;
+  border-radius: 40px;
+  background: rgba(0,0,0,.8);
+  color: #FFF;
+  text-align: center;
+  opacity: 1;
+  cursor: pointer;
+  &.hide {
+    opacity: 0;
+  }
+}
+
+figure.wp-caption:hover {
+  &:after {
+    display: none;
+  }
+}
+
+figure.wp-caption .wp-caption-text {
+  position: absolute;
+  width: 0;
+  // line-height: 35px;  //Should be same as height
+  background: rgba(0,0,0,.8);
+  bottom: 20px;  //Should be same as height, only negative
+  right: 20px;
+  color: #fff;
+  padding: 10px;
+  display: none;
+  //transition: all .35s;
+  font-size: 20px;
+  text-align: center;
+  &.active {
+    bottom: 0;
+    padding: 10px;
+    display: block;
+    width: calc(100% - 40px);
+    background: rgba(0,0,0,.8);
+  }
+}
+
+
+
+
+
+
+#load-older-posts {
+  position: absolute;
+  left: calc(50% - 110px);
+  right: calc(50% - 110px);
+  a.button {
+    width: 220px;
+    text-align: center;
+  }
+}
+
+.alm-reveal {
+  display: flex;
+}
+
+.bkg-img {
+  transition: all .35s;
+  &.active {
+    background-size: 110%;
+  }
+}
+
+.flex-blocks {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  // padding: 0;
+}
+
+ol.ol-block {
+  list-style: none;
+  counter-reset: my-awesome-counter;
+  margin: 0;
+  padding: 0;
+  li {
+    counter-increment: my-awesome-counter;
+    font-size: 16px;
+    margin-bottom: 10px;
+    &:before {
+      content: " " counter(my-awesome-counter);
+      font-family: $sans-medium;
+      font-size: 50px;
+      min-width: 25px;
+      margin-right: 30px;
+      line-height: 1;
+    }
+  }
+}
+
+
+// .wysiwyg ul
+//   margin: 15px 15px;
+//   padding: 25px 0 10px
+//   color: #141414
+//   li
+//     font-size: 20px
+//     // margin-bottom: 25px
+//     line-height: 32px
+
+
+.wysiwyg {
+  font-size: 18px;
+  font-family: $serif;
+  blockquote {
+    color: $primary;
+    position: relative;
+    padding: 20px;
+    &:before {
+      content: '“';
+      font-size: 32px;
+      position: absolute;
+      top: 15px;
+      left: 3px;
+      color: $primary;
+    }
+    p {
+      font-size: 24px;
+      line-height: 36px;
+      span { /* styles closing blockquote */
+        font-size: 32px;
+        margin-left: 6px;
+      }
+    }
+  }
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, {
+    font-family: $sans-medium;
+    margin: 25px 0;
+  }
+  p {
+    line-height: 30px;
+    font-size: 18px;
+  }
+  a {
+    font-family: $sans;
+    color: #000;
+    background-image: linear-gradient(to bottom, $secondary 2px, transparent 2px);
+    background-position: 0 1.1em;
+    background-repeat: repeat-x;
+    background-size: 2px 6px;
+    opacity: 1;
+    transition: all .2s;
+    &:hover {
+      opacity: .65;
+      text-decoration: none;
+    }
+  }
+  b, strong {
+    font-family: $sans-medium;
+    font-weight: normal;
+    font-size: 20px;
+  }
+  ol {
+   list-style: none;
+   counter-reset: counter;
+   margin: 15px 0 15px;
+   padding: 25px 0 10px;
+   color: #141414;
+   li {
+     counter-increment: counter;
+     font-size: 20px;
+     margin-bottom: 25px;
+     line-height: 32px;
+     &:before {
+       content: counter(counter) ".";
+       font-family: inherit;
+       margin-right: 7px;
+       font-size: 20px;
+       font-weight: 900;
+      }
+    }
+  }
+  ul {
+    font-size: 20px;
+    padding: 20px;
+    li {
+      padding: 0 0 20px;
+      list-style-type: disc;
+      ul {
+        li {
+          list-style-type: circle;
+        }
+      }
+    }
+  }
+  .aside {
+    font-family: $sans-medium;
+  }
+}

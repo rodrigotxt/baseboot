@@ -1,6 +1,126 @@
 hr {
-  background: #676767;
+  background: $primary-light;
   height: 1px;
+  width: 100%;
+  &.blocks {
+    background: $primary-light;
+    height: 1px;
+  }
+  &.primary {
+    background: $primary;
+    height: 1px;
+    border: 0;
+  }
+  &.secondary {
+    background: $secondary;
+    height: 1px;
+    border: 0;
+  }
+}
+
+iframe {
+  min-width: 100%;
+}
+
+.text-primary {
+  color: $primary !important;
+}
+a.text-secondary {
+  color: $secondary !important;
+  &:hover, &:focus, &:active {
+    color: $secondary !important;
+  }
+}
+.text-secondary {
+  color: $secondary !important;
+  &:hover, &:focus, &:active {
+    color: $secondary !important;
+  }
+}
+
+
+.bg-secondary {
+  background: $secondary;
+}
+
+.bg-primary {
+  background: $primary;
+}
+
+.bg-primary-dark {
+  background: $primary-dark;
+}
+
+.text-primary-dark {
+  color: $primary-dark;
+}
+
+.table, table {
+  background: transparent;
+  strong {
+    font-family: $sans-medium;
+    color: $primary;
+  }
+  td, th {
+    border: 0px;
+    padding: 10px;
+  }
+  &.is-narrow {
+    td, th {
+      border: 0px;
+      padding: 10px;
+    }
+  }
+}
+
+.z-1 {
+  z-index: 1;
+}
+
+.container {
+  &.narrow {
+    max-width: $md;
+  }
+}
+
+.border-primary {
+  border-color: $primary !important;
+}
+.border-secondary {
+  border-color: $secondary !important;
+}
+
+.full-width-img {
+  height: 60vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+.lazyload,
+.lazyloading {
+  opacity: .09;
+}
+
+.lazyloaded {
+  opacity: 1;
+  transition: opacity 1.5s;
+}
+
+ .owl-stage {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.owl-item{
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: auto !important;
 }
 
 // [data-scroll] {
@@ -12,3 +132,114 @@ hr {
 // [data-scroll="out"] {
 //   opacity: 0;
 // }
+
+.chevron-bottom {
+  &:before {
+    border-style: solid;
+    border-width: 2px 2px 0 0;
+    content: '';
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    top: 7px;
+    left: 0;
+    position: relative;
+    transform: rotate(-45deg);
+    vertical-align: top;
+  }
+}
+.chevron-right {
+  &:before {
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+    border-color: #000;
+    content: '';
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    top: 7px;
+    left: 0;
+    position: relative;
+    transform: rotate(45deg);
+    vertical-align: top;
+  }
+}
+.chevron-left {
+  &:before {
+    border-style: solid;
+    border-width: 1px 1px 0 0;
+    border-color: #000;
+    content: '';
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    top: 7px;
+    right: -6px;
+    position: relative;
+    transform: rotate(-130deg);
+    vertical-align: top;
+  }
+}
+
+
+.go-top {
+  border-radius: 5px;
+  background-color: rgb(1,14,27);
+  background-color: rgba(1, 14, 27, .7);
+  position: fixed;
+  width: 45px;
+  height: 45px;
+  display: block;
+  right: 15px;
+  bottom: 15px;
+  border: none;
+  opacity: 0;
+  z-index: -1;
+  transition: all .4s ease-in;
+  &:hover {
+    opacity: 1;
+    background-color: rgb(1,14,27);
+    background-color: rgba(1, 14, 27, .9);
+  }
+  &.is-active {
+    opacity: .8;
+    z-index: 4;
+  }
+}
+
+
+// Embeds responsive
+//
+// Credit: Nicolas Gallagher and SUIT CSS.
+
+.embed-responsive {
+  position: relative;
+  display: block;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+
+  .embed-responsive-item,
+  iframe,
+  embed,
+  object,
+  video {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+// Modifier class for 16:9 aspect ratio
+.embed-responsive-16by9 {
+  padding-bottom: 56.25%;
+}
+
+// Modifier class for 4:3 aspect ratio
+.embed-responsive-4by3 {
+  padding-bottom: 75%;
+}

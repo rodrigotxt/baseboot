@@ -3,98 +3,13 @@
     "title": "Hero",
     "fields": [
         {
-            "key": "field_5c0573cb3ddeb",
-            "label": "Hero Type",
-            "name": "post_hero_type",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "30",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "background-video": "Background Video",
-                "background-image": "Background Image"
-            },
-            "default_value": [],
-            "allow_null": 1,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_5c05b120c9015",
-            "label": "Hero Height",
-            "name": "post_hero_height",
-            "type": "select",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "30",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "full-height": "Full Height Hero",
-                "half-height": "Half Height Hero"
-            },
-            "default_value": [],
-            "allow_null": 1,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
-        },
-        {
-            "key": "field_5c0574eab4e8c",
-            "label": "Hero Video Desktop ID",
-            "name": "post_hero_video_desktop",
-            "type": "text",
-            "instructions": "example: 5777280\r\n\r\nhttps:\/\/vimeo.com\/<strong>5777280<\/strong>",
-            "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5c0573cb3ddeb",
-                        "operator": "==",
-                        "value": "background-video"
-                    }
-                ]
-            ],
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
             "key": "field_5c019236d7fef",
             "label": "Hero Background Image",
             "name": "post_hero_background",
             "type": "image",
             "instructions": "Ideally a 16x 9 ratio",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5c0573cb3ddeb",
-                        "operator": "==",
-                        "value": "background-image"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "50",
                 "class": "",
@@ -112,21 +27,32 @@
             "mime_types": ""
         },
         {
+            "key": "field_5db8839f9aac2",
+            "label": "Hero Background Video ID",
+            "name": "post_hero_background_video",
+            "type": "text",
+            "instructions": "16x 9 ratio\r\n\r\nexample: 5777280\r\n\r\nhttps:\/\/vimeo.com\/<strong>5777280<\/strong>",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5cc1b6102fdda",
             "label": "Hero Background Image Mobile",
             "name": "post_hero_background_mobile",
             "type": "image",
             "instructions": "Ideally a square ratio",
             "required": 0,
-            "conditional_logic": [
-                [
-                    {
-                        "field": "field_5c0573cb3ddeb",
-                        "operator": "==",
-                        "value": "background-image"
-                    }
-                ]
-            ],
+            "conditional_logic": 0,
             "wrapper": {
                 "width": "50",
                 "class": "",
@@ -182,45 +108,10 @@
             "new_lines": ""
         },
         {
-            "key": "field_5c01c42b0ed57",
-            "label": "Hero Overlay Color",
-            "name": "post_hero_overlay_color",
-            "type": "color_picker",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33.333",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "#000000"
-        },
-        {
-            "key": "field_5c01c4570ed58",
-            "label": "Hero Overlay Opacity",
-            "name": "post_hero_overlay_opacity",
-            "type": "range",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "33.333",
-                "class": "",
-                "id": ""
-            },
-            "default_value": 55,
-            "min": 0,
-            "max": 99,
-            "step": "",
-            "prepend": "",
-            "append": ""
-        },
-        {
-            "key": "field_5ca8b8492aac2",
-            "label": "Hero CTA",
-            "name": "hero_cta",
-            "type": "link",
+            "key": "field_5d7ba6d22487d",
+            "label": "CTA Repeater",
+            "name": "cta_repeater",
+            "type": "repeater",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -229,17 +120,114 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "row",
+            "button_label": "Add Link",
+            "sub_fields": [
+                {
+                    "key": "field_5d7c1bfaf5568",
+                    "label": "CTA Title",
+                    "name": "cta_title",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5d7c1c49adaa3",
+                    "label": "CTA Link Type",
+                    "name": "cta_link_type",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "internal": "Internal",
+                        "external": "External"
+                    },
+                    "allow_null": 1,
+                    "other_choice": 0,
+                    "default_value": "",
+                    "layout": "horizontal",
+                    "return_format": "value",
+                    "save_other_choice": 0
+                },
+                {
+                    "key": "field_5d7c1c89adaa4",
+                    "label": "Internal Link",
+                    "name": "internal_link",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5d7c1c49adaa3",
+                                "operator": "==",
+                                "value": "internal"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "page",
+                        "annual-meeting"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1
+                },
+                {
+                    "key": "field_5d7c1cbbadaa5",
+                    "label": "External Link",
+                    "name": "external_link",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_5d7c1c49adaa3",
+                                "operator": "==",
+                                "value": "external"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                }
+            ]
         }
     ],
     "location": [
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "post"
-            }
-        ],
         [
             {
                 "param": "post_type",
@@ -251,28 +239,21 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "videos"
+                "value": "articles"
             }
         ],
         [
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "event"
+                "value": "listings"
             }
         ],
         [
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "grant"
-            }
-        ],
-        [
-            {
-                "param": "post_type",
-                "operator": "==",
-                "value": "campaigns"
+                "value": "events"
             }
         ]
     ],
@@ -284,5 +265,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1563994573
+    "modified": 1579116196
 }

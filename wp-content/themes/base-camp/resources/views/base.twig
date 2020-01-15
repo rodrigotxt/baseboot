@@ -1,16 +1,16 @@
 {% include 'partial/head.twig' %}
 
 {% include 'partial/header.twig' %}
-<div class="py-5">
+
+<section id="main" class="main-wrapper {% if fn('is_page', 'regions') or fn('is_page', 'our-work') %} p-0{% endif %}">
 
 {% block content %}
 
-
   {{ messages.base.no_content }}
 
-
 {% endblock %}
-</div>
+
+</section>
 
 {% include 'partial/footer.twig' %}
 

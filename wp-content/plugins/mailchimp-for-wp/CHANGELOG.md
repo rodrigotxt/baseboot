@@ -1,11 +1,48 @@
 Changelog
 =========
 
+#### 4.5.5 - Sep 12, 2019
+
+**Fixes**
+
+- Google reCAPTCHA script was still loading even if no forms have it enabled.
+
+
+#### 4.5.4 - Sep 11, 2019
+
+**Improvements**
+
+- Removed custom color from menu item for improved accessibility.
+- Take birthday field format into account when sending data to Mailchimp.
+- Print Google reCAPTCHA script in footer.
+
+**Changes**
+
+- Changed plugin name to MC4WP instead of Mailchimp for WordPress.
+
+
+#### 4.5.3 - July 23, 2019
+
+**Fixes**
+
+- Temporarily switch status of pending subscribers to "unsubscribe" versus deleting susbcriber before re-subscribing.
+- Deprecation notice for Gravity Forms version 2.4 and higher.
+
+**Improvements**
+
+- Filter out empty tags when applying tags to new subscribers.
+- Show all not installed integrations.
+- Show notice when form doesn't have a Mailchimp list selected to subscribe people to.
+- Check function existence for compatibility with WordPress 4.7
+- Don't submit form when Google reCAPTCHA is enabled but errors.
+- Update third-party JavaScript dependencies.
+
+
 #### 4.5.2 - May 8, 2019
 
 **Improvements**
 
-- Accept more truthy values in custom integration for improved compatability with third-party forms.
+- Accept more truthy values in custom integration for improved compatibility with third-party forms.
 - Update JavaScript dependencies.
 - Load Google reCaptcha script in footer (if needed). 
 

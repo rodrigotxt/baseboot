@@ -1,0 +1,21 @@
+<div class="d-flex justify-content-center">
+
+    <a href="https://www.facebook.com/sharer/sharer.php?u={{ post.link|e('url') }}&picture={{ TimberImage(post.thumbnail).src }}&t={{ post.title|e('url') }}"
+            OnClick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=626,height=436'); return false;"
+            data-share="social"
+            target="_blank"
+            rel="nofollow"
+            data-placement="top"
+            title="Share on Facebook">
+            <span aria-hidden="true" class="icon-facebook"></span>
+    </a>
+
+    <a target="_blank" class="share-button share-twitter mx-3" href="https://twitter.com/intent/tweet?&text=%23TransitCenter&via=TransitCenter {{ post.post_excerpt }}" title="Tweet this" OnClick="window.open(this.href,'targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=626,height=436'); return false;" data-share="social">
+      <span aria-hidden="true" class="icon-twitter"></span>
+    </a>
+
+    <a href="javascript:void(0)" onclick="window.open( 'http://www.linkedin.com/shareArticle?mini=true&url={{ post.link|e('url') }}', 'sharer', 'toolbar=0, status=0, width=626, height=436');return false;" title="Linkedin">
+      <span aria-hidden="true" class="icon-linkedin"></span>
+    </a>
+
+</div>

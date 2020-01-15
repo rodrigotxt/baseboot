@@ -7,9 +7,9 @@
 
 @import './mixins.scss'; // for tailwind @apply
 
-@import "../../../node_modules/bootstrap-4-grid/css/grid.min.css";
+@import "../../../node_modules/bootstrap-4-grid/scss/grid.scss";
 
-@import "../../../node_modules/bootstrap-utilities/bootstrap-utilities";
+@import "../../../node_modules/sal.js/dist/sal";
 
 @import './fonts.scss';
 
@@ -18,6 +18,8 @@
 @import './accessibility.scss';
 
 @import './utilities.scss';
+
+@import '/variables';
 
 @import './helpers.scss';
 
@@ -37,5 +39,20 @@
 
 @media ( min-width: map-get($breakpoints, xl) ) {
     @import './app/xl/**/*.scss';
+}
+
+
+// IE 11 flexbox fix.
+// TODO: Remove when fixed in bootstrap.
+// https://github.com/twbs/bootstrap/issues/17310
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    @for $size from 1 through $grid-columns {
+      .col-#{$breakpoint}-#{$size} {
+          max-width: percentage($size / $grid-columns);
+      }
+    }
+  }
 }
 

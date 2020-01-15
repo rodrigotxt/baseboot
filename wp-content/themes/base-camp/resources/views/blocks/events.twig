@@ -1,0 +1,83 @@
+<div class="carousel">
+
+  {% if block.is_title == "true" %}
+    <div class="d-flex mt-0 mt-lg-5">
+      <div id="{{ anchor }}" class="sans-medium text-xl uppercase color-primary d-flex mr-auto">{{ block.title }}</div>
+      <div class="ml-auto d-flex"><a href="/news">See All</a></div>
+    </div>
+    <hr class="mb-3 primary">
+    {% include 'partial/block-intro.twig' %}
+  {% endif %}
+
+  {% if TimberPost(block.events_relationship) and block.show_latest != "true" %}
+
+    <div id="carousel-gallery-{{ loop.index }}" class="relative d-block mb-5 mb-lg-0">
+
+    <carousel :responsive="{0:{items:1,autoplay:false,stagePadding:0,margin:15,center:false},768:{items:4,margin:20,stagePadding:0}}" :nav="true" :loop="false" :autoHeight="true" :autoplay="false">
+
+      {% set count = 0 %}
+      {% for nc in block.events_relationship %}
+        {% set count = count + 1 %}
+      {% endfor %}
+
+      {% if count > 4 %}
+        <template slot="next"><span class="owl-next chevron-right"></span></template>
+      {% endif %}
+
+      {% for post in TimberPost(block.events_relationship) %}
+
+        {% include ['components/tease-'~post.post_type~'.twig', 'components/tease.twig'] %}
+
+      {% endfor %}
+
+      {% if count > 4 %}
+        <template slot="prev"><span class="owl-prev chevron-left"></span></template>
+      {% endif %}
+
+    </carousel>
+
+    </div>
+
+  {% else %}
+
+  {% if relevents is empty %}
+    {% if post.can_edit %}
+      {% if not in_production %}
+        {% if user %}
+          Hello {{ user.user_nicename|capitalize }}!
+        {% endif %}
+        You need to add tags to events that match the tags of this content. 
+      {% endif %}
+    {% endif %}
+  {% endif %}
+
+  <div id="carousel-gallery-{{ loop.index }}"  class="relative d-block mb-5 mb-lg-0">
+
+    <carousel :responsive="{0:{items:1,autoplay:false,stagePadding:0,margin:15,center:false},768:{items:4,margin:20,stagePadding:0}}" :nav="true" :loop="false" :autoHeight="true" :autoplay="false">
+
+      {% set count = 0 %}
+      {% for nc in relevents %}
+        {% set count = count + 1 %}
+      {% endfor %}
+
+      {% if count > 4 %}
+        <template slot="next"><span class="owl-next chevron-right"></span></template>
+      {% endif %}
+
+      {% for post in relevents %}
+
+        {% include ['components/tease-'~post.post_type~'.twig', 'components/tease.twig'] %}
+
+      {% endfor %}
+
+      {% if count > 4 %}
+        <template slot="prev"><span class="owl-prev chevron-left"></span></template>
+      {% endif %}
+
+    </carousel>
+
+  </div>
+
+  {% endif %}
+
+</div><!-- #featured-publication -->

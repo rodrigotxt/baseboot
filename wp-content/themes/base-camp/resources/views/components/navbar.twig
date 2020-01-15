@@ -1,38 +1,110 @@
 <nav class="navbar d-flex w-100">
 
+  <div id="navbar-main" class="navbar-menu d-flex w-100 align-items-center">
 
-
-    <div id="navbar-main" class="navbar-menu d-flex w-100 align-items-center px-4">
-      <a class="logo d-block" href="/">
-        {{ logolight }}
-      </a>
-      <ul class="d-none d-lg-flex ml-auto">
-        {% for item in menu.items %}
-        <li class="navbar-item">
-          <a class="nav-main-link {% if item.current %}active{% endif %}" href="{{ item.link }}"><span>{{ item.title }}</span>
+    {# /////////// desktop nav /////////////// #}
+    <ul class="d-none d-xl-flex ml-auto">
+      {% for item in mainmenu.items %}
+      <span class="navwrap d-flex">
+        <li class="navbar-item d-flex menu-level-0 {% if item.children %}menu-item-has-children{% endif %}">
+          <a class="nav-main-link" href="{{ item.link }}"><span>{{ item.title }}</span>
             <div class="navbar-link-bkg is-hidden-touch"></div>
           </a>
+          {% if item.children %}
+            {% set count = 0 %}
+            {% for child in item.children %}
+              {% set count = count + 1 %}
+            {% endfor %}
+            <ul id="dropdownMenuButton" class="nav-drop menu-level-1 py-3 {% if count > 8 %}wide-subnav{% endif %}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+              {% set navitems = item.children|length %}
+
+              {% if navitems > 8 %}
+                {% set itemsplit = navitems / 2 %}
+              {% else %}
+                {% set itemsplit = 1 %}
+              {% endif %}
+
+              <div class="row m-0 {% if navitems < 8 %}flex-column{% endif %}">
+
+              {% for child in item.children|batch(itemsplit, null) %}
+                {% if navitems > 8 %}
+                  <div class="col-md-6">
+                {% endif %}
+                  {% for article in child %}
+                    <li class="nav-drop-item" aria-labelledby="dropdownMenuButton">
+                      <a href="{{ article.link }}" class="anchor-page sans is-size-6 py-3" target="{{ article.is_external ? '_blank' : '_self' }}">
+                        <span>{{ article.title }}</span>
+                      </a>
+                    </li>
+                  {% endfor %}
+                {% if navitems > 8 %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+
+              </div>
+
+            </ul>
+          {% endif %}
+
         </li>
-        {% endfor %}
-      </ul>
-      <ul class="mobile-menu bg-white">
-        {% for item in menu.items %}
-        <li class="navbar-item">
-          <a class="nav-main-link {% if item.current %}active{% endif %}" href="{{ item.link }}"><span>{{ item.title }}</span>
-            <div class="navbar-link-bkg is-hidden-touch"></div>
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
+      </span>
+      {% endfor %}
+      <li>
+        <a href="#0" class="search-icon-btf">
+          <span class="icon-search text-3xl"></span>
+        </a>
+      </li>
+    </ul>
 
-    </div>
+  </div>
 
-
-    <button class="navbar-burger burger d-block d-lg-none" type="button" data-toggle="collapse" data-target="#navbar-main" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
+  <button class="navbar-burger burger d-block d-xl-none {% if fn('is_page', 'home') or posttype == 'annual-meeting' %}white-style{% endif %}" type="button" data-toggle="collapse" data-target="#navbar-main" aria-controls="navbar-main" aria-expanded="false" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
 </nav>
+
+{# /////////// mobile nav /////////////// #}
+<div class="accordion">
+  <ul class="mobile-menu bg-white overflow-auto">
+    <div id="search" class="mobile-search my-4">
+      <form role="search" method="get" id="searchform" class="searchform" action="{{site.link}}" >
+        <input class="input search is-medium bg-transparent" placeholder="Search" type="text" value="{{ function('get_search_query') }}" name="s" id="s" />x
+      </form>
+    </div>
+    {% for item in mainmenu.items %}
+    <li class="navbar-item">
+      <div class="d-flex">
+        <a class="nav-main-link text-black p-0 text-2xl my-3 {% if item.current %}active{% endif %} {% if fn('is_page', 'home') or posttype == 'annual-meeting' or posttype == 'policies' %}white-style{% endif %}" href="{{ item.link }}">
+          <span>{{ item.title }}</span>
+        </a>
+        {% if item.children %}
+          <a href="#0" class="toggle-shelf d-flex ml-auto"><span class="toggle-close"></span></a>
+        {% endif %}
+      </div>
+      {% if item.children %}
+        <ul class="accordion-content">
+          <div class="row">
+          {% for child in item.children %}
+          <div class="col-md-6">
+            <li class="nav-drop-item mb-md-4">
+              <a href="{{ child.link }}" class="sans text-xl p-0" target="{{ child.is_external ? '_blank' : '_self' }}">
+                {{ child.title }}
+              </a>
+              <div class="d-block d-md-none">{% if not loop.last %}<hr class="my-3">{% else %}<div class="mt-3"></div>{% endif %}</div>
+            </li>
+          </div>
+          {% endfor %}
+          </div>
+        </ul>
+      {% endif %}
+      <hr class="m-0">
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+

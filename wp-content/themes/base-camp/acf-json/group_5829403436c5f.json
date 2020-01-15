@@ -3,6 +3,21 @@
     "title": "Event Options",
     "fields": [
         {
+            "key": "field_5d7a8a27b1102",
+            "label": "Col1",
+            "name": "col1",
+            "type": "column",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "column-type": "3_5"
+        },
+        {
             "key": "field_5829403de6df3",
             "label": "Date & Time (start)",
             "name": "date",
@@ -11,7 +26,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "30",
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -28,7 +43,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "30",
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -45,7 +60,7 @@
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
-                "width": "40",
+                "width": "",
                 "class": "",
                 "id": ""
             },
@@ -56,10 +71,25 @@
             "delay": 0
         },
         {
-            "key": "field_5829412ae6df5",
-            "label": "Co-hosts",
-            "name": "co-hosts",
-            "type": "text",
+            "key": "field_5d7a8a5ab1103",
+            "label": "Col2",
+            "name": "_copy",
+            "type": "column",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "column-type": "2_5"
+        },
+        {
+            "key": "field_5d7a8a69b1104",
+            "label": "Registration Link",
+            "name": "registration_link",
+            "type": "url",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -69,16 +99,32 @@
                 "id": ""
             },
             "default_value": "",
+            "placeholder": ""
+        },
+        {
+            "key": "field_5d7a8a7cb1105",
+            "label": "Registration Link Button Title",
+            "name": "registration_link_button_title",
+            "type": "text",
+            "instructions": "Overrides Register CTA Button name",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "Register Now",
             "placeholder": "",
             "prepend": "",
             "append": "",
             "maxlength": ""
         },
         {
-            "key": "field_584fb9b283b20",
-            "label": "Settings",
-            "name": "event_settings",
-            "type": "checkbox",
+            "key": "field_5dc1d9d5bf1da",
+            "label": "Hide Event Time?",
+            "name": "hide_event_time",
+            "type": "true_false",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -87,16 +133,11 @@
                 "class": "",
                 "id": ""
             },
-            "choices": {
-                "hide_link": "Do not provide a link to this event",
-                "show_time": "Show time"
-            },
-            "default_value": [],
-            "layout": "vertical",
-            "toggle": 0,
-            "return_format": "value",
-            "allow_custom": 0,
-            "save_custom": 0
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
         }
     ],
     "location": [
@@ -116,5 +157,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1564087809
+    "modified": 1576674068
 }

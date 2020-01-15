@@ -1,0 +1,56 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+<div class="container">
+
+  <h1 class="text-6xl sans-medium color-primary mb-5 text-center">News</h1>
+
+  <div class="mb-5">
+    <hr class="primary my-3">
+      <div class="w-100 lg:justify-center whitespace-no-wrap d-flex overflow-x-scroll scrolling-touch sans-medium uppercase py-4 pl-lg-5">
+        {% for term in categories %}
+            {% if term.slug != 'uncategorized' %}
+            <a href="/category/{{ term.slug }}" class="px-3">{{term}}</a>{#{term.count}#}
+            {% endif %}
+        {% endfor %}
+      </div>
+    <hr class="primary my-3">
+  </div>
+
+
+  <div class="row">
+    {% for post in posts %}
+      <div class="col-12 col-lg-3">
+        <div class="is-12 pb-3">
+          <section class="{% if loop.first %} post-color-purple has-text-white{% endif %}">
+            {% include ['components/tease-'~post.post_type~'.twig', 'components/tease.twig'] %}
+          </section>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if posts.pagination.pages %}
+    {% include 'components/pagination.twig' %}
+  {% endif %}
+
+  </div>
+
+
+  {% set flex_blocks = flexblock %}
+
+  {% if flex_blocks %}
+
+    {% include 'blocks/flex-content.twig' with flex_blocks %}
+
+  {% endif %}
+
+  {# //////////////////////////////////////// #}
+  {# ///////////// Related Posts //////////// #}
+  {# //////////////////////////////////////// #}
+
+  {% include ['components/related-pages.twig'] %}
+
+
+{% endblock %}

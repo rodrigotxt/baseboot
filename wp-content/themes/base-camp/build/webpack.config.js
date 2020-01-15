@@ -12,8 +12,21 @@ const config = require('./config');
 const globImporter = require('node-sass-glob-importer');
 
 const inProduction = process.env.NODE_ENV === 'production';
+const inWatch = process.env.NODE_ENV != 'production';
 const styleHash = inProduction ? '.[contenthash]' : '';
 const scriptHash = inProduction ? '.[chunkhash]' : '';
+
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+
+console.log( inWatch );
+
+// https://gist.github.com/andrewdelprete/d2f44d0c7f120aae1b8bd87cbf0e3bc8
+class TailwindExtractor {
+  static extract(content) {
+    return content.match(/[A-z0-9-:\/]+/g);
+  }
+}
 
 // LOADER HELPERS
 const extractCss = {
@@ -27,6 +40,29 @@ const cssLoader = {
   loader: 'css-loader',
   options: {
     importLoaders: 1,
+    sourceMap: true,
+    importer: globImporter()
+  },
+};
+
+
+const postCssLoader = {
+  loader: 'postcss-loader',
+  options: {
+    sourceMap: true,
+    plugins: [
+      require('tailwindcss'),
+    ]
+  },
+};
+
+const sassLoader = {
+  loader: 'sass-loader',
+  options: {
+    includePaths: [
+      path.resolve(__dirname, '../resources/assets/scss'),
+    ],
+    data: '@import "shared-with-vue";',
     sourceMap: true,
     importer: globImporter()
   },
@@ -79,7 +115,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['vue-style-loader', extractCss, cssLoader, 'postcss-loader'],
+        use: ['vue-style-loader', extractCss, cssLoader, postCssLoader],
       },
       {
         test: /\.scss$/,
@@ -88,27 +124,8 @@ module.exports = {
           'vue-style-loader',
           extractCss,
           cssLoader,
-          {
-            loader: 'postcss-loader',
-            options: {
-              sourceMap: true,
-              // importer: globImporter()
-              plugins: [
-                require('tailwindcss'),
-              ]
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              includePaths: [
-                path.resolve(__dirname, '../resources/assets/scss'),
-              ],
-              data: '@import "shared-with-vue";',
-              sourceMap: true,
-              importer: globImporter()
-            },
-          },
+          postCssLoader,
+          sassLoader
         ],
       },
       {
@@ -150,6 +167,9 @@ module.exports = {
   },
 
   plugins: [
+
+    // new BundleAnalyzerPlugin(),
+
     new VueLoaderPlugin(),
 
     new CleanWebpackPlugin(['static'], {
@@ -168,7 +188,7 @@ module.exports = {
 
     new BrowserSyncPlugin({
       host: 'localhost',
-      port: 3000,
+      port: 2323,
       proxy: config.devUrl, // YOUR DEV-SERVER URL
       files: ['./*.php', './resources/views/**/*.twig', './static/css/*.*', './static/js/*.*'],
     },
@@ -191,6 +211,12 @@ if (inProduction) {
       paths: () => glob.sync(path.join(__dirname, '../resources/**/*'), { nodir: true }),
       only: ['styles', 'scripts'],
       whitelist: config.whitelist,
-    }),
+      extractors: [
+        {
+          extractor: TailwindExtractor,
+          extensions: ["html", "twig", "js", "php", "vue"]
+        }
+      ]
+    })
   );
 }

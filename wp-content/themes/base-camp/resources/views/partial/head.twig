@@ -4,14 +4,14 @@
 <!--[if IE 7]><html class="no-js ie ie7 lt-ie9 lt-ie8" {{site.language_attributes}}> <![endif]-->
 <!--[if IE 8]><html class="no-js ie ie8 lt-ie9" {{site.language_attributes}}> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js bg-orange-600" {{site.language_attributes}}>
+<html class="no-js fixnav-init" {{site.language_attributes}}>
   <!--<![endif]-->
 
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
 
     {# force Internet Explorer to use the latest rendering engine available #}
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <title>
       {% if wp_title %}
@@ -39,7 +39,11 @@
     {{ function('wp_head') }}
   </head>
 
-  <body class="bg-yellow-600 {{ body_class }}">
+  <a href="#main" id="accessibility-start" class="visually-hidden focusable skip-link" role="complementary">
+    Skip to Main Content
+  </a>
+
+  <body class="{{ body_class }}">
     <div class="pageloader is-active"></div>
 
     {% if post.can_edit %}

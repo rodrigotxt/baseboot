@@ -1,7 +1,7 @@
 <div id="gallery" class="mt-2 mt-lg-4 mb-3 mb-lg-4">
 
-  {% if block.title or block.intro or block.sub_title %}
-  <div class="mb-4">
+  {% if block.is_title == "true" %}
+  <div class="container narrow text-center">
     {% include 'partial/block-title.twig' %}
     {% include 'partial/block-intro.twig' %}
   </div>
@@ -10,45 +10,47 @@
 
     {% if block.gallery_type == "normal" or block.gallery_type == "carousel" and not block.full_width_carousel == "true" %}
 
-      <div class="columns is-widescreen">
-
-        <div class="column is-3-widescreen">
-
-          {% if block.pull_quote %}
-            <p class="wp-caption-text px-2 px-lg-0">{{ block.pull_quote }}</p>
-          {% endif %}
-
-        </div>
-
-        <div class="column is-8-widescreen wysiwyg">
+      <div class="container">
 
     {% endif %}
 
     {% if block.gallery_type == "carousel" or block.gallery_type == "image-caption" %}
 
-    <div id="carousel-gallery-{{key}}">
+    <div id="carousel-gallery-{{key}}" class="relative {% if  block.full_width_carousel == "true" %}mx-20{% endif %}">
 
-      <carousel :responsive="{0:{items:1,nav:false,autoplay:false,margin:20,stagePadding:0},768:{items:2,nav:false,margin:20,dots:true}}" :autoWidth="false" :center="false" :loop="false" :autoHeight="false" :autoplay="false">
+      <carousel :responsive="{0:{items:1,nav:false,autoplay:false,margin:20,stagePadding:0},768:{items:3,nav:false,margin:20,dots:true}}" :autoWidth="false" :nav="true" :center="false" :loop="false" :autoHeight="false" :autoplay="false">
 
+    {% endif %}
+
+
+    {% set count = 0 %}
+    {% for nc in block.block_gallery %}
+      {% set count = count + 1 %}
+    {% endfor %}
+
+    {% if count > 3 %}
+      <template slot="next"><span class="owl-next chevron-right"></span></template>
     {% endif %}
 
     {% for item in block.block_gallery %}
 
-      <div class="overlay align-items-center has-text-center mb-auto">
-        <img class="image w-100 {% if block.gallery_type == "full-width" %} full-width-img {% endif %}{% if item.caption %}mb-0{% else %}mb-3{% endif %} lazyload" src="{{ Image(item) }}" alt="{{ Image(item).alt }}"/>
-        {% if item.caption %}
-          <p class="wp-caption-text {% if block.gallery_type == "normal" %}py-3{% else %} p-3{% endif %}" style="color:{{ block.block_text_color }};">{{ item.caption }}</p>
-        {% endif %}
-      </div>
 
-      {% if block.gallery_type == "image-caption" %}
-      <div class="d-flex flex-column">
-        <div class="has-color-primary h2 is-size-4-mobile is-size-2-desktop d-flex align-items-center px-3 pt-3 px-lg-5 pt-lg-5">{{ block.image_with_caption_title|striptags }}</div>
-        <div class="has-color-primary h3 is-size-5-mobile is-size-3-desktop d-flex align-items-center p-3 p-lg-5">{{ block.image_with_caption|striptags }}</div>
-      </div>
-      {% endif %}
+      <figure class="wp-caption w-100">
+        <a href="{{ Image(item).src }}" class="z-0">
+          <img class="image w-100 {% if block.gallery_type == "full-width" %} full-width-img {% endif %}{% if item.caption %}mb-0{% else %}mb-3{% endif %} lazyload" src="{{ Image(item).src|resize(1200) }}" alt="{{ item.alt }}"/>
+        </a>
+        {% if item.caption %}
+          <p class="serif text-xs text-gray-600">{{ item.caption }}</p>
+        {% endif %}
+      </figure>
+
 
     {% endfor %}
+
+
+    {% if count > 3 %}
+      <template slot="prev"><span class="owl-prev chevron-left"></span></template>
+    {% endif %}
 
     {% if block.gallery_type == "carousel" %}
 
@@ -60,9 +62,7 @@
 
     {% if block.gallery_type == "normal" or block.gallery_type == "carousel" and not block.full_width_carousel == "true"%}
 
-      </div><!-- /.column -->
-
-    </div><!-- /.columns is-widescreen -->
+      </div>
 
     {% endif %}
 

@@ -167,7 +167,6 @@ var forms = function forms(m, i18n) {
       case 'radio':
       case 'checkbox':
         return forms.choice(config);
-        break;
     } // fallback to good old text field
 
 
@@ -247,7 +246,7 @@ var g = function g(m) {
    * @returns {*}
    */
 
-  generators.select = function (config) {
+  generators['select'] = function (config) {
     var attributes = {
       name: config.name(),
       required: config.required()
@@ -305,7 +304,7 @@ var g = function g(m) {
    */
 
 
-  generators.checkbox = function (config) {
+  generators['checkbox'] = function (config) {
     var fields = config.choices().map(function (choice) {
       var name = config.name() + (config.type() === 'checkbox' ? '[]' : '');
       var required = config.required() && config.type() === 'radio';
@@ -321,7 +320,7 @@ var g = function g(m) {
     return fields;
   };
 
-  generators.radio = generators.checkbox;
+  generators['radio'] = generators['checkbox'];
   /**
    * Generates a default field
    *
@@ -369,18 +368,16 @@ var g = function g(m) {
 
 
   function generate(config) {
-    var label,
-        field,
-        htmlTemplate,
-        html,
-        vdom = document.createElement('div');
-    label = config.label().length > 0 && config.showLabel() ? m("label", {}, config.label()) : '';
-    field = typeof generators[config.type()] === "function" ? generators[config.type()](config) : generators['default'](config);
-    htmlTemplate = config.wrap() ? m('p', [label, field]) : [label, field]; // render in vdom
+    var labelAtts = {}; // let labelAtts = { 'for': config.name() };
 
+    var label = config.label().length > 0 && config.showLabel() ? m("label", labelAtts, config.label()) : '';
+    var field = typeof generators[config.type()] === "function" ? generators[config.type()](config) : generators['default'](config);
+    var htmlTemplate = config.wrap() ? m('p', [label, field]) : [label, field]; // render in vdom
+
+    var vdom = document.createElement('div');
     m.render(vdom, htmlTemplate); // prettify html
 
-    html = htmlutil.prettyPrint(vdom.innerHTML);
+    var html = htmlutil.prettyPrint(vdom.innerHTML);
     return html + "\n";
   }
 
@@ -498,7 +495,7 @@ var FieldHelper = function FieldHelper(m, tabs, editor, fields, events, i18n) {
         onkeydown: function onkeydown(e) {
           e = e || window.event;
 
-          if (e.keyCode == 13) {
+          if (e.keyCode === 13) {
             createFieldHTMLAndAddToForm();
           }
         },
@@ -541,6 +538,7 @@ var FieldFactory = function FieldFactory(fields, i18n) {
   /**
    * Helper function to quickly register a field and store it in local scope
    *
+   * @param {string} category
    * @param {object} data
    * @param {boolean} sticky
    */
@@ -601,32 +599,32 @@ var FieldFactory = function FieldFactory(fields, i18n) {
         type: 'text',
         mailchimpType: 'address',
         title: i18n.streetAddress
-      });
+      }, false);
       register(category, {
         name: data.name + '[city]',
         type: 'text',
         mailchimpType: 'address',
         title: i18n.city
-      });
+      }, false);
       register(category, {
         name: data.name + '[state]',
         type: 'text',
         mailchimpType: 'address',
         title: i18n.state
-      });
+      }, false);
       register(category, {
         name: data.name + '[zip]',
         type: 'text',
         mailchimpType: 'address',
         title: i18n.zip
-      });
+      }, false);
       register(category, {
         name: data.name + '[country]',
         type: 'select',
         mailchimpType: 'address',
         title: i18n.country,
         choices: mc4wp_vars.countries
-      });
+      }, false);
     }
 
     return true;
@@ -688,8 +686,8 @@ var FieldFactory = function FieldFactory(fields, i18n) {
   }
 
   function registerCustomFields(lists) {
-    var choices,
-        category = i18n.formFields; // register submit button
+    var choices;
+    var category = i18n.formFields; // register submit button
 
     register(category, {
       name: '',
@@ -1230,9 +1228,9 @@ function render() {
   container.innerHTML = html;
 }
 
-function init(editor, fields) {
+function init(editor, fields, settings) {
   var groupingsNotice = function groupingsNotice() {
-    var text = "Your form contains old style <code>GROUPINGS</code> fields. <br /><br />Please remove these fields from your form and then re-add them through the available field buttons to make sure your data is getting through to Mailchimp correctly.";
+    var text = "Your form contains deprecated <code>GROUPINGS</code> fields. <br /><br />Please remove these fields from your form and then re-add them through the available field buttons to make sure your data is getting through to Mailchimp correctly.";
     var formCode = editor.getValue().toLowerCase();
     formCode.indexOf('name="groupings') > -1 ? show('deprecated_groupings', text) : hide('deprecated_groupings');
   };
@@ -1247,6 +1245,16 @@ function init(editor, fields) {
       return f.title();
     }).join('</li><li>') + '</li></ul>';
     missingFields.length > 0 ? show('required_fields_missing', text) : hide('required_fields_missing');
+  };
+
+  var mailchimpListsNotice = function mailchimpListsNotice() {
+    var text = '<strong>Heads up!</strong> You have not yet selected a Mailchimp list to subscribe people to. Please select at least one list from the <a href="javascript:void(0)" data-tab="settings" class="tab-link">settings tab</a>.';
+
+    if (settings.getSelectedLists().length > 0) {
+      hide('no_lists_selected');
+    } else {
+      show('no_lists_selected', text);
+    }
   }; // old groupings
 
 
@@ -1257,6 +1265,7 @@ function init(editor, fields) {
   requiredFieldsNotice();
   editor.on('blur', requiredFieldsNotice);
   editor.on('focus', requiredFieldsNotice);
+  document.body.addEventListener('change', mailchimpListsNotice);
 }
 
 module.exports = {
@@ -1375,7 +1384,7 @@ window.setTimeout(function () {
   m.redraw();
 }, 2000); // init notices
 
-notices.init(editor, fields); // expose some methods
+notices.init(editor, fields, settings); // expose some methods
 
 window.mc4wp = window.mc4wp || {};
 window.mc4wp.forms = window.mc4wp.forms || {};
@@ -11798,7 +11807,7 @@ window.mc4wp.forms.fields = fields;
 
   addLegacyProps(CodeMirror);
 
-  CodeMirror.version = "5.46.0";
+  CodeMirror.version = "5.47.0";
 
   return CodeMirror;
 
