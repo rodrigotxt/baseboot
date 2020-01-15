@@ -1,4 +1,4 @@
-/*! PhotoSwipe - v4.1.4.aw - 2019-08-17
+/*! PhotoSwipe - v4.1.8.aw - 2020-01-14
 * http://photoswipe.com
 * Copyright (c) 2017 Dmitry Semenov;
 * with modifications by Arno Welzel */
@@ -669,9 +669,9 @@ var _isOpen,
             keydownAction = 'close';
         } else if(_options.arrowKeys) {
             if(_options.arrowKeys && e.keyCode === 37) {
-                keydownAction = 'prev';
+                keydownAction = 'prevAnim';
             } else if(_options.arrowKeys && e.keyCode === 39) {
-                keydownAction = 'next';
+                keydownAction = 'nextAnim';
             } else if (e.keyCode === 70) {
                 keydownAction = 'fullscreen';
             }
@@ -2955,6 +2955,12 @@ _registerModule('Controller', {
             _initialIsLoop = _options.loop;
             if(_getNumItems() < 2) {
                 _options.loop = false; // disable loop if less then 2 items
+            } else if(_getNumItems() == 2) {
+                // this is a workaround to avoid a very rare bug:
+                // when there are only two images and you open the second image first,
+                // it can happen that the first image won't show at all
+                self.lazyLoadItem(0);
+                self.lazyLoadItem(1);
             }
 
             _listen('beforeChange', function(diff) {
@@ -3740,6 +3746,93 @@ _registerModule('History', {
 
 
 /*>>history*/
+
+
+    /**
+     * - Adds public methods prevAnim() and nextAnim() which animates
+     *   the slide transition when switching to the previous or next
+     *   slide respectively
+     *   
+     *   See https://github.com/dimsemenov/PhotoSwipe/pull/1179
+     */
+
+    var slideAnim = function(dir) {
+
+        var itemsDiff = dir,
+            itemChanged,
+            nextCircle;
+
+        if(!_mainScrollAnimating) {
+            _currZoomedItemIndex = _currentItemIndex;
+        }
+
+        if(itemsDiff) {
+
+            _currentItemIndex += itemsDiff;
+
+            if(_currentItemIndex < 0) {
+                _currentItemIndex = _options.loop ? _getNumItems()-1 : 0;
+                nextCircle = true;
+            } else if(_currentItemIndex >= _getNumItems()) {
+                _currentItemIndex = _options.loop ? 0 : _getNumItems()-1;
+                nextCircle = true;
+            }
+
+            if(!nextCircle || _options.loop) {
+                _indexDiff += itemsDiff;
+                _currPositionIndex -= itemsDiff;
+                itemChanged = true;
+            }
+        }
+
+        var animateToX = _slideSize.x * _currPositionIndex;
+        var animateToDist = Math.abs( animateToX - _mainScrollPos.x );
+        var finishAnimDuration = (animateToDist > 4000) ? 400 : 300;
+
+        if(_currZoomedItemIndex === _currentItemIndex) {
+            itemChanged = false;
+        }
+
+        _mainScrollAnimating = true;
+
+        _shout('mainScrollAnimStart');
+
+        _animateProp('mainScroll', _mainScrollPos.x, animateToX, finishAnimDuration, framework.easing.cubic.out,
+            _moveMainScroll,
+            function() {
+                _stopAllAnimations();
+                _mainScrollAnimating = false;
+                _currZoomedItemIndex = -1;
+
+                if(itemChanged || _currZoomedItemIndex !== _currentItemIndex) {
+                    self.updateCurrItem();
+                }
+
+                _shout('mainScrollAnimComplete');
+            }
+        );
+
+        if(itemChanged) {
+            self.updateCurrItem(true);
+        }
+
+        return itemChanged;
+    };
+
+    _registerModule('AnimateSlide', {
+        publicMethods: {
+            initAnimateSlide: function() {},
+
+            nextAnim: function(){
+                slideAnim(1);
+            },
+
+            prevAnim: function(){
+                slideAnim(-1);
+            }
+        }
+    });
+
     framework.extend(self, publicMethods); };
     return PhotoSwipe;
 });

@@ -1,4 +1,4 @@
-/*! PhotoSwipe Default UI - 4.1.4.aw - 2019-08-17
+/*! PhotoSwipe Default UI - 4.1.8.aw - 2020-01-14
  * http://photoswipe.com
  * Copyright (c) 2017 Dmitry Semenov;
  * with modifications by Arno Welzel */
@@ -19,7 +19,6 @@
 })(this, function () {
 
     'use strict';
-
 
 
     var PhotoSwipeUI_Default =
@@ -57,11 +56,18 @@
                     loadingIndicatorDelay: 1000, // 2s
 
                     addCaptionHTMLFn: function(item, captionEl /*, isFake */) {
-                        if(!item.title) {
+                        if(!item.title && !item.exif) {
                             captionEl.children[0].innerHTML = '';
                             return false;
                         }
-                        captionEl.children[0].innerHTML = item.title;
+                        var captionOutput = '';
+                        if(item.title) {
+                            captionOutput = item.title
+                        }
+                        if(item.exif) {
+                            captionOutput += '<div class="pswp__caption__exif">'+item.exif+'</div>';
+                        }
+                        captionEl.children[0].innerHTML = captionOutput;
                         return true;
                     },
 
@@ -488,7 +494,7 @@
                     onInit: function(el) {
                         _prevButton = el;
                     },
-                    onTap: pswp.prev
+                    onTap: pswp.prevAnim
                 },
                 {
                     name: 'button--arrow--right',
@@ -496,7 +502,7 @@
                     onInit: function(el) {
                         _nextButton = el;
                     },
-                    onTap: pswp.next
+                    onTap: pswp.nextAnim
                 },
                 {
                     name: 'button--fs',
@@ -707,7 +713,7 @@
                     if(_options.captionEl) {
                         _options.addCaptionHTMLFn(pswp.currItem, _captionContainer);
 
-                        _togglePswpClass(_captionContainer, 'caption--empty', !pswp.currItem.title);
+                        _togglePswpClass(_captionContainer, 'caption--empty', (!pswp.currItem.title && !pswp.currItem.exif));
                     }
 
                     _overlayUIUpdated = true;
